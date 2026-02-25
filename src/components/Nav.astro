@@ -1,0 +1,162 @@
+---
+import { Image } from 'astro:assets';
+import logoSrc from '../assets/Logo.jpg';
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/assessment', label: 'Assessment' },
+  { href: '/resources', label: 'Resources' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[var(--color-border)] shadow-sm">
+  <nav
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16"
+    aria-label="Main navigation"
+  >
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-2 flex-shrink-0" aria-label="Halliday home">
+      <Image
+        src={logoSrc}
+        alt="Halliday"
+        width={120}
+        height={40}
+        class="h-9 w-auto object-contain"
+      />
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul class="hidden lg:flex items-center gap-1" role="list">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              aria-current={currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) ? 'page' : undefined}
+              class:list={[
+                'px-3 py-2 rounded-md text-sm font-medium transition-colors',
+                currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                  ? 'text-[var(--color-primary)] font-semibold'
+                  : 'text-[var(--color-text-muted)] hover:text-[var(--color-primary)]',
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Desktop CTA -->
+    <div class="hidden lg:block">
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-colors"
+      >
+        Book a Workflow Review
+      </a>
+    </div>
+
+    <!-- Hamburger button -->
+    <button
+      id="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      class="lg:hidden p-2 rounded-md text-[var(--color-text-muted)] hover:text-[var(--color-primary)] hover:bg-gray-100 transition-colors"
+    >
+      <span class="sr-only">Toggle navigation menu</span>
+      <svg
+        id="hamburger-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg
+        id="close-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 hidden"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden lg:hidden border-t border-[var(--color-border)] bg-white"
+    role="navigation"
+    aria-label="Mobile navigation"
+  >
+    <ul class="px-4 py-3 space-y-1" role="list">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              aria-current={currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) ? 'page' : undefined}
+              class:list={[
+                'block px-3 py-2.5 rounded-md text-base font-medium transition-colors',
+                currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                  ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] font-semibold'
+                  : 'text-[var(--color-text-muted)] hover:text-[var(--color-primary)] hover:bg-gray-50',
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="pt-2">
+        <a
+          href="/contact"
+          class="block text-center bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-5 py-3 rounded-full text-base font-semibold transition-colors"
+        >
+          Book a Workflow Review
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    menu?.classList.toggle('hidden');
+    hamburgerIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+  });
+
+  // Close mobile menu when a link is clicked
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      toggle?.setAttribute('aria-expanded', 'false');
+      hamburgerIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    });
+  });
+</script>

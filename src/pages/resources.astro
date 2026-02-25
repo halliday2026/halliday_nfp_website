@@ -1,0 +1,82 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ResourceCard from '../components/ResourceCard.astro';
+
+const allResources = await getCollection('resources', ({ data }) => !data.draft);
+
+const sorted = allResources.sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+
+<BaseLayout
+  title="Resources"
+  description="Practical guidance at the intersection of program evaluation and modern technology — for nonprofit teams navigating the shift to data-informed practice."
+>
+  <!-- Page header -->
+  <section class="bg-[var(--color-primary-dark)] text-white py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-[var(--color-accent)] font-semibold text-sm uppercase tracking-widest mb-4">
+          Resources
+        </p>
+        <h1
+          class="text-4xl sm:text-5xl font-bold text-white mb-6"
+          style="font-family: var(--font-heading);"
+        >
+          Evaluation + Technology Insights
+        </h1>
+        <p class="text-white/70 text-xl leading-relaxed">
+          Practical guidance at the intersection of program evaluation and modern technology.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resource grid -->
+  <section class="py-16 lg:py-24 bg-[var(--color-background)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {
+        sorted.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {sorted.map((resource) => (
+              <ResourceCard
+                title={resource.data.title}
+                description={resource.data.description}
+                category={resource.data.category}
+                slug={resource.slug}
+                publishDate={resource.data.publishDate}
+              />
+            ))}
+          </div>
+        ) : (
+          <p class="text-center text-[var(--color-text-muted)] py-16">
+            No resources yet — check back soon.
+          </p>
+        )
+      }
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-[var(--color-surface)] border-t border-[var(--color-border)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
+      <h2
+        class="text-2xl sm:text-3xl font-bold text-[var(--color-text)] mb-4"
+        style="font-family: var(--font-heading);"
+      >
+        Want insights specific to your evaluation workflow?
+      </h2>
+      <p class="text-[var(--color-text-muted)] mb-8">
+        A free workflow review is the fastest way to identify where technology can help your specific team.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-7 py-3.5 rounded-full font-semibold transition-colors"
+      >
+        Book a Free Workflow Review
+      </a>
+    </div>
+  </section>
+</BaseLayout>

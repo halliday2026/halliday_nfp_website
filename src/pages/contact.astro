@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Book a free evaluation workflow review with Halliday. Tell us about your process and we'll set up a time to talk through where technology might help."
+>
+  <!-- Page header -->
+  <section class="bg-[var(--color-primary-dark)] text-white py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-[var(--color-accent)] font-semibold text-sm uppercase tracking-widest mb-4">
+          Get in Touch
+        </p>
+        <h1
+          class="text-4xl sm:text-5xl font-bold text-white mb-6"
+          style="font-family: var(--font-heading);"
+        >
+          Book a Free Workflow Review
+        </h1>
+        <p class="text-white/70 text-xl leading-relaxed">
+          Tell us about your evaluation process and we'll set up a time to talk through where technology might help. No pressure, no jargon — just a useful conversation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form section -->
+  <section class="py-16 lg:py-24 bg-[var(--color-background)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+
+        <!-- Form -->
+        <div class="lg:col-span-3" data-animate>
+          <div class="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] p-8 lg:p-10">
+            <h2
+              class="text-2xl font-bold text-[var(--color-text)] mb-2"
+              style="font-family: var(--font-heading);"
+            >
+              Tell us about your workflow
+            </h2>
+            <p class="text-[var(--color-text-muted)] text-sm mb-8">
+              Fields marked with * are required.
+            </p>
+            <ContactForm />
+          </div>
+
+          <p class="mt-6 text-center text-[var(--color-text-muted)] text-sm">
+            You can also reach us directly at{' '}
+            <a
+              href="mailto:chris@hallidayinc.com"
+              class="text-[var(--color-primary)] font-medium hover:underline"
+            >
+              chris@hallidayinc.com
+            </a>
+          </p>
+        </div>
+
+        <!-- Sidebar: What to expect -->
+        <div class="lg:col-span-2" data-animate data-animate-delay="200">
+          <div class="sticky top-24">
+            <h3
+              class="text-xl font-bold text-[var(--color-text)] mb-6"
+              style="font-family: var(--font-heading);"
+            >
+              What to expect
+            </h3>
+
+            <ul class="space-y-6 mb-10">
+              {[
+                {
+                  title: 'A response within one business day',
+                  body: 'We\'ll reach out to confirm your request and propose a few times to connect.',
+                },
+                {
+                  title: 'A 30–45 minute conversation',
+                  body: 'We\'ll ask about your evaluation process, your pain points, and what you\'re hoping to accomplish. You\'ll leave with a clearer sense of what\'s possible.',
+                },
+                {
+                  title: 'A written summary',
+                  body: 'After the call, we\'ll share a brief summary of what we discussed and what we see as the highest-leverage opportunities.',
+                },
+                {
+                  title: 'No obligation, no pitch',
+                  body: 'This is genuinely a listening call. We\'ll share our perspective, but there\'s no sales pressure.',
+                },
+              ].map((item) => (
+                <li class="flex gap-4">
+                  <div class="w-2 h-2 rounded-full bg-[var(--color-accent)] flex-shrink-0 mt-2" />
+                  <div>
+                    <p class="font-semibold text-[var(--color-text)] text-sm mb-1">{item.title}</p>
+                    <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">{item.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <div class="p-6 rounded-xl bg-[var(--color-primary)]/5 border border-[var(--color-primary)]/15">
+              <p class="text-[var(--color-text-muted)] text-sm leading-relaxed italic">
+                "The best technology conversations start with someone who actually wants to understand your problem — not sell you a solution."
+              </p>
+              <p class="mt-3 text-xs text-[var(--color-text-muted)] font-semibold uppercase tracking-wide">
+                — Our philosophy
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,66 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  slug: string;
+  publishDate: Date;
+}
+
+const { title, description, category, slug, publishDate } = Astro.props;
+
+const formattedDate = publishDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<article
+  class="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] overflow-hidden hover:border-[var(--color-primary)]/30 hover:shadow-lg transition-all group flex flex-col"
+  data-animate
+>
+  <!-- Category tag -->
+  <div class="px-7 pt-7 pb-0">
+    <span class="inline-block text-xs font-semibold uppercase tracking-wider text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-3 py-1 rounded-full">
+      {category}
+    </span>
+  </div>
+
+  <div class="p-7 flex flex-col flex-1">
+    <h3
+      class="text-xl font-bold text-[var(--color-text)] mb-3 group-hover:text-[var(--color-primary)] transition-colors leading-snug"
+      style="font-family: var(--font-heading);"
+    >
+      {title}
+    </h3>
+
+    <p class="text-[var(--color-text-muted)] text-sm leading-relaxed mb-6 flex-1">
+      {description}
+    </p>
+
+    <div class="flex items-center justify-between mt-auto pt-5 border-t border-[var(--color-border)]">
+      <time class="text-xs text-[var(--color-text-muted)]" datetime={publishDate.toISOString()}>
+        {formattedDate}
+      </time>
+      <a
+        href={`/resources/${slug}`}
+        class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-primary)] hover:gap-2.5 transition-all"
+        aria-label={`Read more: ${title}`}
+      >
+        Read more
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</article>

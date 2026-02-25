@@ -1,0 +1,339 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Home"
+  description="Halliday helps nonprofit evaluation teams automate data collection, accelerate analysis, and produce funder-ready reports — so you can focus on the programs that matter."
+>
+  <!-- ======================== HERO ======================== -->
+  <section class="relative overflow-hidden min-h-[90vh] flex items-center">
+    <!-- Abstract SVG background -->
+    <div class="absolute inset-0 bg-[var(--color-primary-dark)]" aria-hidden="true">
+      <svg
+        class="absolute inset-0 w-full h-full"
+        viewBox="0 0 1440 900"
+        preserveAspectRatio="xMidYMid slice"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <!-- Gradient base -->
+        <defs>
+          <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0d5c63" />
+            <stop offset="100%" stop-color="#09424a" />
+          </linearGradient>
+          <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#c8873a" stop-opacity="0.3" />
+            <stop offset="100%" stop-color="#c8873a" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <rect width="1440" height="900" fill="url(#heroGrad)" />
+
+        <!-- Geometric shapes — data flow feeling -->
+        <circle cx="1300" cy="150" r="350" fill="#1a7a83" fill-opacity="0.25" />
+        <circle cx="100" cy="750" r="280" fill="#c8873a" fill-opacity="0.12" />
+        <circle cx="800" cy="900" r="200" fill="#1a7a83" fill-opacity="0.15" />
+
+        <!-- Connected nodes suggesting data flow -->
+        <g fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1">
+          <line x1="200" y1="200" x2="500" y2="400" />
+          <line x1="500" y1="400" x2="900" y2="300" />
+          <line x1="900" y1="300" x2="1200" y2="500" />
+          <line x1="300" y1="600" x2="600" y2="450" />
+          <line x1="600" y1="450" x2="1000" y2="550" />
+        </g>
+        <g fill="#ffffff" fill-opacity="0.12">
+          <circle cx="200" cy="200" r="5" />
+          <circle cx="500" cy="400" r="5" />
+          <circle cx="900" cy="300" r="5" />
+          <circle cx="1200" cy="500" r="5" />
+          <circle cx="300" cy="600" r="5" />
+          <circle cx="600" cy="450" r="5" />
+          <circle cx="1000" cy="550" r="5" />
+        </g>
+      </svg>
+    </div>
+
+    <!-- Hero content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+      <div class="max-w-3xl">
+        <p class="text-[var(--color-accent)] font-semibold text-sm uppercase tracking-widest mb-6">
+          Nonprofit Technology Consulting
+        </p>
+        <h1
+          class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-8"
+          style="font-family: var(--font-heading);"
+        >
+          Your evaluation data deserves better than spreadsheets and six-month timelines
+        </h1>
+        <p class="text-white/75 text-xl leading-relaxed mb-10 max-w-2xl">
+          Halliday helps nonprofit evaluation teams automate data collection, accelerate analysis, and produce funder-ready reports — so you can focus on the programs that matter.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="/assessment"
+            class="inline-flex items-center justify-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-7 py-4 rounded-full text-base font-semibold transition-colors"
+          >
+            Take the Evaluation Workflow Assessment
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-white text-white px-7 py-4 rounded-full text-base font-semibold transition-colors hover:bg-white/10"
+          >
+            Book a Free Workflow Review
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== PROBLEM STATEMENT ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-surface)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-14" data-animate>
+        <h2
+          class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] mb-5"
+          style="font-family: var(--font-heading);"
+        >
+          We understand what evaluation teams are up against
+        </h2>
+        <p class="text-[var(--color-text-muted)] text-lg">
+          After years of working alongside nonprofit evaluation teams, we know the obstacles you face — not in the abstract, but in the daily grind.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        {[
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" /></svg>`,
+            title: 'Fragmented data, fragmented picture',
+            body: 'Data collection is manual, scattered across Excel files, paper forms, and disconnected systems — making it nearly impossible to see the full picture of program impact.',
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+            title: 'Analysis that lags reality',
+            body: 'Analysis takes so long that findings are outdated by the time they reach stakeholders. Decision-makers act on old data — or no data at all.',
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
+            title: 'Report writing is a full-time job',
+            body: 'Report writing consumes weeks of staff time that should be spent on programs. Every reporting cycle feels like starting from scratch.',
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>`,
+            title: 'Funders want more than you can deliver',
+            body: 'Funders expect rigorous outcomes measurement, but teams lack the tools and bandwidth to deliver it — leaving real impact invisible on paper.',
+          },
+        ].map((item, i) => (
+          <div
+            class="flex gap-5 p-7 rounded-2xl bg-[var(--color-background)] border border-[var(--color-border)]"
+            data-animate
+            data-animate-delay={String(i * 100)}
+          >
+            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)]" set:html={item.icon} />
+            <div>
+              <h3
+                class="text-lg font-semibold text-[var(--color-text)] mb-2"
+                style="font-family: var(--font-heading);"
+              >
+                {item.title}
+              </h3>
+              <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">{item.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== SERVICES OVERVIEW ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-background)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-14" data-animate>
+        <h2
+          class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] mb-5"
+          style="font-family: var(--font-heading);"
+        >
+          Technology that fits your evaluation workflow
+        </h2>
+        <p class="text-[var(--color-text-muted)] text-lg">
+          We build around the way you actually work — not around a vendor's idea of best practice.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>`,
+            title: 'Data Collection Automation',
+            body: 'Replace manual intake forms, Excel trackers, and paper surveys with integrated digital systems that capture clean data from the start.',
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>`,
+            title: 'Analysis & Insight Generation',
+            body: 'Turn months of analysis into days. We build dashboards and automated analysis pipelines tailored to your logic model and evaluation questions.',
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
+            title: 'Reporting & Visualization',
+            body: 'Generate funder-ready reports and stakeholder dashboards without the bottleneck. Spend less time in Word and more time on programs.',
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>`,
+            title: 'Custom Tool Development',
+            body: 'When off-the-shelf doesn\'t cut it, we build custom applications designed around your specific evaluation framework and data needs.',
+          },
+        ].map((service, i) => (
+          <div
+            class="bg-[var(--color-surface)] rounded-2xl p-7 border border-[var(--color-border)] hover:border-[var(--color-primary)]/30 hover:shadow-lg transition-all group"
+            data-animate
+            data-animate-delay={String(i * 100)}
+          >
+            <div class="w-14 h-14 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-5 group-hover:bg-[var(--color-primary)] group-hover:text-white transition-colors" set:html={service.icon} />
+            <h3
+              class="text-lg font-bold text-[var(--color-text)] mb-3"
+              style="font-family: var(--font-heading);"
+            >
+              {service.title}
+            </h3>
+            <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">{service.body}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-10" data-animate>
+        <a
+          href="/services"
+          class="inline-flex items-center gap-2 text-[var(--color-primary)] font-semibold hover:gap-3 transition-all"
+        >
+          Learn more about our services
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== HOW IT WORKS ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-primary-dark)] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-14" data-animate>
+        <h2
+          class="text-3xl sm:text-4xl font-bold text-white mb-5"
+          style="font-family: var(--font-heading);"
+        >
+          From conversation to impact in four steps
+        </h2>
+        <p class="text-white/70 text-lg">
+          No jargon, no complicated sales process. Just a clear path to a workflow that works.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {[
+          {
+            step: '01',
+            title: 'Free Workflow Review',
+            body: 'We learn about your evaluation process, your pain points, and your goals. No pitch, just listening.',
+          },
+          {
+            step: '02',
+            title: 'Custom Roadmap',
+            body: 'We map your evaluation lifecycle and identify where technology creates the most leverage — whether that\'s automating data collection, streamlining analysis, or both.',
+          },
+          {
+            step: '03',
+            title: 'Build & Implement',
+            body: 'We design and build solutions that integrate with your existing workflow. No rip-and-replace — we meet you where you are.',
+          },
+          {
+            step: '04',
+            title: 'Train & Support',
+            body: 'Your team gets hands-on training, and we provide ongoing support as your evaluation needs evolve.',
+          },
+        ].map((step, i) => (
+          <div
+            class="relative"
+            data-animate
+            data-animate-delay={String(i * 100)}
+          >
+            <div class="text-[var(--color-accent)] text-5xl font-bold mb-4 opacity-60" style="font-family: var(--font-heading);">
+              {step.step}
+            </div>
+            <h3
+              class="text-xl font-bold text-white mb-3"
+              style="font-family: var(--font-heading);"
+            >
+              {step.title}
+            </h3>
+            <p class="text-white/65 text-sm leading-relaxed">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== WHO WE WORK WITH ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-surface)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center" data-animate>
+        <h2
+          class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] mb-6"
+          style="font-family: var(--font-heading);"
+        >
+          Who we work with
+        </h2>
+        <p class="text-[var(--color-text-muted)] text-lg leading-relaxed mb-10">
+          We work with nonprofit evaluation teams, independent evaluators, and mission-driven organizations navigating the shift from manual processes to modern, technology-enabled evaluation.
+        </p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-left">
+          {[
+            'Community-based nonprofits',
+            'Education & youth programs',
+            'Public health organizations',
+            'Social services agencies',
+            'Independent evaluators',
+            'Workforce development programs',
+          ].map((org) => (
+            <div class="flex items-center gap-3 p-4 rounded-xl bg-[var(--color-background)] border border-[var(--color-border)]">
+              <div class="w-2 h-2 rounded-full bg-[var(--color-accent)] flex-shrink-0" />
+              <span class="text-sm text-[var(--color-text-muted)] font-medium">{org}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Testimonial placeholder — add real quotes here when available -->
+        <!--
+        <div class="mt-14 p-8 rounded-2xl bg-[var(--color-background)] border border-[var(--color-border)]">
+          <blockquote class="text-[var(--color-text)] text-lg italic leading-relaxed mb-4">
+            "Quote goes here."
+          </blockquote>
+          <cite class="text-[var(--color-text-muted)] text-sm not-italic">— Name, Title, Organization</cite>
+        </div>
+        -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== FINAL CTA ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-background)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
+      <h2
+        class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] mb-5"
+        style="font-family: var(--font-heading);"
+      >
+        Stop fighting your evaluation process. Start improving it.
+      </h2>
+      <p class="text-[var(--color-text-muted)] text-lg mb-8">
+        Book a free workflow review and find out where technology can save your team the most time.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
+      >
+        Book a Free Workflow Review
+      </a>
+    </div>
+  </section>
+</BaseLayout>

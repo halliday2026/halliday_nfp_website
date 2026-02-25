@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Evaluation Workflow Assessment"
+  description="Take this quick assessment to identify where your evaluation process has the most room for improvement — and where technology can help."
+>
+  <!-- Page header -->
+  <section class="bg-[var(--color-primary-dark)] text-white py-20 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-[var(--color-accent)] font-semibold text-sm uppercase tracking-widest mb-4">
+          Free Assessment
+        </p>
+        <h1
+          class="text-4xl sm:text-5xl font-bold text-white mb-6"
+          style="font-family: var(--font-heading);"
+        >
+          How efficient is your evaluation workflow?
+        </h1>
+        <p class="text-white/70 text-xl leading-relaxed">
+          Take this quick assessment to identify where your evaluation process has the most room for improvement — and where technology can help.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Assessment embed -->
+  <section class="py-12 lg:py-16 bg-[var(--color-background)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] overflow-hidden p-4 sm:p-8">
+        <div id="tally-embed" class="min-h-[600px] rounded-xl p-4">
+          <iframe
+            data-tally-src="https://tally.so/embed/FORM_ID_HERE?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            loading="lazy"
+            width="100%"
+            height="598"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            title="Halliday Evaluation Workflow Assessment"
+          ></iframe>
+          <script>
+            var d = document,
+              w = 'https://tally.so/widgets/embed.js',
+              v = function () {
+                'undefined' != typeof Tally
+                  ? Tally.loadEmbeds()
+                  : d
+                      .querySelectorAll('iframe[data-tally-src]:not([src])')
+                      .forEach(function (e) {
+                        e.src = e.dataset.tallySrc;
+                      });
+              };
+            if ('undefined' != typeof Tally) v();
+            else if (d.querySelector('script[src="' + w + '"]') == null) {
+              var s = d.createElement('script');
+              s.src = w;
+              s.onload = v;
+              s.onerror = v;
+              d.body.appendChild(s);
+            }
+          </script>
+        </div>
+      </div>
+
+      <!-- Alternative CTA -->
+      <div class="mt-8 text-center" data-animate>
+        <p class="text-[var(--color-text-muted)] text-sm">
+          Prefer to talk through it?{' '}
+          <a
+            href="/contact"
+            class="text-[var(--color-primary)] font-semibold hover:underline"
+          >
+            Book a free workflow review instead.
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What you'll learn section -->
+  <section class="py-16 bg-[var(--color-surface)] border-t border-[var(--color-border)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-10" data-animate>
+        <h2
+          class="text-2xl sm:text-3xl font-bold text-[var(--color-text)] mb-4"
+          style="font-family: var(--font-heading);"
+        >
+          What the assessment covers
+        </h2>
+        <p class="text-[var(--color-text-muted)]">
+          A few focused questions about the most common evaluation bottlenecks.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {[
+          {
+            title: 'Data collection',
+            body: 'How you currently collect program data, where the friction is, and what\'s getting missed.',
+          },
+          {
+            title: 'Analysis process',
+            body: 'How long analysis takes, who\'s doing it, and what analytical capacity you\'re working with.',
+          },
+          {
+            title: 'Reporting workflow',
+            body: 'The time and effort your reporting cycle requires, and where the biggest drains are.',
+          },
+        ].map((item, i) => (
+          <div
+            class="text-center p-6 rounded-xl bg-[var(--color-background)] border border-[var(--color-border)]"
+            data-animate
+            data-animate-delay={String(i * 100)}
+          >
+            <h3
+              class="font-bold text-[var(--color-text)] mb-2"
+              style="font-family: var(--font-heading);"
+            >
+              {item.title}
+            </h3>
+            <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
