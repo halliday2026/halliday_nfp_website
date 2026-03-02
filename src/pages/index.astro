@@ -8,51 +8,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 >
   <!-- ======================== HERO ======================== -->
   <section class="relative overflow-hidden min-h-[90vh] flex items-center">
-    <!-- Abstract SVG background -->
-    <div class="absolute inset-0 bg-[var(--color-primary-dark)]" aria-hidden="true">
-      <svg
-        class="absolute inset-0 w-full h-full"
-        viewBox="0 0 1440 900"
-        preserveAspectRatio="xMidYMid slice"
-        xmlns="http://www.w3.org/2000/svg"
+    <!-- Photo background with gradient overlay -->
+    <div class="absolute inset-0" aria-hidden="true">
+      <img
+        src="/images/hero.jpg"
+        alt=""
+        class="w-full h-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high"
         aria-hidden="true"
-      >
-        <!-- Gradient base -->
-        <defs>
-          <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#0d5c63" />
-            <stop offset="100%" stop-color="#09424a" />
-          </linearGradient>
-          <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#c8873a" stop-opacity="0.3" />
-            <stop offset="100%" stop-color="#c8873a" stop-opacity="0" />
-          </linearGradient>
-        </defs>
-        <rect width="1440" height="900" fill="url(#heroGrad)" />
-
-        <!-- Geometric shapes — data flow feeling -->
-        <circle cx="1300" cy="150" r="350" fill="#1a7a83" fill-opacity="0.25" />
-        <circle cx="100" cy="750" r="280" fill="#c8873a" fill-opacity="0.12" />
-        <circle cx="800" cy="900" r="200" fill="#1a7a83" fill-opacity="0.15" />
-
-        <!-- Connected nodes suggesting data flow -->
-        <g fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1">
-          <line x1="200" y1="200" x2="500" y2="400" />
-          <line x1="500" y1="400" x2="900" y2="300" />
-          <line x1="900" y1="300" x2="1200" y2="500" />
-          <line x1="300" y1="600" x2="600" y2="450" />
-          <line x1="600" y1="450" x2="1000" y2="550" />
-        </g>
-        <g fill="#ffffff" fill-opacity="0.12">
-          <circle cx="200" cy="200" r="5" />
-          <circle cx="500" cy="400" r="5" />
-          <circle cx="900" cy="300" r="5" />
-          <circle cx="1200" cy="500" r="5" />
-          <circle cx="300" cy="600" r="5" />
-          <circle cx="600" cy="450" r="5" />
-          <circle cx="1000" cy="550" r="5" />
-        </g>
-      </svg>
+      />
+      <!-- Dark teal gradient: opaque on left (text side) → semi-transparent on right (photo shows through) -->
+      <div class="absolute inset-0 bg-gradient-to-r from-[#09424a]/95 via-[#09424a]/75 to-[#09424a]/40"></div>
     </div>
 
     <!-- Hero content -->
