@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const caseStudies = [
+  {
+    href: '/case-studies/conservation-nonprofit',
+    badge: 'Impact Data Review',
+    title: 'Impact Data Review for a Habitat Conservation Nonprofit',
+    client: 'Southern California Habitat Conservation Nonprofit',
+    summary: 'A conservation nonprofit had five years of donor data but no structured way to analyze it. We conducted an Impact Data Review and uncovered critical insights about donor acquisition, retention trends, and early warning signs for donor attrition — giving leadership a clear, data-driven picture of their donor base health for the first time.',
+  },
+];
+---
+
+<BaseLayout
+  title="Case Studies"
+  description="Real work with real nonprofits — see how Halliday has helped organizations uncover insights, strengthen donor relationships, and prove their impact."
+>
+
+  <!-- ======================== HEADER ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-primary-dark)]" data-animate>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-[var(--color-accent)] font-semibold text-sm uppercase tracking-widest mb-4">Case Studies</p>
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
+        style="font-family: var(--font-heading);"
+      >
+        Results That Speak for Themselves
+      </h1>
+      <p class="text-white/70 text-lg leading-relaxed max-w-2xl">
+        Real work with real nonprofits — and the insights that changed how they operate.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================== CASE STUDY LISTING ======================== -->
+  <section class="py-16 lg:py-24 bg-[var(--color-background)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-8">
+        {caseStudies.map((cs, i) => (
+          <article
+            class="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] p-8 shadow-sm hover:shadow-md hover:border-[var(--color-primary)]/30 transition-all"
+            data-animate
+            data-animate-delay={String(i * 100)}
+          >
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <span class="inline-block bg-[var(--color-accent)]/15 text-[var(--color-accent)] text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full">
+                {cs.badge}
+              </span>
+            </div>
+            <p class="text-[var(--color-text-muted)] text-sm font-medium mb-3">{cs.client}</p>
+            <h2
+              class="text-xl sm:text-2xl font-bold text-[var(--color-text)] mb-4"
+              style="font-family: var(--font-heading);"
+            >
+              {cs.title}
+            </h2>
+            <p class="text-[var(--color-text-muted)] text-base leading-relaxed mb-6">{cs.summary}</p>
+            <a
+              href={cs.href}
+              class="inline-flex items-center gap-2 text-[var(--color-primary)] font-semibold hover:gap-3 transition-all text-sm"
+            >
+              Read the Full Case Study
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
