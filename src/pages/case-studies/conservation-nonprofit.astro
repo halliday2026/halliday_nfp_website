@@ -72,6 +72,17 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             The analysis was completed and delivered as a polished, visual report designed for leadership — clear enough for a non-technical Executive Director to act on and detailed enough to support funder conversations.
           </p>
         </div>
+        <figure class="mt-8" data-animate>
+          <img
+            src="/images/case-studies/case-study-slide-executive-summary.jpg"
+            alt="Executive summary slide from a Halliday Impact Data Review report"
+            class="w-full rounded-xl border border-[var(--color-border)] shadow-md"
+            loading="lazy"
+          />
+          <figcaption class="text-center text-xs text-[var(--color-text-muted)] mt-3 italic">
+            Sample from a Halliday Impact Data Review report.
+          </figcaption>
+        </figure>
       </div>
 
     </div>
@@ -92,39 +103,80 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {[
-          {
-            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>`,
-            title: 'New Donor Acquisition Trends',
-            body: 'For the first time, leadership could see how their new donor pipeline had evolved year over year — including patterns in when and how new donors entered the organization\'s ecosystem.',
-          },
-          {
-            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
-            title: 'Donor Retention Patterns',
-            body: 'Clear retention trends emerged across donor segments, revealing which groups remained engaged over time, which experienced higher attrition, and where relationship-building efforts were working.',
-          },
-          {
-            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>`,
-            title: 'Key Donor Warning Signs',
-            body: 'Early warning indicators for donor attrition among the organization\'s most important supporters — shifts in giving frequency, declining gift amounts, gaps in engagement — had been invisible without structured analysis.',
-          },
-        ].map((finding, i) => (
-          <div
-            class="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] border-t-4 border-t-[var(--color-primary)]"
-            data-animate
-            data-animate-delay={String(i * 100)}
-          >
-            <div class="w-10 h-10 rounded-lg bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-4" set:html={finding.icon} />
-            <h3
-              class="text-base font-bold text-[var(--color-text)] mb-3"
-              style="font-family: var(--font-heading);"
-            >
-              {finding.title}
-            </h3>
-            <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">{finding.body}</p>
+      <div class="space-y-6">
+
+        <!-- Finding 1: New Donor Acquisition Trends -->
+        <div
+          class="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] border-t-4 border-t-[var(--color-primary)]"
+          data-animate
+        >
+          <div class="w-10 h-10 rounded-lg bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
           </div>
-        ))}
+          <h3 class="text-base font-bold text-[var(--color-text)] mb-3" style="font-family: var(--font-heading);">
+            New Donor Acquisition Trends
+          </h3>
+          <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">
+            For the first time, leadership could see how their new donor pipeline had evolved year over year — including patterns in when and how new donors entered the organization's ecosystem.
+          </p>
+          <figure class="mt-6">
+            <img
+              src="/images/case-studies/case-study-slide-donor-composition.jpg"
+              alt="Donor composition breakdown chart showing retained, new, and reactivated donors over time"
+              class="w-full rounded-xl border border-[var(--color-border)] shadow-md"
+              loading="lazy"
+            />
+            <figcaption class="text-center text-xs text-[var(--color-text-muted)] mt-3 italic">
+              Donor composition breakdown showing retained, new, and reactivated donors.
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Finding 2: Donor Retention Patterns -->
+        <div
+          class="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] border-t-4 border-t-[var(--color-primary)]"
+          data-animate
+          data-animate-delay="100"
+        >
+          <div class="w-10 h-10 rounded-lg bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+          </div>
+          <h3 class="text-base font-bold text-[var(--color-text)] mb-3" style="font-family: var(--font-heading);">
+            Donor Retention Patterns
+          </h3>
+          <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">
+            Clear retention trends emerged across donor segments, revealing which groups remained engaged over time, which experienced higher attrition, and where relationship-building efforts were working.
+          </p>
+          <figure class="mt-6">
+            <img
+              src="/images/case-studies/case-study-slide-retention-cohort.jpg"
+              alt="Year-over-year donor retention analysis and cohort tracking chart"
+              class="w-full rounded-xl border border-[var(--color-border)] shadow-md"
+              loading="lazy"
+            />
+            <figcaption class="text-center text-xs text-[var(--color-text-muted)] mt-3 italic">
+              Year-over-year retention analysis and cohort tracking.
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Finding 3: Key Donor Warning Signs -->
+        <div
+          class="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] border-t-4 border-t-[var(--color-primary)]"
+          data-animate
+          data-animate-delay="200"
+        >
+          <div class="w-10 h-10 rounded-lg bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+          </div>
+          <h3 class="text-base font-bold text-[var(--color-text)] mb-3" style="font-family: var(--font-heading);">
+            Key Donor Warning Signs
+          </h3>
+          <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">
+            Early warning indicators for donor attrition among the organization's most important supporters — shifts in giving frequency, declining gift amounts, gaps in engagement — had been invisible without structured analysis.
+          </p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -182,6 +234,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ======================== NEXT STEPS IMAGE ======================== -->
+  <section class="pb-16 bg-[var(--color-background)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <figure data-animate>
+        <img
+          src="/images/case-studies/case-study-slide-next-steps.jpg"
+          alt="Next steps and prioritized recommendations slide from a Halliday Impact Data Review report"
+          class="w-full rounded-xl border border-[var(--color-border)] shadow-md"
+          loading="lazy"
+        />
+        <figcaption class="text-center text-xs text-[var(--color-text-muted)] mt-3 italic">
+          Every Impact Data Review includes prioritized, actionable recommendations.
+        </figcaption>
+      </figure>
     </div>
   </section>
 
