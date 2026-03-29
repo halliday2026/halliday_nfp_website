@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="About"
-  description="Halliday was founded to bridge the gap between what nonprofit evaluation teams need and what technology can deliver. We're technologists who learned to speak evaluation."
+  description="Halliday helps nonprofits turn disconnected data into smarter decisions. We bring 20+ years of data and analytics experience to nonprofit leadership teams."
 >
   <!-- Page header -->
   <section class="bg-[var(--color-primary-dark)] text-white py-20 lg:py-28">
@@ -17,10 +17,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           class="text-4xl sm:text-5xl font-bold text-white mb-6"
           style="font-family: var(--font-heading);"
         >
-          We're technologists who learned to speak evaluation
+          We help nonprofits make sense of their own data
         </h1>
         <p class="text-white/70 text-xl leading-relaxed">
-          Because you can't build good tools without understanding the work they're meant to support.
+          Because the problem isn't that you don't have data. It's that nobody's connecting it.
         </p>
       </div>
     </div>
@@ -38,17 +38,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               class="text-2xl font-bold text-[var(--color-text)] mb-4"
               style="font-family: var(--font-heading);"
             >
-              Why Halliday exists
+              Why we started Halliday
             </h2>
             <div class="space-y-4 text-[var(--color-text-muted)] leading-relaxed">
               <p>
-                Halliday was founded to bridge a gap that we kept running into: nonprofit evaluation teams doing genuinely important work, with rigorous methodologies and deep expertise in their fields — constrained by tools and processes that couldn't keep up with what they needed to know.
+                Every nonprofit we've worked with has the same story: donor records in one system, program data in another, grant deliverables in a third — and no way to see the full picture. Leadership makes decisions based on gut instinct because nobody's connected the dots across their data.
               </p>
               <p>
-                The problem wasn't a lack of good technology. It was that most technology is designed for different problems. Generic software platforms aren't built around logic models, funder reporting cycles, or mixed-methods evaluation frameworks. And the consultants who understood evaluation often didn't have the technical depth to translate that understanding into working systems.
+                We started Halliday because we kept seeing organizations with years of valuable data and no structured way to learn from it. Not because they lacked the will — because they lacked a partner who understood both the data and the mission.
               </p>
               <p>
-                That's the gap we fill.
+                That's the gap we fill. We bring 20+ years of data warehousing, business intelligence, and analytics experience to the nonprofit sector — not to sell technology, but to help organizations see what their data is already trying to tell them.
               </p>
             </div>
           </div>
@@ -58,17 +58,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               class="text-2xl font-bold text-[var(--color-text)] mb-4"
               style="font-family: var(--font-heading);"
             >
-              We did the work to understand your work
+              How we think about the work
             </h2>
             <div class="space-y-4 text-[var(--color-text-muted)] leading-relaxed">
               <p>
-                We took the time to deeply understand the evaluation workflow — logic models, theories of change, mixed methods, funder reporting requirements — because you can't build good tools without understanding the work they're meant to support.
+                We don't start with tools. We start with your data — what you have, where it lives, and what it can tell you. That's why every engagement begins with an Impact Data Review: a fixed-scope diagnostic that surfaces the patterns and insights already sitting in your existing systems.
               </p>
               <p>
-                We know what it means when an evaluation team says their data collection is "fragmented." We know what a quarterly funder report actually involves. We understand the difference between output tracking and outcome measurement, and why that distinction matters for what you build.
+                From there, we help you decide what to do about it. Sometimes the answer is an off-the-shelf tool you didn't know existed. Sometimes it's a change in process. And sometimes it's a purpose-built solution that doesn't exist yet — in which case, we build it.
               </p>
               <p>
-                That domain knowledge is what makes our technical work useful rather than just functional.
+                We're technology-agnostic. We'll recommend a $50/month SaaS product if that solves your problem, or scope a custom dashboard if it doesn't. The goal is always the same: help you make better decisions with the data you already have.
               </p>
             </div>
           </div>
@@ -82,10 +82,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </h2>
             <div class="space-y-4 text-[var(--color-text-muted)] leading-relaxed">
               <p>
-                We know nonprofits operate with small teams, tight budgets, and high accountability standards. Our solutions are designed for that reality — not for some idealized enterprise scenario where there's an IT department to call and a six-figure software budget to work with.
-              </p>
-              <p>
-                That means we build for maintainability. The systems we create are ones your team can actually use and manage without a dedicated technical staff member. We don't build dependencies; we build capacity.
+                We know nonprofits operate with small teams, tight budgets, and high accountability to funders and communities. Our work is designed for that reality — not for some idealized scenario with an IT department and a six-figure software budget.
               </p>
             </div>
           </div>
@@ -104,19 +101,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               {[
                 {
                   title: 'Listen first',
-                  body: 'We learn your process, your data, and your evaluation questions before we suggest anything. There\'s no standard solution to recommend without that context.',
+                  body: 'We learn about your organization, your data, and your goals before we suggest anything. There\'s no standard solution to recommend without that context.',
                 },
                 {
                   title: 'Recommend only what creates leverage',
-                  body: 'Not every problem needs a custom software solution. We\'ll tell you when a simpler approach will work — and when it won\'t.',
+                  body: 'Not every problem needs a custom solution. We\'ll tell you when a simpler approach works — and when it won\'t.',
                 },
                 {
                   title: 'Build for your team',
-                  body: 'The best solution is the one your team will actually use. We design with your real constraints — staff capacity, technical comfort, organizational culture — in mind.',
+                  body: 'The best solution is the one your team will actually use. We design around your real constraints — staff capacity, technical comfort, budget.',
                 },
                 {
                   title: 'Transfer knowledge, not dependency',
-                  body: 'When we\'re done, your team understands the system and can manage it. We document everything and train thoroughly.',
+                  body: 'When we\'re done, your team understands the system and can manage it independently. We document everything and train thoroughly.',
                 },
               ].map((principle) => (
                 <li class="flex gap-4">
@@ -135,22 +132,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- CTA -->
-  <section class="py-16 bg-[var(--color-background)] border-t border-[var(--color-border)]">
+  <section class="py-16 bg-[var(--color-surface)] border-t border-[var(--color-border)]">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
       <h2
         class="text-2xl sm:text-3xl font-bold text-[var(--color-text)] mb-4"
         style="font-family: var(--font-heading);"
       >
-        Ready to see if we're a good fit?
+        Ready to see what your data can tell you?
       </h2>
       <p class="text-[var(--color-text-muted)] mb-8">
-        A free workflow review is a no-pressure conversation about your evaluation process and where technology might help.
+        Start with an Impact Data Review — or just book a call and tell us what you're working on.
       </p>
       <a
         href="/contact"
         class="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-7 py-3.5 rounded-full font-semibold transition-colors"
       >
-        Book a Free Consultation
+        Book a 30-Minute Intro Call
       </a>
     </div>
   </section>

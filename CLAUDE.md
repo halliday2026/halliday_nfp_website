@@ -91,6 +91,10 @@ POSTs to Supabase edge function. Field names must match exactly:
 
 **Endpoint**: `https://qncqegweobwyudatlomq.supabase.co/functions/v1/contact-form`
 
+## About Page
+
+`src/pages/about.astro` — includes company origin story and working principles. Positioned around "Data Strategy for Nonprofits" — not technology consulting.
+
 ## Services Page Structure
 
 The services page (`src/pages/services.astro`) is organized as a three-stage sequential value chain, each with an anchor ID:
