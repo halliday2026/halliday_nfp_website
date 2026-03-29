@@ -1,6 +1,6 @@
 # Halliday NFP Website
 
-Astro 5 + Tailwind CSS v4 static site for [hallidayinc.com](https://hallidayinc.com), targeting nonprofit program evaluation teams.
+Astro 5 + Tailwind CSS v4 static site for [hallidayinc.com](https://hallidayinc.com), targeting nonprofit leadership with data strategy services.
 
 ## Commands
 
@@ -86,10 +86,24 @@ POSTs to Supabase edge function. Field names must match exactly:
 - `phoneNumber`
 - `bestTimeToCall` (Morning | Afternoon | Evening)
 - `organizationName`
-- `interestedIn` (Data Collection Automation | Analysis & Dashboards | Reporting & Visualization | Custom Tool Development | Full Evaluation Workflow Review | General Inquiry)
+- `interestedIn` (Impact Data Review | Strategic Advisory | Custom Solutions | AI Readiness Assessment | General Inquiry)
 - `comments` (required, textarea)
 
 **Endpoint**: `https://qncqegweobwyudatlomq.supabase.co/functions/v1/contact-form`
+
+## Services Page Structure
+
+The services page (`src/pages/services.astro`) is organized as a three-stage sequential value chain, each with an anchor ID:
+- `#impact-data-review` — Gateway fixed-scope engagement (IDR)
+- `#strategic-advisory` — Buy vs. build advisory and roadmap
+- `#custom-solutions` — Custom dashboards, integrations, and data products (includes Signal by Halliday)
+
+The homepage previews these three stages and links to the anchors.
+
+## Footer
+
+Tagline: "Data strategy for mission-driven organizations."
+Located in `src/components/Footer.astro`.
 
 ## Case Studies
 
