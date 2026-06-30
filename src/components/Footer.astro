@@ -1,35 +1,33 @@
 ---
 import { Image } from 'astro:assets';
-import logoSrc from '../assets/Logo.jpg';
+import hLogoIcon from '../assets/H_Logo.svg';
 
 const quickLinks = [
   { href: '/', label: 'Home' },
+  { href: '/data-work', label: 'Data Work' },
+  { href: '/managed-websites', label: 'Managed Websites' },
+  { href: '/cost-calculator', label: 'Cost Calculator' },
+  { href: '/case-studies', label: 'Proof' },
   { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
-  { href: '/assessment', label: 'Assessment' },
-  { href: '/resources', label: 'Resources' },
-  { href: '/case-studies', label: 'Case Studies' },
   { href: '/contact', label: 'Contact' },
 ];
 ---
 
-<footer class="bg-[var(--color-primary-dark)] text-white">
+<footer class="bg-[var(--color-charcoal)] text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
 
       <!-- Brand column -->
       <div class="md:col-span-1">
-        <a href="/" aria-label="Halliday home" class="inline-block mb-4">
-          <Image
-            src={logoSrc}
-            alt="Halliday"
-            width={120}
-            height={40}
-            class="h-9 w-auto object-contain brightness-0 invert"
-          />
+        <a href="/" aria-label="Halliday home" class="inline-flex items-center gap-2.5 mb-4">
+          <Image src={hLogoIcon} alt="" width={28} height={32} class="h-7 w-auto brightness-0 invert" />
+          <span class="font-heading font-bold text-lg tracking-wide text-white">HALLIDAY</span>
         </a>
         <p class="text-white/70 text-sm leading-relaxed">
-          Data strategy for mission-driven organizations.
+          A professional web presence and the custom data tools to raise more, report faster, and prove your impact.
+        </p>
+        <p class="text-white/50 text-xs leading-relaxed mt-4">
+          And for the consultants, coaches, and grant writers in their orbit — the same done-for-you web presence keeps your professional presence running, too.
         </p>
       </div>
 
@@ -44,7 +42,7 @@ const quickLinks = [
               <li>
                 <a
                   href={link.href}
-                  class="text-white/70 hover:text-[var(--color-accent)] text-sm transition-colors"
+                  class="text-white/70 hover:text-white text-sm transition-colors"
                 >
                   {link.label}
                 </a>
@@ -59,21 +57,24 @@ const quickLinks = [
         <h3 class="font-semibold text-sm uppercase tracking-wider text-white/50 mb-4">
           Get in Touch
         </h3>
+        <p class="text-white/70 text-sm leading-relaxed mb-1">
+          Huntington Beach, CA
+        </p>
         <p class="text-white/70 text-sm leading-relaxed mb-5">
-          Ready to see what your data can tell you?<br/>Let's talk.
+          Ready to see what's possible?<br/>Let's talk.
         </p>
         <a
           href="/contact"
-          class="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-colors"
+          class="inline-flex items-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-colors"
         >
-          Book a Free Consultation
+          Book a discovery call
         </a>
       </div>
     </div>
 
     <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/40">
       <p>&copy; 2026 Halliday. All rights reserved.</p>
-      <p>Data Strategy for Nonprofits</p>
+      <p>hallidayinc.com</p>
     </div>
   </div>
 </footer>

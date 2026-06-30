@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CostCalculator from '../components/CostCalculator.astro';
+---
+
+<BaseLayout
+  title="Cost Calculator"
+  description="What is scattered data costing your nonprofit? A 60-second, tap-only estimate of the hours and dollars lost each year to fragmented data and manual reporting."
+>
+  <section class="py-16 lg:py-20 bg-[var(--color-charcoal)]" data-animate>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-white/60 font-semibold text-sm uppercase tracking-widest mb-5">
+        Cost Calculator
+      </p>
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5"
+        style="font-family: var(--font-heading);"
+      >
+        What is scattered data costing your nonprofit?
+      </h1>
+      <p class="text-white/70 text-lg leading-relaxed max-w-xl mx-auto">
+        A few taps, no typing, no homework. Get a rough estimate of the hours and dollars lost each year to fragmented data and manual reporting.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <CostCalculator />
+    </div>
+  </section>
+</BaseLayout>

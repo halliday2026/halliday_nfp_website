@@ -1,365 +1,267 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { heroConfig } from '../data/hero';
+import { pillars } from '../data/pillars';
+import { beforeAfter } from '../data/before-after';
+// Hero photo: "Focused man working on laptop at desk" by Michael Burrows, via Pexels
+// (Pexels License — free for commercial use, no attribution required).
+// https://www.pexels.com/photo/focused-ethnic-man-working-on-laptop-at-desk-7128964/
+import heroPhoto from '../assets/hero-operator.jpg';
+
+const selfIdentify = [
+  'Data living in 3+ places',
+  'A recent grant win — new money, new reporting obligations',
+  'No in-house data person',
+  'Board decks assembled by hand',
+];
+
+const pillarIcons: Record<string, string> = {
+  'web-presence': `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18zM3.6 9h16.8M3.6 15h16.8M12 3a14.5 14.5 0 010 18 14.5 14.5 0 010-18z" /></svg>`,
+  'raise-more': `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>`,
+  'report-faster': `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
+  'prove-impact': `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+};
 ---
 
 <BaseLayout
   title="Home"
-  description="Halliday helps nonprofits turn disconnected data into smarter decisions — through data reviews, strategic advisory, and custom tools built for your specific needs."
+  description="Halliday builds nonprofits a professional web presence — and the custom data tools to raise more, report faster, and prove their impact."
 >
   <!-- ======================== HERO ======================== -->
-  <section class="relative overflow-hidden min-h-[90vh] flex items-center">
-    <!-- Photo background with gradient overlay -->
+  <section class="relative overflow-hidden min-h-[92vh] lg:min-h-screen flex items-center">
     <div class="absolute inset-0" aria-hidden="true">
-      <img
-        src="/images/hero.jpg"
+      <Image
+        src={heroPhoto}
         alt=""
-        class="w-full h-full object-cover object-center"
+        class="w-full h-full object-cover grayscale contrast-[1.05] brightness-[0.92]"
+        style="object-position: 68% center;"
+        widths={[640, 1024, 1600, 2400]}
+        sizes="100vw"
         loading="eager"
         fetchpriority="high"
         aria-hidden="true"
       />
-      <!-- Dark teal gradient: opaque on left (text side) → semi-transparent on right (photo shows through) -->
-      <div class="absolute inset-0 bg-gradient-to-r from-[#09424a]/95 via-[#09424a]/75 to-[#09424a]/40"></div>
+      <!-- Duotone tint: recolors the desaturated photo into the brand palette -->
+      <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-charcoal)] to-[var(--color-navy-dark)] mix-blend-color opacity-80"></div>
+      <!-- Legibility scrim: directional darken, strongest where the headline sits -->
+      <div class="absolute inset-0 bg-gradient-to-r from-[var(--color-charcoal)]/95 via-[var(--color-charcoal)]/75 to-[var(--color-charcoal)]/25"></div>
     </div>
 
-    <!-- Hero content -->
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
       <div class="max-w-3xl">
-        <p class="text-[var(--color-accent)] font-semibold text-sm uppercase tracking-widest mb-6">
-          Data Strategy for Nonprofits
+        <p class="text-white/60 font-semibold text-sm uppercase tracking-widest mb-6">
+          {heroConfig.eyebrow}
         </p>
         <h1
           class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-8"
           style="font-family: var(--font-heading);"
         >
-          You have the data. You're missing the picture.
+          {heroConfig.headline}
         </h1>
         <p class="text-white/75 text-xl leading-relaxed mb-10 max-w-2xl">
-          We help nonprofits turn disconnected data into smarter decisions — and when the right tool doesn't exist, we build it.
+          {heroConfig.subhead}
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a
-            href="/services#impact-data-review"
-            class="inline-flex items-center justify-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-7 py-4 rounded-full text-base font-semibold transition-colors"
+            href={heroConfig.primaryCta.href}
+            class="inline-flex items-center justify-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-7 py-4 rounded-full text-base font-semibold transition-colors"
           >
-            Start with an Impact Data Review
+            {heroConfig.primaryCta.label}
           </a>
           <a
-            href="/contact"
+            href={heroConfig.secondaryCta.href}
             class="inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-white text-white px-7 py-4 rounded-full text-base font-semibold transition-colors hover:bg-white/10"
           >
-            Book a 30-Minute Intro Call
+            {heroConfig.secondaryCta.label}
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ======================== PROBLEM STATEMENT ======================== -->
-  <section class="py-20 lg:py-28 bg-[var(--color-surface)]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto text-center mb-14" data-animate>
-        <h2
-          class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] mb-5"
-          style="font-family: var(--font-heading);"
-        >
-          We understand what nonprofit leaders are up against
-        </h2>
-        <p class="text-[var(--color-text-muted)] text-lg">
-          After years of working with nonprofits of all sizes, we know the obstacles you face — not in the abstract, but in the daily grind.
-        </p>
-      </div>
+  <!-- ======================== WHO THIS IS FOR ======================== -->
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
+      <h2
+        class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
+        style="font-family: var(--font-heading);"
+      >
+        Does this sound like you?
+      </h2>
+      <p class="text-[var(--color-muted)] text-lg mb-12">
+        Halliday works with nonprofits in the messy middle — big enough to run several disconnected systems, too lean to afford a dedicated data hire.
+      </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-        {[
-          {
-            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" /></svg>`,
-            title: 'Your data lives in five places. Your insights live in none.',
-            body: 'Donor records in QuickBooks, program data in Excel, grant deliverables in Word docs. Nobody\'s connecting the dots, so leadership makes decisions based on incomplete information.',
-          },
-          {
-            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
-            title: 'You can tell funders what you did. You can\'t show them what changed.',
-            body: 'Outputs are easy. Outcomes are hard. Most nonprofits know they\'re making a difference but can\'t prove it with data — and that gap costs real money at renewal time.',
-          },
-          {
-            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
-            title: 'Reporting season is a fire drill every quarter.',
-            body: 'Staff drops everything to pull numbers, format reports, and chase down data from three departments. Then they do it again 90 days later.',
-          },
-          {
-            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>`,
-            title: 'You\'ve been told you need a data strategy. Nobody\'s told you what that actually means.',
-            body: 'Consultants talk about \'data culture\' and \'capacity building.\' You need someone who\'ll look at your actual data and tell you what\'s working, what\'s not, and what to do next.',
-          },
-        ].map((item, i) => (
-          <div
-            class="flex gap-5 p-7 rounded-2xl bg-[var(--color-background)] border border-[var(--color-border)]"
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left" role="list">
+        {selfIdentify.map((signal, i) => (
+          <li
+            class="flex items-start gap-3 p-5 rounded-xl bg-[var(--color-stone)] border border-[var(--color-border)]"
             data-animate
             data-animate-delay={String(i * 100)}
           >
-            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)]" set:html={item.icon} />
-            <div>
-              <h3
-                class="text-lg font-semibold text-[var(--color-text)] mb-2"
-                style="font-family: var(--font-heading);"
-              >
-                {item.title}
-              </h3>
-              <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">{item.body}</p>
-            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-navy)] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="text-[var(--color-body)] text-base">{signal}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======================== BEFORE / AFTER (condensed) ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-stone)]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-14" data-animate>
+        <h2
+          class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
+          style="font-family: var(--font-heading);"
+        >
+          From scattered to clear
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-2xl p-8 border border-[var(--color-border)]" data-animate>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)] mb-5">Before</p>
+          <ul class="space-y-3">
+            {beforeAfter.before.slice(0, 3).map((line) => (
+              <li class="flex items-start gap-3 text-[var(--color-body)] text-base leading-relaxed">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-muted)] flex-shrink-0 mt-2.5" />
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 border border-[var(--color-navy)]/20" data-animate data-animate-delay="100">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-navy)] mb-5">After</p>
+          <ul class="space-y-3">
+            {beforeAfter.after.slice(0, 3).map((line) => (
+              <li class="flex items-start gap-3 text-[var(--color-body)] text-base leading-relaxed">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-navy)] flex-shrink-0 mt-2.5" />
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== PILLARS ======================== -->
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-14" data-animate>
+        <h2
+          class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
+          style="font-family: var(--font-heading);"
+        >
+          Start with a website. Grow into the data.
+        </h2>
+        <p class="text-[var(--color-muted)] text-lg">
+          One front door, three outcomes once you're ready to go further.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {pillars.map((pillar, i) => (
+          <div
+            class="p-7 rounded-2xl bg-[var(--color-stone)] border border-[var(--color-border)]"
+            data-animate
+            data-animate-delay={String(i * 100)}
+          >
+            <div class="w-12 h-12 rounded-xl bg-[var(--color-navy)]/10 flex items-center justify-center text-[var(--color-navy)] mb-5" set:html={pillarIcons[pillar.key]} />
+            <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-navy)] mb-2">{pillar.eyebrow}</p>
+            <h3
+              class="text-lg font-bold text-[var(--color-ink)] mb-3"
+              style="font-family: var(--font-heading);"
+            >
+              {pillar.title}
+            </h3>
+            <p class="text-[var(--color-muted)] text-sm leading-relaxed">{pillar.body}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ======================== VALUE CHAIN PREVIEW ======================== -->
-  <section class="py-20 lg:py-28 bg-[var(--color-background)]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- ======================== CALCULATOR TEASER ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-charcoal)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
+      <h2
+        class="text-3xl sm:text-4xl font-bold text-white mb-5"
+        style="font-family: var(--font-heading);"
+      >
+        What is scattered data costing your nonprofit?
+      </h2>
+      <p class="text-white/70 text-lg mb-10">
+        A 60-second estimate of the hours and dollars lost each year to fragmented data and manual reporting — no email required to see it.
+      </p>
+      <a
+        href="/cost-calculator"
+        class="inline-flex items-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-7 py-4 rounded-full text-base font-semibold transition-colors"
+      >
+        Calculate your cost
+      </a>
+    </div>
+  </section>
+
+  <!-- ======================== PROOF TEASER ======================== -->
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl mx-auto text-center mb-14" data-animate>
         <h2
-          class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] mb-5"
+          class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
           style="font-family: var(--font-heading);"
         >
-          A clear path from data to decisions
+          Results That Speak for Themselves
         </h2>
-        <p class="text-[var(--color-text-muted)] text-lg">
-          Every engagement starts with understanding what your data can already tell you. Where it goes from there depends on what you need.
+        <p class="text-[var(--color-muted)] text-lg">
+          Real work with real nonprofits — and the insights that changed how they operate.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[
-          {
-            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>`,
-            title: 'Impact Data Review',
-            body: 'We analyze your existing data — donor records, program metrics, financial data — and deliver a clear, visual report showing what it\'s actually saying. No new systems. No technical prerequisites. Just answers.',
-            href: '/services#impact-data-review',
-          },
-          {
-            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>`,
-            title: 'Strategic Advisory',
-            body: 'Once you can see the picture, we help you decide what to do about it — which tools to adopt, which processes to fix, and whether to buy or build.',
-            href: '/services#strategic-advisory',
-          },
-          {
-            icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>`,
-            title: 'Custom Solutions',
-            body: 'When off-the-shelf doesn\'t fit, we build lightweight, purpose-built tools — dashboards, integrations, and data products designed for your specific needs.',
-            href: '/services#custom-solutions',
-          },
-        ].map((service, i) => (
-          <div
-            class="bg-[var(--color-surface)] rounded-2xl p-7 border border-[var(--color-border)] hover:border-[var(--color-primary)]/30 hover:shadow-lg transition-all group"
-            data-animate
-            data-animate-delay={String(i * 100)}
-          >
-            <div class="w-14 h-14 rounded-xl bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mb-5 group-hover:bg-[var(--color-primary)] group-hover:text-white transition-colors" set:html={service.icon} />
-            <h3
-              class="text-lg font-bold text-[var(--color-text)] mb-3"
-              style="font-family: var(--font-heading);"
-            >
-              {service.title}
-            </h3>
-            <p class="text-[var(--color-text-muted)] text-sm leading-relaxed mb-4">{service.body}</p>
-            <a
-              href={service.href}
-              class="inline-flex items-center gap-1 text-[var(--color-primary)] text-sm font-semibold hover:gap-2 transition-all"
-            >
-              Learn more
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-            </a>
-          </div>
-        ))}
-      </div>
-
-      <div class="text-center mt-10" data-animate>
+      <div
+        class="bg-[var(--color-stone)] rounded-2xl border border-[var(--color-border)] p-8 lg:p-10"
+        data-animate
+      >
+        <span class="inline-block bg-[var(--color-navy)]/10 text-[var(--color-navy)] text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">
+          Case Study
+        </span>
+        <p class="text-[var(--color-muted)] text-sm font-medium mb-3">Southern California Habitat Conservation Nonprofit</p>
+        <p class="text-[var(--color-body)] text-base leading-relaxed mb-6">
+          A conservation nonprofit had five years of donor data but no structured way to analyze it. We uncovered critical insights about donor acquisition, retention trends, and early warning signs for donor attrition — giving leadership a clear, data-driven picture of their donor base health for the first time.
+        </p>
         <a
-          href="/services"
-          class="inline-flex items-center gap-2 text-[var(--color-primary)] font-semibold hover:gap-3 transition-all"
+          href="/case-studies/conservation-nonprofit"
+          class="inline-flex items-center gap-2 text-[var(--color-navy)] font-semibold hover:gap-3 transition-all text-sm"
         >
-          See how we work
+          Read the full case study
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ======================== HOW IT WORKS ======================== -->
-  <section class="py-20 lg:py-28 bg-[var(--color-primary-dark)] text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto text-center mb-14" data-animate>
-        <h2
-          class="text-3xl sm:text-4xl font-bold text-white mb-5"
-          style="font-family: var(--font-heading);"
-        >
-          How it works
-        </h2>
-        <p class="text-white/70 text-lg">
-          Three stages, each building on the last — starting with what you already have.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {[
-          {
-            step: '01',
-            title: 'We look at what you have',
-            body: 'The Impact Data Review analyzes your existing data and surfaces patterns you haven\'t seen — donor retention trends, at-risk supporters, program effectiveness signals. Fixed scope, no disruption.',
-          },
-          {
-            step: '02',
-            title: 'We help you decide what to do about it',
-            body: 'Strategic advisory translates data insights into operational decisions. We\'ll recommend an off-the-shelf tool if that\'s the right answer, or scope a custom solution if it\'s not.',
-          },
-          {
-            step: '03',
-            title: 'We build what doesn\'t exist',
-            body: 'When your needs don\'t fit a product, we design and build purpose-built tools that integrate with your workflow. No enterprise bloat — just the right tool for the job.',
-          },
-        ].map((step, i) => (
-          <div
-            class="relative"
-            data-animate
-            data-animate-delay={String(i * 100)}
-          >
-            <div class="text-[var(--color-accent)] text-5xl font-bold mb-4 opacity-60" style="font-family: var(--font-heading);">
-              {step.step}
-            </div>
-            <h3
-              class="text-xl font-bold text-white mb-3"
-              style="font-family: var(--font-heading);"
-            >
-              {step.title}
-            </h3>
-            <p class="text-white/65 text-sm leading-relaxed">{step.body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================== WHO WE WORK WITH ======================== -->
-  <section class="py-20 lg:py-28 bg-[var(--color-surface)]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center" data-animate>
-        <h2
-          class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] mb-6"
-          style="font-family: var(--font-heading);"
-        >
-          Who we work with
-        </h2>
-        <p class="text-[var(--color-text-muted)] text-lg leading-relaxed">
-          We work with nonprofits across sectors — conservation, human services, health, education, workforce development — who are sitting on data they're not using. Our deepest experience is with environmental and conservation organizations in Southern California, where our work has driven real changes in how leadership understands donor health and program impact.
-        </p>
-
-        <!-- Testimonial placeholder — add real quotes here when available -->
-        <!--
-        <div class="mt-14 p-8 rounded-2xl bg-[var(--color-background)] border border-[var(--color-border)]">
-          <blockquote class="text-[var(--color-text)] text-lg italic leading-relaxed mb-4">
-            "Quote goes here."
-          </blockquote>
-          <cite class="text-[var(--color-text-muted)] text-sm not-italic">— Name, Title, Organization</cite>
-        </div>
-        -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================== CASE STUDIES ======================== -->
-  <section class="py-20 lg:py-28 bg-[var(--color-background)]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mx-auto text-center mb-14" data-animate>
-        <h2
-          class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] mb-5"
-          style="font-family: var(--font-heading);"
-        >
-          Results That Speak for Themselves
-        </h2>
-        <p class="text-[var(--color-text-muted)] text-lg">
-          Real work with real nonprofits — and the insights that changed how they operate.
-        </p>
-      </div>
-
-      <!-- Case study cards grid — accommodates additional cards as they are added -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-        <div
-          class="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] overflow-hidden shadow-sm"
-          data-animate
-        >
-          <!-- Card header -->
-          <div class="p-8 pb-6 border-b border-[var(--color-border)]">
-            <div class="flex flex-wrap items-center gap-3 mb-4">
-              <span class="inline-block bg-[var(--color-accent)]/15 text-[var(--color-accent)] text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full">
-                Impact Data Review
-              </span>
-            </div>
-            <p class="text-[var(--color-text-muted)] text-sm font-medium mb-3">Southern California Habitat Conservation Nonprofit</p>
-            <p class="text-[var(--color-text)] text-base leading-relaxed">
-              A conservation nonprofit had five years of donor data but no structured way to analyze it. We conducted an Impact Data Review and uncovered critical insights about donor acquisition, retention trends, and early warning signs for donor attrition — giving leadership a clear, data-driven picture of their donor base health for the first time.
-            </p>
-          </div>
-
-          <!-- Key findings -->
-          <div class="p-8 pb-6">
-            <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-muted)] mb-4">Key Findings</p>
-            <ul class="space-y-3">
-              {[
-                { icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`, text: 'Donor retention patterns identified across 5 years of giving history' },
-                { icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>`, text: 'At-risk donors flagged before lapsing' },
-                { icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>`, text: 'New donor acquisition trends mapped for the first time' },
-              ].map((item) => (
-                <li class="flex items-start gap-3">
-                  <div class="flex-shrink-0 w-6 h-6 rounded-full bg-[var(--color-primary)]/10 flex items-center justify-center text-[var(--color-primary)] mt-0.5" set:html={item.icon} />
-                  <span class="text-sm text-[var(--color-text-muted)] leading-snug">{item.text}</span>
-                </li>
-              ))}
-            </ul>
-
-            <!-- Pull quote -->
-            <blockquote class="mt-6 border-l-4 border-[var(--color-accent)] pl-4 py-1">
-              <p class="text-[var(--color-text)] text-sm italic leading-relaxed" style="font-family: var(--font-heading);">
-                "We were surprised at the information that turned up. It's helped us tailor our appeals and think differently about our donor relationships."
-              </p>
-              <cite class="text-[var(--color-text-muted)] text-xs not-italic mt-2 block">— Executive Director</cite>
-            </blockquote>
-          </div>
-
-          <!-- CTA -->
-          <div class="px-8 pb-8">
-            <a
-              href="/case-studies/conservation-nonprofit"
-              class="inline-flex items-center gap-2 text-[var(--color-primary)] font-semibold hover:gap-3 transition-all text-sm"
-            >
-              Read the Full Case Study
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
   <!-- ======================== FINAL CTA ======================== -->
-  <section class="py-20 lg:py-28 bg-[var(--color-background)]">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
+  <section class="py-20 lg:py-28 bg-[var(--color-stone)]">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
       <h2
-        class="text-3xl sm:text-4xl font-bold text-[var(--color-text)] mb-5"
+        class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
         style="font-family: var(--font-heading);"
       >
-        Ready to see what your data is telling you?
+        Ready to see what's possible?
       </h2>
-      <p class="text-[var(--color-text-muted)] text-lg mb-8">
-        Start with an Impact Data Review — a fixed-scope engagement that turns your existing data into actionable insights.
+      <p class="text-[var(--color-muted)] text-lg mb-8">
+        Tell us about your organization — no pitch, just a useful conversation about where you are and what's next.
       </p>
       <a
         href="/contact"
-        class="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
+        class="inline-flex items-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
       >
-        Book a 30-Minute Intro Call
+        Book a discovery call
       </a>
     </div>
   </section>

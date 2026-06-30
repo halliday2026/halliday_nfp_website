@@ -4,7 +4,7 @@ description: "Practical strategies for using AI-assisted tools to automate the m
 publishDate: 2026-01-15
 category: "guide"
 tags: ["AI", "reporting", "efficiency", "funder reports"]
-draft: false
+draft: true
 ---
 
 Nonprofit evaluation teams spend an extraordinary amount of time on reporting. This guide explores how AI tools can help — and where human judgment still matters most.

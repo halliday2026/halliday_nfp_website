@@ -102,13 +102,19 @@ charcoal `#2B2B2F`. On dark/navy backgrounds use stone/white. No diamond, no "CO
 3. **Content collection config**: `src/content.config.ts` at the `src/` root (Astro 5
    convention), not in `src/content/`.
 
-## Forms — Supabase (single backend)
+## Forms — Supabase (single backend, two edge functions)
 
-Contact form and Cost Calculator email capture both POST to the **existing Supabase
-edge function** — one backend, reused. Do not introduce a second form service.
+One Supabase backend/project (`qncqegweobwyudatlomq`), no other form service. Two
+edge functions live in it:
 
-Contact form endpoint:
-`https://qncqegweobwyudatlomq.supabase.co/functions/v1/contact-form`
+- `contact-form` — existing, used by `ContactForm.astro`.
+  `https://qncqegweobwyudatlomq.supabase.co/functions/v1/contact-form`
+- `calculator-lead` — new, used by the Cost Calculator's post-result email capture.
+  `https://qncqegweobwyudatlomq.supabase.co/functions/v1/calculator-lead`
+
+Don't introduce a third backend (e.g. Formspree, despite the Gateway Calculator Spec
+doc's original Phase-1 suggestion) — that decision was superseded in favor of staying
+on the one Supabase project.
 
 `interestedIn` options must reflect the NEW offers (Managed Website, Data Work /
 Donor Insight Engagement, General Inquiry). **Remove** stale options "Impact Data

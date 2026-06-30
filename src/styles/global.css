@@ -1,20 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap');
+@import "@fontsource/hanken-grotesk/600.css";
+@import "@fontsource/hanken-grotesk/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
 @import "tailwindcss";
 
 @theme {
-  --font-heading: 'Fraunces', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
+  /* brand */
+  --color-charcoal: #2B2B2F;
+  --color-silver:   #C8C9CC;
+  --color-stone:    #EDEAE4;
 
-  --color-primary: #0d5c63;
-  --color-primary-dark: #09424a;
-  --color-primary-light: #1a7a83;
-  --color-accent: #c8873a;
-  --color-accent-hover: #b07030;
-  --color-background: #f7f4ef;
-  --color-surface: #ffffff;
-  --color-text: #1c2426;
-  --color-text-muted: #566063;
-  --color-border: #ddd8cf;
+  /* accent (navy) */
+  --color-navy:      #2E4A6B;
+  --color-navy-dark: #233A54;
+  --color-navy-tint: #EAEEF3;
+
+  /* neutrals */
+  --color-ink:    #2B2B2F;
+  --color-body:   #3F4145;
+  --color-muted:  #6E7176;
+  --color-border: #DAD8D2;
+
+  /* functional */
+  --color-success: #3F7A5E;
+  --color-error:   #B0413A;
+
+  /* type */
+  --font-heading: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -24,14 +37,15 @@
 
   body {
     font-family: var(--font-body);
-    background-color: var(--color-background);
-    color: var(--color-text);
+    background-color: #ffffff;
+    color: var(--color-body);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+    color: var(--color-ink);
     line-height: 1.2;
   }
 }

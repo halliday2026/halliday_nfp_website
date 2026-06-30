@@ -4,7 +4,7 @@ description: "How to recognize when your evaluation workflow has outgrown your c
 publishDate: 2026-02-10
 category: "guide"
 tags: ["evaluation", "technology", "workflow", "assessment"]
-draft: false
+draft: true
 ---
 
 Every evaluation team reaches a point where the tools that got them started start holding them back. Here are five signs you've crossed that threshold.

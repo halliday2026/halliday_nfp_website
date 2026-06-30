@@ -1,14 +1,14 @@
 ---
 import { Image } from 'astro:assets';
-import logoSrc from '../assets/Logo.jpg';
+import hLogoIcon from '../assets/H_Logo.svg';
 
 const navLinks = [
   { href: '/', label: 'Home' },
+  { href: '/data-work', label: 'Data Work' },
+  { href: '/managed-websites', label: 'Managed Websites' },
+  { href: '/cost-calculator', label: 'Cost Calculator' },
+  { href: '/case-studies', label: 'Proof' },
   { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
-  { href: '/assessment', label: 'Assessment' },
-  { href: '/resources', label: 'Resources' },
-  { href: '/case-studies', label: 'Case Studies' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -21,14 +21,9 @@ const currentPath = Astro.url.pathname;
     aria-label="Main navigation"
   >
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-2 flex-shrink-0" aria-label="Halliday home">
-      <Image
-        src={logoSrc}
-        alt="Halliday"
-        width={180}
-        height={60}
-        class="h-14 w-auto object-contain"
-      />
+    <a href="/" class="flex items-center gap-2.5 flex-shrink-0" aria-label="Halliday home">
+      <Image src={hLogoIcon} alt="" width={28} height={32} class="h-8 w-auto" />
+      <span class="font-heading font-bold text-lg tracking-wide text-[var(--color-charcoal)]">HALLIDAY</span>
     </a>
 
     <!-- Desktop nav links -->
@@ -42,8 +37,8 @@ const currentPath = Astro.url.pathname;
               class:list={[
                 'px-3 py-2 rounded-md text-sm font-medium transition-colors',
                 currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
-                  ? 'text-[var(--color-primary)] font-semibold'
-                  : 'text-[var(--color-text-muted)] hover:text-[var(--color-primary)]',
+                  ? 'text-[var(--color-navy)] font-semibold'
+                  : 'text-[var(--color-muted)] hover:text-[var(--color-navy)]',
               ]}
             >
               {link.label}
@@ -57,9 +52,9 @@ const currentPath = Astro.url.pathname;
     <div class="hidden lg:block">
       <a
         href="/contact"
-        class="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-colors"
+        class="inline-flex items-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-colors"
       >
-        Book a Consultation
+        Book a discovery call
       </a>
     </div>
 
@@ -69,7 +64,7 @@ const currentPath = Astro.url.pathname;
       type="button"
       aria-expanded="false"
       aria-controls="mobile-menu"
-      class="lg:hidden p-2 rounded-md text-[var(--color-text-muted)] hover:text-[var(--color-primary)] hover:bg-gray-100 transition-colors"
+      class="lg:hidden p-2 rounded-md text-[var(--color-muted)] hover:text-[var(--color-navy)] hover:bg-gray-100 transition-colors"
     >
       <span class="sr-only">Toggle navigation menu</span>
       <svg
@@ -116,8 +111,8 @@ const currentPath = Astro.url.pathname;
               class:list={[
                 'block px-3 py-2.5 rounded-md text-base font-medium transition-colors',
                 currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
-                  ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] font-semibold'
-                  : 'text-[var(--color-text-muted)] hover:text-[var(--color-primary)] hover:bg-gray-50',
+                  ? 'bg-[var(--color-navy)]/10 text-[var(--color-navy)] font-semibold'
+                  : 'text-[var(--color-muted)] hover:text-[var(--color-navy)] hover:bg-gray-50',
               ]}
             >
               {link.label}
@@ -128,9 +123,9 @@ const currentPath = Astro.url.pathname;
       <li class="pt-2">
         <a
           href="/contact"
-          class="block text-center bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-5 py-3 rounded-full text-base font-semibold transition-colors"
+          class="block text-center bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-5 py-3 rounded-full text-base font-semibold transition-colors"
         >
-          Book a Consultation
+          Book a discovery call
         </a>
       </li>
     </ul>
