@@ -17,35 +17,35 @@ const formattedDate = publishDate.toLocaleDateString('en-US', {
 ---
 
 <article
-  class="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] overflow-hidden hover:border-[var(--color-primary)]/30 hover:shadow-lg transition-all group flex flex-col"
+  class="bg-white rounded-2xl border border-[var(--color-border)] overflow-hidden hover:border-[var(--color-navy)]/30 hover:shadow-lg transition-all group flex flex-col"
   data-animate
 >
   <!-- Category tag -->
   <div class="px-7 pt-7 pb-0">
-    <span class="inline-block text-xs font-semibold uppercase tracking-wider text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-3 py-1 rounded-full">
+    <span class="inline-block text-xs font-semibold uppercase tracking-wider text-[var(--color-navy)] bg-[var(--color-navy)]/10 px-3 py-1 rounded-full">
       {category}
     </span>
   </div>
 
   <div class="p-7 flex flex-col flex-1">
     <h3
-      class="text-xl font-bold text-[var(--color-text)] mb-3 group-hover:text-[var(--color-primary)] transition-colors leading-snug"
+      class="text-xl font-bold text-[var(--color-ink)] mb-3 group-hover:text-[var(--color-navy)] transition-colors leading-snug"
       style="font-family: var(--font-heading);"
     >
       {title}
     </h3>
 
-    <p class="text-[var(--color-text-muted)] text-sm leading-relaxed mb-6 flex-1">
+    <p class="text-[var(--color-muted)] text-sm leading-relaxed mb-6 flex-1">
       {description}
     </p>
 
     <div class="flex items-center justify-between mt-auto pt-5 border-t border-[var(--color-border)]">
-      <time class="text-xs text-[var(--color-text-muted)]" datetime={publishDate.toISOString()}>
+      <time class="text-xs text-[var(--color-muted)]" datetime={publishDate.toISOString()}>
         {formattedDate}
       </time>
       <a
         href={`/resources/${slug}`}
-        class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-primary)] hover:gap-2.5 transition-all"
+        class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-navy)] hover:gap-2.5 transition-all"
         aria-label={`Read more: ${title}`}
       >
         Read more

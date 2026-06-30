@@ -1,0 +1,227 @@
+---
+// Productized offer name ("Donor Insight Engagement") is provisional per
+// Halliday_Service_Architecture_2026-06.md — lock the final name before
+// final copy ships.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pillars } from '../data/pillars';
+import { beforeAfter } from '../data/before-after';
+
+const dataPillars = pillars.filter((p) => p.key !== 'web-presence');
+
+const included = [
+  'Donor retention analysis',
+  'Lapsing and at-risk donor identification',
+  'Lifecycle segmentation',
+  'Top-donor trends',
+];
+
+const pillarIcons: Record<string, string> = {
+  'raise-more': `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>`,
+  'report-faster': `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
+  'prove-impact': `<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+};
+---
+
+<BaseLayout
+  title="Data Work"
+  description="Custom data tools that help nonprofits raise more, report faster, and prove their impact. Engagements start at $7,500."
+>
+  <!-- ======================== HEADER ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-charcoal)]" data-animate>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-white/60 font-semibold text-sm uppercase tracking-widest mb-6">
+        Data Work
+      </p>
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
+        style="font-family: var(--font-heading);"
+      >
+        The custom data tools that help you raise more, report faster, and prove your impact.
+      </h1>
+      <p class="text-white/70 text-lg leading-relaxed max-w-2xl">
+        Beyond the website, this is where Halliday does its deepest work — turning the data you already have into decisions you can act on.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================== FULL BEFORE / AFTER ======================== -->
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-14" data-animate>
+        <h2
+          class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
+          style="font-family: var(--font-heading);"
+        >
+          From scattered to clear
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-[var(--color-stone)] rounded-2xl p-8 border border-[var(--color-border)]" data-animate>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)] mb-5">Before</p>
+          <ul class="space-y-3">
+            {beforeAfter.before.map((line) => (
+              <li class="flex items-start gap-3 text-[var(--color-body)] text-base leading-relaxed">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-muted)] flex-shrink-0 mt-2.5" />
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="bg-[var(--color-navy-tint)] rounded-2xl p-8 border border-[var(--color-navy)]/20" data-animate data-animate-delay="100">
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-navy)] mb-5">After</p>
+          <ul class="space-y-3">
+            {beforeAfter.after.map((line) => (
+              <li class="flex items-start gap-3 text-[var(--color-body)] text-base leading-relaxed">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-navy)] flex-shrink-0 mt-2.5" />
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== THREE DATA PILLARS, EXPANDED ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-stone)]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-6">
+        {dataPillars.map((pillar, i) => (
+          <div
+            class="bg-white rounded-2xl p-8 lg:p-10 border border-[var(--color-border)] grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-10 items-start"
+            data-animate
+            data-animate-delay={String(i * 100)}
+          >
+            <div class="w-14 h-14 rounded-xl bg-[var(--color-navy)]/10 flex items-center justify-center text-[var(--color-navy)]" set:html={pillarIcons[pillar.key]} />
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-navy)] mb-2">{pillar.eyebrow}</p>
+              <h3
+                class="text-xl sm:text-2xl font-bold text-[var(--color-ink)] mb-4"
+                style="font-family: var(--font-heading);"
+              >
+                {pillar.title}
+              </h3>
+              <p class="text-[var(--color-body)] text-base leading-relaxed mb-5">{pillar.body}</p>
+              <div class="flex flex-col sm:flex-row gap-4 text-sm">
+                <p class="flex-1 text-[var(--color-muted)]"><span class="font-semibold text-[var(--color-ink)]">Today: </span>{pillar.pain}</p>
+                <p class="flex-1 text-[var(--color-navy)]"><span class="font-semibold">With Halliday: </span>{pillar.payoff}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== THE PRODUCTIZED OFFER ======================== -->
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-[var(--color-charcoal)] rounded-3xl p-8 lg:p-12" data-animate>
+        <p class="text-white/50 font-semibold text-sm uppercase tracking-widest mb-4">The Engagement</p>
+        <h2
+          class="text-2xl sm:text-3xl font-bold text-white mb-5"
+          style="font-family: var(--font-heading);"
+        >
+          The Donor Insight Engagement
+        </h2>
+        <p class="text-white/70 text-base leading-relaxed mb-8 max-w-2xl">
+          A fixed-scope donor analysis, delivered done-for-you. We don't hand you a data dump — you get the insights and the recommended actions that come with them.
+        </p>
+
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
+          {included.map((item) => (
+            <li class="flex items-start gap-3 text-white/85 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/50 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4 pt-6 border-t border-white/10">
+          <p class="text-white font-semibold">Engagements start at $7,500.</p>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-6 py-3 rounded-full text-sm font-semibold transition-colors sm:ml-auto"
+          >
+            Book a discovery call
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== WHAT WORKING TOGETHER LOOKS LIKE ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-stone)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-14" data-animate>
+        <h2
+          class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
+          style="font-family: var(--font-heading);"
+        >
+          What working together looks like
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div data-animate>
+          <div class="text-[var(--color-navy)] text-4xl font-bold mb-4 opacity-60" style="font-family: var(--font-heading);">01</div>
+          <h3 class="text-lg font-bold text-[var(--color-ink)] mb-3" style="font-family: var(--font-heading);">A free discovery call</h3>
+          <p class="text-[var(--color-muted)] text-sm leading-relaxed">We talk through your organization, your data, and what's actually possible. No pitch, no obligation.</p>
+        </div>
+        <div data-animate data-animate-delay="100">
+          <div class="text-[var(--color-navy)] text-4xl font-bold mb-4 opacity-60" style="font-family: var(--font-heading);">02</div>
+          <h3 class="text-lg font-bold text-[var(--color-ink)] mb-3" style="font-family: var(--font-heading);">The engagement</h3>
+          <p class="text-[var(--color-muted)] text-sm leading-relaxed">Fixed scope, fixed price, delivered with the insights and recommended actions you need to move on it right away.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== CUSTOM-BUILD DIFFERENTIATOR ======================== -->
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8" data-animate>
+      <h2
+        class="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] mb-6"
+        style="font-family: var(--font-heading);"
+      >
+        Why this isn't off-the-shelf
+      </h2>
+      <div class="space-y-4 text-[var(--color-body)] text-base leading-relaxed">
+        <p>
+          We don't start with a dashboard template. We start with your programs — what you actually measure, why, and what story the numbers need to tell. The real moat isn't the chart you see; it's the transformation logic and the "what should we measure?" thinking that built it.
+        </p>
+        <p>
+          When the right answer is a custom-built tool, that's what we build — matched to how your organization actually runs, not retrofitted to someone else's software.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== FINAL CTA ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-stone)]">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
+      <h2
+        class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
+        style="font-family: var(--font-heading);"
+      >
+        Ready to see what your data is telling you?
+      </h2>
+      <p class="text-[var(--color-muted)] text-lg mb-4">
+        Start with a free discovery call.
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
+      >
+        Book a discovery call
+      </a>
+      <p class="text-[var(--color-muted)] text-sm mt-6">
+        Not sure yet? <a href="/cost-calculator" class="text-[var(--color-navy)] font-medium hover:underline">See what scattered data might already be costing you</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

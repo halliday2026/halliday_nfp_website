@@ -4,7 +4,7 @@ description: "How to modernize your data collection systems while preserving the
 publishDate: 2026-01-28
 category: "guide"
 tags: ["data collection", "automation", "digital forms", "participant experience"]
-draft: false
+draft: true
 ---
 
 Automating data collection doesn't mean removing people from the process. Done well, it frees staff to focus on relationships rather than paperwork.

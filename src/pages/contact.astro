@@ -5,20 +5,20 @@ import ContactForm from '../components/ContactForm.astro';
 
 <BaseLayout
   title="Contact"
-  description="Book a 30-minute intro call with Halliday. Tell us about your organization and we'll set up a time to talk."
+  description="Book a discovery call with Halliday. Tell us about your organization and we'll set up a time to talk."
 >
   <!-- Page header -->
-  <section class="bg-[var(--color-primary-dark)] text-white py-20 lg:py-28">
+  <section class="bg-[var(--color-charcoal)] text-white py-20 lg:py-28">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl">
-        <p class="text-[var(--color-accent)] font-semibold text-sm uppercase tracking-widest mb-4">
+        <p class="text-white/60 font-semibold text-sm uppercase tracking-widest mb-4">
           Get in Touch
         </p>
         <h1
           class="text-4xl sm:text-5xl font-bold text-white mb-6"
           style="font-family: var(--font-heading);"
         >
-          Book a Free Consultation
+          Book a Discovery Call
         </h1>
         <p class="text-white/70 text-xl leading-relaxed">
           Tell us about your organization and we'll set up a time to talk. No pitch — just a useful conversation.
@@ -28,30 +28,30 @@ import ContactForm from '../components/ContactForm.astro';
   </section>
 
   <!-- Form section -->
-  <section class="py-16 lg:py-24 bg-[var(--color-background)]">
+  <section class="py-16 lg:py-24 bg-[var(--color-stone)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
 
         <!-- Form -->
         <div class="lg:col-span-3" data-animate>
-          <div class="bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] p-8 lg:p-10">
+          <div class="bg-white rounded-2xl border border-[var(--color-border)] p-8 lg:p-10">
             <h2
-              class="text-2xl font-bold text-[var(--color-text)] mb-2"
+              class="text-2xl font-bold text-[var(--color-ink)] mb-2"
               style="font-family: var(--font-heading);"
             >
               Tell us about your organization
             </h2>
-            <p class="text-[var(--color-text-muted)] text-sm mb-8">
+            <p class="text-[var(--color-muted)] text-sm mb-8">
               Fields marked with * are required.
             </p>
             <ContactForm />
           </div>
 
-          <p class="mt-6 text-center text-[var(--color-text-muted)] text-sm">
+          <p class="mt-6 text-center text-[var(--color-muted)] text-sm">
             You can also reach us directly at{' '}
             <a
               href="mailto:chris@hallidayinc.com"
-              class="text-[var(--color-primary)] font-medium hover:underline"
+              class="text-[var(--color-navy)] font-medium hover:underline"
             >
               chris@hallidayinc.com
             </a>
@@ -62,7 +62,7 @@ import ContactForm from '../components/ContactForm.astro';
         <div class="lg:col-span-2" data-animate data-animate-delay="200">
           <div class="sticky top-24">
             <h3
-              class="text-xl font-bold text-[var(--color-text)] mb-6"
+              class="text-xl font-bold text-[var(--color-ink)] mb-6"
               style="font-family: var(--font-heading);"
             >
               What to expect
@@ -76,11 +76,11 @@ import ContactForm from '../components/ContactForm.astro';
                 },
                 {
                   title: 'A 30–45 minute conversation',
-                  body: 'We\'ll ask about your organization, your data challenges, and what you\'re hoping to accomplish. You\'ll leave with a clearer sense of what\'s possible.',
+                  body: 'We\'ll ask about your organization and what you\'re hoping to accomplish — whether that\'s a website, your data, or both. You\'ll leave with a clearer sense of what\'s possible.',
                 },
                 {
                   title: 'A written summary',
-                  body: 'After the call, we\'ll share a brief summary of what we discussed and where we see the highest-leverage opportunities for your data.',
+                  body: 'After the call, we\'ll share a brief summary of what we discussed and where we see the highest-leverage opportunities.',
                 },
                 {
                   title: 'No obligation, no pitch',
@@ -88,20 +88,20 @@ import ContactForm from '../components/ContactForm.astro';
                 },
               ].map((item) => (
                 <li class="flex gap-4">
-                  <div class="w-2 h-2 rounded-full bg-[var(--color-accent)] flex-shrink-0 mt-2" />
+                  <div class="w-2 h-2 rounded-full bg-[var(--color-navy)] flex-shrink-0 mt-2" />
                   <div>
-                    <p class="font-semibold text-[var(--color-text)] text-sm mb-1">{item.title}</p>
-                    <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">{item.body}</p>
+                    <p class="font-semibold text-[var(--color-ink)] text-sm mb-1">{item.title}</p>
+                    <p class="text-[var(--color-muted)] text-sm leading-relaxed">{item.body}</p>
                   </div>
                 </li>
               ))}
             </ul>
 
-            <div class="p-6 rounded-xl bg-[var(--color-primary)]/5 border border-[var(--color-primary)]/15">
-              <p class="text-[var(--color-text-muted)] text-sm leading-relaxed italic">
+            <div class="p-6 rounded-xl bg-[var(--color-navy-tint)] border border-[var(--color-navy)]/15">
+              <p class="text-[var(--color-body)] text-sm leading-relaxed italic">
                 "The best conversations start with someone who actually wants to understand your organization — not sell you a solution."
               </p>
-              <p class="mt-3 text-xs text-[var(--color-text-muted)] font-semibold uppercase tracking-wide">
+              <p class="mt-3 text-xs text-[var(--color-muted)] font-semibold uppercase tracking-wide">
                 — How we work
               </p>
             </div>

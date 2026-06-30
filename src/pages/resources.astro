@@ -12,30 +12,30 @@ const sorted = allResources.sort(
 
 <BaseLayout
   title="Resources"
-  description="Practical guidance at the intersection of program evaluation and modern technology — for nonprofit teams navigating the shift to data-informed practice."
+  description="Practical guidance for nonprofit teams navigating the shift to data-informed practice."
 >
   <!-- Page header -->
-  <section class="bg-[var(--color-primary-dark)] text-white py-20 lg:py-28">
+  <section class="bg-[var(--color-charcoal)] text-white py-20 lg:py-28">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl">
-        <p class="text-[var(--color-accent)] font-semibold text-sm uppercase tracking-widest mb-4">
+        <p class="text-white/60 font-semibold text-sm uppercase tracking-widest mb-4">
           Resources
         </p>
         <h1
           class="text-4xl sm:text-5xl font-bold text-white mb-6"
           style="font-family: var(--font-heading);"
         >
-          Evaluation + Technology Insights
+          Insights for Nonprofit Leaders
         </h1>
         <p class="text-white/70 text-xl leading-relaxed">
-          Practical guidance at the intersection of program evaluation and modern technology.
+          Practical guidance at the intersection of nonprofit operations and data.
         </p>
       </div>
     </div>
   </section>
 
   <!-- Resource grid -->
-  <section class="py-16 lg:py-24 bg-[var(--color-background)]">
+  <section class="py-16 lg:py-24 bg-[var(--color-stone)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {
         sorted.length > 0 ? (
@@ -51,7 +51,7 @@ const sorted = allResources.sort(
             ))}
           </div>
         ) : (
-          <p class="text-center text-[var(--color-text-muted)] py-16">
+          <p class="text-center text-[var(--color-muted)] py-16">
             No resources yet — check back soon.
           </p>
         )
@@ -60,22 +60,22 @@ const sorted = allResources.sort(
   </section>
 
   <!-- CTA -->
-  <section class="py-16 bg-[var(--color-surface)] border-t border-[var(--color-border)]">
+  <section class="py-16 bg-white border-t border-[var(--color-border)]">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
       <h2
-        class="text-2xl sm:text-3xl font-bold text-[var(--color-text)] mb-4"
+        class="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] mb-4"
         style="font-family: var(--font-heading);"
       >
-        Want insights specific to your evaluation workflow?
+        Want guidance specific to your organization?
       </h2>
-      <p class="text-[var(--color-text-muted)] mb-8">
-        A free workflow review is the fastest way to identify where technology can help your specific team.
+      <p class="text-[var(--color-muted)] mb-8">
+        Book a discovery call — no pitch, just a useful conversation.
       </p>
       <a
         href="/contact"
-        class="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-7 py-3.5 rounded-full font-semibold transition-colors"
+        class="inline-flex items-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-7 py-3.5 rounded-full font-semibold transition-colors"
       >
-        Book a Free Consultation
+        Book a discovery call
       </a>
     </div>
   </section>

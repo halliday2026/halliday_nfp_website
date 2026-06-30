@@ -10,7 +10,7 @@
         id="fullName"
         name="fullName"
         required
-        class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] outline-none transition-colors bg-white"
+        class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-navy)] focus:border-[var(--color-navy)] outline-none transition-colors bg-white"
         placeholder="Jane Smith"
       />
     </div>
@@ -21,7 +21,7 @@
         id="email"
         name="email"
         required
-        class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] outline-none transition-colors bg-white"
+        class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-navy)] focus:border-[var(--color-navy)] outline-none transition-colors bg-white"
         placeholder="jane@nonprofit.org"
       />
     </div>
@@ -34,7 +34,7 @@
         type="tel"
         id="phoneNumber"
         name="phoneNumber"
-        class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] outline-none transition-colors bg-white"
+        class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-navy)] focus:border-[var(--color-navy)] outline-none transition-colors bg-white"
         placeholder="(555) 123-4567"
       />
     </div>
@@ -43,7 +43,7 @@
       <select
         id="bestTimeToCall"
         name="bestTimeToCall"
-        class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] outline-none transition-colors bg-white"
+        class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-navy)] focus:border-[var(--color-navy)] outline-none transition-colors bg-white"
       >
         <option value="">Select a time...</option>
         <option value="Morning">Morning</option>
@@ -72,13 +72,12 @@
       class="w-full px-4 py-3 rounded-lg border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] outline-none transition-colors bg-white"
     >
       <option value="">Select an option...</option>
-      <option value="Impact Data Review">Impact Data Review</option>
-      <option value="Strategic Advisory">Strategic Advisory</option>
-      <option value="Custom Solutions">Custom Solutions</option>
-      <option value="AI Readiness Assessment">AI Readiness Assessment</option>
+      <option value="Managed Website">Managed Website</option>
+      <option value="Data Work">Data Work</option>
+      <option value="Not Sure Yet">Not sure yet — just exploring</option>
+      <option value="Referral Partner">I'm a consultant/coach/grant writer interested in partnering</option>
       <option value="General Inquiry">General Inquiry</option>
     </select>
-    <!-- NOTE: If Supabase edge function validates interestedIn values, update it to accept these new options -->
   </div>
 
   <div>
@@ -96,24 +95,24 @@
   <button
     type="submit"
     id="submit-btn"
-    class="w-full sm:w-auto bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-8 py-4 rounded-full text-base font-semibold transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+    class="w-full sm:w-auto bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-8 py-4 rounded-full text-base font-semibold transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
   >
     Send Message
   </button>
 </form>
 
-<div id="form-success" class="hidden p-5 rounded-xl bg-green-50 border border-green-200 text-green-800">
+<div id="form-success" class="hidden p-5 rounded-xl bg-[var(--color-success)]/10 border border-[var(--color-success)]/30 text-[var(--color-success)]">
   <div class="flex items-start gap-3">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
       <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
-    <p>Thank you! We received your request and will be in touch soon to schedule your workflow review.</p>
+    <p>Thank you! We received your request and will be in touch within one business day.</p>
   </div>
 </div>
 
-<div id="form-error" class="hidden p-5 rounded-xl bg-red-50 border border-red-200 text-red-800">
+<div id="form-error" class="hidden p-5 rounded-xl bg-[var(--color-error)]/10 border border-[var(--color-error)]/30 text-[var(--color-error)]">
   <div class="flex items-start gap-3">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
       <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
     </svg>
     <p>Something went wrong. Please try again or email us directly at <a href="mailto:chris@hallidayinc.com" class="underline font-medium">chris@hallidayinc.com</a>.</p>

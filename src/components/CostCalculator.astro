@@ -1,0 +1,386 @@
+---
+// Self-built Astro island per Halliday_Gateway_Calculator_Spec_2026-06.md.
+// Result is ungated (shown instantly); email is captured AFTER, for the
+// fuller breakdown. Math constants (loaded rate $35/hr) are honest/fixed —
+// never tuned to land on a target number.
+---
+
+<div id="calculator" class="rounded-3xl border border-[var(--color-border)] bg-[var(--color-stone)] p-6 sm:p-10">
+  <!-- Progress -->
+  <p id="calc-progress" class="text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)] mb-6 hidden">
+    Step <span id="calc-progress-num">1</span> of 5
+  </p>
+
+  <!-- START -->
+  <div data-step="start" class="text-center py-6">
+    <p class="text-[var(--color-body)] text-base leading-relaxed mb-8">
+      Answer a few quick questions about how your team handles data and reporting today.
+    </p>
+    <button
+      type="button"
+      data-action="start"
+      class="inline-flex items-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-7 py-4 rounded-full text-base font-semibold transition-colors"
+    >
+      Start
+    </button>
+  </div>
+
+  <!-- Q1: SYSTEMS -->
+  <div data-step="systems" class="hidden">
+    <h2 class="text-xl sm:text-2xl font-bold text-[var(--color-ink)] mb-6" style="font-family: var(--font-heading);">
+      Where does your data live?
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <button type="button" class="calc-option" data-field="systems" data-value="1-2">1–2 systems</button>
+      <button type="button" class="calc-option" data-field="systems" data-value="3-4">3–4 systems</button>
+      <button type="button" class="calc-option" data-field="systems" data-value="5+">5+ systems</button>
+    </div>
+    <button type="button" class="calc-back" data-back="start">← Back</button>
+  </div>
+
+  <!-- Q2: REPORT TIME -->
+  <div data-step="report-time" class="hidden">
+    <h2 class="text-xl sm:text-2xl font-bold text-[var(--color-ink)] mb-6" style="font-family: var(--font-heading);">
+      How long does a board or grant report take to pull together?
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <button type="button" class="calc-option" data-field="hoursPerReport" data-value="couple-hours">A couple hours</button>
+      <button type="button" class="calc-option" data-field="hoursPerReport" data-value="about-a-day">About a day</button>
+      <button type="button" class="calc-option" data-field="hoursPerReport" data-value="several-days">Several days</button>
+      <button type="button" class="calc-option" data-field="hoursPerReport" data-value="a-week-plus">A week+</button>
+    </div>
+    <button type="button" class="calc-back" data-back="systems">← Back</button>
+  </div>
+
+  <!-- Q3: REPORT FREQUENCY -->
+  <div data-step="report-freq" class="hidden">
+    <h2 class="text-xl sm:text-2xl font-bold text-[var(--color-ink)] mb-6" style="font-family: var(--font-heading);">
+      How often do you produce reports like that?
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <button type="button" class="calc-option" data-field="reportsPerYear" data-value="monthly">Monthly</button>
+      <button type="button" class="calc-option" data-field="reportsPerYear" data-value="quarterly">Quarterly</button>
+      <button type="button" class="calc-option" data-field="reportsPerYear" data-value="few-times-year">A few times a year</button>
+    </div>
+    <button type="button" class="calc-back" data-back="report-time">← Back</button>
+  </div>
+
+  <!-- Q4: WRANGLING HOURS -->
+  <div data-step="wrangling" class="hidden">
+    <h2 class="text-xl sm:text-2xl font-bold text-[var(--color-ink)] mb-2" style="font-family: var(--font-heading);">
+      Outside reporting, how many hours a week go to moving or reconciling data between tools?
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
+      <button type="button" class="calc-option" data-field="weeklyWrangling" data-value="<2">Less than 2 hours</button>
+      <button type="button" class="calc-option" data-field="weeklyWrangling" data-value="2-5">2–5 hours</button>
+      <button type="button" class="calc-option" data-field="weeklyWrangling" data-value="5-10">5–10 hours</button>
+      <button type="button" class="calc-option" data-field="weeklyWrangling" data-value="10+">10+ hours</button>
+    </div>
+    <button type="button" class="calc-back" data-back="report-freq">← Back</button>
+  </div>
+
+  <!-- Q5: BUDGET BAND (optional qualifier) -->
+  <div data-step="budget" class="hidden">
+    <h2 class="text-xl sm:text-2xl font-bold text-[var(--color-ink)] mb-2" style="font-family: var(--font-heading);">
+      What's your annual operating budget?
+    </h2>
+    <p class="text-[var(--color-muted)] text-sm mb-6">Optional — helps us tailor advice, not part of the estimate.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <button type="button" class="calc-option" data-field="budgetBand" data-value="under-500k">Under $500K</button>
+      <button type="button" class="calc-option" data-field="budgetBand" data-value="500k-2m">$500K–$2M</button>
+      <button type="button" class="calc-option" data-field="budgetBand" data-value="over-2m">Over $2M</button>
+      <button type="button" class="calc-option" data-field="budgetBand" data-value="prefer-not-to-say">Prefer not to say</button>
+    </div>
+    <div class="flex items-center justify-between mt-6">
+      <button type="button" class="calc-back" data-back="wrangling">← Back</button>
+      <button type="button" data-action="skip-budget" class="text-sm font-medium text-[var(--color-muted)] hover:text-[var(--color-navy)] transition-colors">
+        Skip →
+      </button>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div data-step="result" class="hidden">
+    <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)] mb-3">
+      A rough estimate based on what you told us
+    </p>
+    <p id="calc-annual-dollars" class="text-5xl sm:text-6xl font-bold text-[var(--color-charcoal)] mb-2" style="font-family: var(--font-heading);">
+      $0
+    </p>
+    <p class="text-[var(--color-muted)] text-base mb-8">lost to scattered data and manual reporting each year</p>
+
+    <div class="grid grid-cols-3 gap-4 mb-8 text-center">
+      <div class="bg-white rounded-xl border border-[var(--color-border)] p-4">
+        <p id="calc-report-hours" class="text-2xl font-bold text-[var(--color-ink)]" style="font-family: var(--font-heading);">0</p>
+        <p class="text-xs text-[var(--color-muted)] mt-1">report hrs/yr</p>
+      </div>
+      <div class="bg-white rounded-xl border border-[var(--color-border)] p-4">
+        <p id="calc-wrangling-hours" class="text-2xl font-bold text-[var(--color-ink)]" style="font-family: var(--font-heading);">0</p>
+        <p class="text-xs text-[var(--color-muted)] mt-1">wrangling hrs/yr</p>
+      </div>
+      <div class="bg-white rounded-xl border border-[var(--color-border)] p-4">
+        <p id="calc-total-hours" class="text-2xl font-bold text-[var(--color-ink)]" style="font-family: var(--font-heading);">0</p>
+        <p class="text-xs text-[var(--color-muted)] mt-1">total hrs/yr</p>
+      </div>
+    </div>
+
+    <p class="text-[var(--color-body)] text-base leading-relaxed mb-8">
+      That's hours your team could put back into your programs and your donors — not spreadsheets.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-4 mb-10">
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-6 py-3.5 rounded-full text-sm font-semibold transition-colors"
+      >
+        Book a discovery call
+      </a>
+      <a
+        href="/data-work"
+        class="inline-flex items-center justify-center gap-2 border border-[var(--color-navy)]/30 text-[var(--color-navy)] hover:bg-[var(--color-navy)]/5 px-6 py-3.5 rounded-full text-sm font-semibold transition-colors"
+      >
+        See Data Work
+      </a>
+    </div>
+
+    <!-- Email capture (after result, never gates it) -->
+    <div class="border-t border-[var(--color-border)] pt-8">
+      <div id="calc-email-form-wrap">
+        <p class="text-[var(--color-ink)] font-semibold mb-1">Want the full breakdown?</p>
+        <p class="text-[var(--color-muted)] text-sm mb-4">Send me the full breakdown + the 3 quickest fixes for my setup.</p>
+        <form id="calc-email-form" class="flex flex-col sm:flex-row gap-3">
+          <input
+            type="email"
+            id="calc-email-input"
+            required
+            placeholder="you@nonprofit.org"
+            class="flex-1 px-4 py-3 rounded-lg border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-navy)] focus:border-[var(--color-navy)] outline-none transition-colors bg-white text-sm"
+          />
+          <button
+            type="submit"
+            id="calc-email-submit"
+            class="bg-[var(--color-ink)] hover:bg-black text-white px-6 py-3 rounded-lg text-sm font-semibold transition-colors disabled:opacity-60 disabled:cursor-not-allowed whitespace-nowrap"
+          >
+            Send it to me
+          </button>
+        </form>
+        <p id="calc-email-error" class="hidden text-[var(--color-error)] text-sm mt-3">
+          Something went wrong. Please try again or email us at <a href="mailto:chris@hallidayinc.com" class="underline">chris@hallidayinc.com</a>.
+        </p>
+      </div>
+      <div id="calc-email-success" class="hidden">
+        <p class="text-[var(--color-success)] font-semibold">Thanks — check your inbox for the full breakdown and your 3 quickest fixes.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .calc-option {
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-border);
+    background: white;
+    color: var(--color-body);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-align: left;
+    transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+  }
+  .calc-option:hover {
+    border-color: var(--color-navy);
+    color: var(--color-navy);
+  }
+  .calc-back {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    transition: color 0.15s ease;
+  }
+  .calc-back:hover {
+    color: var(--color-navy);
+  }
+</style>
+
+<script>
+  type Systems = '1-2' | '3-4' | '5+';
+  type HoursPerReport = 'couple-hours' | 'about-a-day' | 'several-days' | 'a-week-plus';
+  type ReportsPerYear = 'monthly' | 'quarterly' | 'few-times-year';
+  type WeeklyWrangling = '<2' | '2-5' | '5-10' | '10+';
+
+  interface CalculatorState {
+    systems: Systems | null;
+    hoursPerReport: HoursPerReport | null;
+    reportsPerYear: ReportsPerYear | null;
+    weeklyWrangling: WeeklyWrangling | null;
+    budgetBand: string | null;
+  }
+
+  const HOURS_PER_REPORT: Record<HoursPerReport, number> = {
+    'couple-hours': 2,
+    'about-a-day': 8,
+    'several-days': 24,
+    'a-week-plus': 40,
+  };
+  const REPORTS_PER_YEAR: Record<ReportsPerYear, number> = {
+    monthly: 12,
+    quarterly: 4,
+    'few-times-year': 3,
+  };
+  const WEEKLY_HOURS: Record<WeeklyWrangling, number> = {
+    '<2': 1,
+    '2-5': 3.5,
+    '5-10': 7.5,
+    '10+': 12,
+  };
+  // Default loaded labor rate for nonprofit ops. Honest/defensible, never
+  // tuned to hit a target number — see Halliday_Gateway_Calculator_Spec_2026-06.md.
+  const LOADED_RATE = 35;
+
+  const STEP_ORDER = ['start', 'systems', 'report-time', 'report-freq', 'wrangling', 'budget', 'result'];
+  const PROGRESS_STEPS: Record<string, number> = {
+    systems: 1,
+    'report-time': 2,
+    'report-freq': 3,
+    wrangling: 4,
+    budget: 5,
+  };
+
+  const state: CalculatorState = {
+    systems: null,
+    hoursPerReport: null,
+    reportsPerYear: null,
+    weeklyWrangling: null,
+    budgetBand: null,
+  };
+
+  const root = document.getElementById('calculator')!;
+  const panels = root.querySelectorAll<HTMLElement>('[data-step]');
+  const progressEl = document.getElementById('calc-progress')!;
+  const progressNumEl = document.getElementById('calc-progress-num')!;
+
+  function goToStep(stepId: string) {
+    panels.forEach((panel) => {
+      panel.classList.toggle('hidden', panel.dataset.step !== stepId);
+    });
+    if (PROGRESS_STEPS[stepId]) {
+      progressEl.classList.remove('hidden');
+      progressNumEl.textContent = String(PROGRESS_STEPS[stepId]);
+    } else {
+      progressEl.classList.add('hidden');
+    }
+  }
+
+  function nextStepAfter(stepId: string): string {
+    const idx = STEP_ORDER.indexOf(stepId);
+    return STEP_ORDER[idx + 1] ?? 'result';
+  }
+
+  function computeEstimate(s: CalculatorState) {
+    const reportHoursPerYear = HOURS_PER_REPORT[s.hoursPerReport!] * REPORTS_PER_YEAR[s.reportsPerYear!];
+    const wranglingHoursPerYear = WEEKLY_HOURS[s.weeklyWrangling!] * 52;
+    const totalHoursPerYear = reportHoursPerYear + wranglingHoursPerYear;
+    const annualDollars = totalHoursPerYear * LOADED_RATE;
+    return { reportHoursPerYear, wranglingHoursPerYear, totalHoursPerYear, annualDollars };
+  }
+
+  function formatNumber(n: number): string {
+    return Math.round(n).toLocaleString('en-US');
+  }
+
+  function showResult() {
+    const { reportHoursPerYear, wranglingHoursPerYear, totalHoursPerYear, annualDollars } = computeEstimate(state);
+    document.getElementById('calc-annual-dollars')!.textContent = `$${formatNumber(annualDollars)}`;
+    document.getElementById('calc-report-hours')!.textContent = formatNumber(reportHoursPerYear);
+    document.getElementById('calc-wrangling-hours')!.textContent = formatNumber(wranglingHoursPerYear);
+    document.getElementById('calc-total-hours')!.textContent = formatNumber(totalHoursPerYear);
+    goToStep('result');
+  }
+
+  // Start button
+  root.querySelector('[data-action="start"]')?.addEventListener('click', () => {
+    goToStep('systems');
+  });
+
+  // Option buttons (tap-only inputs)
+  root.querySelectorAll<HTMLButtonElement>('.calc-option').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const field = btn.dataset.field as keyof CalculatorState;
+      const value = btn.dataset.value!;
+      (state[field] as string) = value;
+
+      const currentStep = btn.closest<HTMLElement>('[data-step]')!.dataset.step!;
+      const next = nextStepAfter(currentStep);
+      if (next === 'result') {
+        showResult();
+      } else {
+        goToStep(next);
+      }
+    });
+  });
+
+  // Back buttons
+  root.querySelectorAll<HTMLButtonElement>('.calc-back').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      goToStep(btn.dataset.back!);
+    });
+  });
+
+  // Skip optional budget step
+  root.querySelector('[data-action="skip-budget"]')?.addEventListener('click', () => {
+    showResult();
+  });
+
+  // Email capture — POSTs to the calculator-lead Supabase edge function,
+  // same project and pattern as ContactForm.astro's contact-form endpoint.
+  const emailForm = document.getElementById('calc-email-form') as HTMLFormElement;
+  const emailInput = document.getElementById('calc-email-input') as HTMLInputElement;
+  const emailSubmit = document.getElementById('calc-email-submit') as HTMLButtonElement;
+  const emailFormWrap = document.getElementById('calc-email-form-wrap')!;
+  const emailSuccess = document.getElementById('calc-email-success')!;
+  const emailError = document.getElementById('calc-email-error')!;
+
+  async function submitLead(payload: Record<string, unknown>): Promise<boolean> {
+    try {
+      const response = await fetch(
+        'https://qncqegweobwyudatlomq.supabase.co/functions/v1/calculator-lead',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        }
+      );
+      return response.ok;
+    } catch {
+      return false;
+    }
+  }
+
+  emailForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    emailSubmit.disabled = true;
+    emailSubmit.textContent = 'Sending...';
+    emailError.classList.add('hidden');
+
+    const estimate = computeEstimate(state);
+    const ok = await submitLead({
+      email: emailInput.value,
+      systems: state.systems,
+      hoursPerReportLabel: state.hoursPerReport,
+      reportsPerYearLabel: state.reportsPerYear,
+      weeklyWranglingLabel: state.weeklyWrangling,
+      budgetBand: state.budgetBand,
+      ...estimate,
+    });
+
+    if (ok) {
+      emailFormWrap.classList.add('hidden');
+      emailSuccess.classList.remove('hidden');
+    } else {
+      emailError.classList.remove('hidden');
+      emailSubmit.disabled = false;
+      emailSubmit.textContent = 'Send it to me';
+    }
+  });
+</script>

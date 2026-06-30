@@ -1,16 +1,48 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const team = [
+  {
+    name: 'Chris',
+    role: 'Data Strategy',
+    bio: "20+ years of data warehousing, business intelligence, and analytics experience — brought to the nonprofit sector to help organizations see what their data is already trying to tell them.",
+  },
+  {
+    name: 'Suzette',
+    role: 'Client Relationships',
+    bio: "Your day-to-day relationship lead. She's who you'll talk to — keeping your website running, checking in before a deadline sneaks up, and making sure nothing falls through the cracks.",
+  },
+];
+
+const principles = [
+  {
+    title: 'Listen first',
+    body: "We learn about your organization, your data, and your goals before we suggest anything. There's no standard solution to recommend without that context.",
+  },
+  {
+    title: 'Recommend only what creates leverage',
+    body: "Not every problem needs a custom solution. We'll tell you when a simpler approach works — and when it won't.",
+  },
+  {
+    title: 'Build for your team',
+    body: 'The best solution is the one your team will actually use. We design around your real constraints — staff capacity, technical comfort, budget.',
+  },
+  {
+    title: 'Transfer knowledge, not dependency',
+    body: "When we're done, your team understands the system and can manage it independently. We document everything and train thoroughly.",
+  },
+];
 ---
 
 <BaseLayout
   title="About"
-  description="Halliday helps nonprofits turn disconnected data into smarter decisions. We bring 20+ years of data and analytics experience to nonprofit leadership teams."
+  description="Halliday brings 20+ years of data expertise to nonprofit leadership teams — starting with a professional website and growing into the data tools as you're ready."
 >
   <!-- Page header -->
-  <section class="bg-[var(--color-primary-dark)] text-white py-20 lg:py-28">
+  <section class="bg-[var(--color-charcoal)] text-white py-20 lg:py-28">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl">
-        <p class="text-[var(--color-accent)] font-semibold text-sm uppercase tracking-widest mb-4">
+        <p class="text-white/60 font-semibold text-sm uppercase tracking-widest mb-4">
           About Halliday
         </p>
         <h1
@@ -26,8 +58,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  <!-- Who you'll work with -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2
+        class="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] mb-10"
+        style="font-family: var(--font-heading);"
+        data-animate
+      >
+        Who you'll work with
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {team.map((person, i) => (
+          <div
+            class="p-7 rounded-2xl bg-[var(--color-stone)] border border-[var(--color-border)]"
+            data-animate
+            data-animate-delay={String(i * 100)}
+          >
+            <h3 class="text-lg font-bold text-[var(--color-ink)] mb-1" style="font-family: var(--font-heading);">
+              {person.name}
+            </h3>
+            <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-navy)] mb-4">{person.role}</p>
+            <p class="text-[var(--color-body)] text-sm leading-relaxed">{person.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Main content -->
-  <section class="py-16 lg:py-24 bg-[var(--color-surface)]">
+  <section class="py-16 lg:py-24 bg-[var(--color-stone)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
 
@@ -35,12 +95,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="lg:col-span-3 space-y-8" data-animate>
           <div>
             <h2
-              class="text-2xl font-bold text-[var(--color-text)] mb-4"
+              class="text-2xl font-bold text-[var(--color-ink)] mb-4"
               style="font-family: var(--font-heading);"
             >
               Why we started Halliday
             </h2>
-            <div class="space-y-4 text-[var(--color-text-muted)] leading-relaxed">
+            <div class="space-y-4 text-[var(--color-body)] leading-relaxed">
               <p>
                 Every nonprofit we've worked with has the same story: donor records in one system, program data in another, grant deliverables in a third — and no way to see the full picture. Leadership makes decisions based on gut instinct because nobody's connected the dots across their data.
               </p>
@@ -55,32 +115,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div>
             <h2
-              class="text-2xl font-bold text-[var(--color-text)] mb-4"
+              class="text-2xl font-bold text-[var(--color-ink)] mb-4"
               style="font-family: var(--font-heading);"
             >
               How we think about the work
             </h2>
-            <div class="space-y-4 text-[var(--color-text-muted)] leading-relaxed">
+            <div class="space-y-4 text-[var(--color-body)] leading-relaxed">
               <p>
-                We don't start with tools. We start with your data — what you have, where it lives, and what it can tell you. That's why every engagement begins with an Impact Data Review: a fixed-scope diagnostic that surfaces the patterns and insights already sitting in your existing systems.
+                Most clients start with us by getting a professional website built and run for them — one less thing to think about, and a standing relationship with a real person who knows your organization. When you're ready to go further, that same relationship is the door into the data work: turning what you already have into decisions you can act on.
               </p>
               <p>
-                From there, we help you decide what to do about it. Sometimes the answer is an off-the-shelf tool you didn't know existed. Sometimes it's a change in process. And sometimes it's a purpose-built solution that doesn't exist yet — in which case, we build it.
+                We're technology-agnostic. When an off-the-shelf tool solves your problem, we'll say so. When it doesn't, we build what does — matched to how your organization actually runs, not retrofitted to someone else's software.
               </p>
               <p>
-                We're technology-agnostic. We'll recommend a $50/month SaaS product if that solves your problem, or scope a custom dashboard if it doesn't. The goal is always the same: help you make better decisions with the data you already have.
+                We deliver with the help of a small, AI-powered team — not because it's the headline, but because it lets us keep these engagements personal and hands-on instead of bloating into something impersonal.
               </p>
             </div>
           </div>
 
           <div>
             <h2
-              class="text-2xl font-bold text-[var(--color-text)] mb-4"
+              class="text-2xl font-bold text-[var(--color-ink)] mb-4"
               style="font-family: var(--font-heading);"
             >
               Built for how nonprofits actually operate
             </h2>
-            <div class="space-y-4 text-[var(--color-text-muted)] leading-relaxed">
+            <div class="space-y-4 text-[var(--color-body)] leading-relaxed">
               <p>
                 We know nonprofits operate with small teams, tight budgets, and high accountability to funders and communities. Our work is designed for that reality — not for some idealized scenario with an IT department and a six-figure software budget.
               </p>
@@ -90,37 +150,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- Principles sidebar -->
         <div class="lg:col-span-2" data-animate data-animate-delay="200">
-          <div class="bg-[var(--color-background)] rounded-2xl p-8 border border-[var(--color-border)] sticky top-24">
+          <div class="bg-white rounded-2xl p-8 border border-[var(--color-border)] sticky top-24">
             <h3
-              class="text-xl font-bold text-[var(--color-text)] mb-6"
+              class="text-xl font-bold text-[var(--color-ink)] mb-6"
               style="font-family: var(--font-heading);"
             >
               How we work
             </h3>
             <ul class="space-y-6">
-              {[
-                {
-                  title: 'Listen first',
-                  body: 'We learn about your organization, your data, and your goals before we suggest anything. There\'s no standard solution to recommend without that context.',
-                },
-                {
-                  title: 'Recommend only what creates leverage',
-                  body: 'Not every problem needs a custom solution. We\'ll tell you when a simpler approach works — and when it won\'t.',
-                },
-                {
-                  title: 'Build for your team',
-                  body: 'The best solution is the one your team will actually use. We design around your real constraints — staff capacity, technical comfort, budget.',
-                },
-                {
-                  title: 'Transfer knowledge, not dependency',
-                  body: 'When we\'re done, your team understands the system and can manage it independently. We document everything and train thoroughly.',
-                },
-              ].map((principle) => (
+              {principles.map((principle) => (
                 <li class="flex gap-4">
-                  <div class="w-2 h-2 rounded-full bg-[var(--color-accent)] flex-shrink-0 mt-2" />
+                  <div class="w-2 h-2 rounded-full bg-[var(--color-navy)] flex-shrink-0 mt-2" />
                   <div>
-                    <p class="font-semibold text-[var(--color-text)] text-sm mb-1">{principle.title}</p>
-                    <p class="text-[var(--color-text-muted)] text-sm leading-relaxed">{principle.body}</p>
+                    <p class="font-semibold text-[var(--color-ink)] text-sm mb-1">{principle.title}</p>
+                    <p class="text-[var(--color-muted)] text-sm leading-relaxed">{principle.body}</p>
                   </div>
                 </li>
               ))}
@@ -132,22 +175,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- CTA -->
-  <section class="py-16 bg-[var(--color-surface)] border-t border-[var(--color-border)]">
+  <section class="py-16 bg-white border-t border-[var(--color-border)]">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
       <h2
-        class="text-2xl sm:text-3xl font-bold text-[var(--color-text)] mb-4"
+        class="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] mb-4"
         style="font-family: var(--font-heading);"
       >
-        Ready to see what your data can tell you?
+        Ready to get started?
       </h2>
-      <p class="text-[var(--color-text-muted)] mb-8">
-        Start with an Impact Data Review — or just book a call and tell us what you're working on.
+      <p class="text-[var(--color-muted)] mb-8">
+        Book a discovery call — no pitch, just a conversation about where you are and what's next.
       </p>
       <a
         href="/contact"
-        class="inline-flex items-center gap-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white px-7 py-3.5 rounded-full font-semibold transition-colors"
+        class="inline-flex items-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-7 py-3.5 rounded-full font-semibold transition-colors"
       >
-        Book a 30-Minute Intro Call
+        Book a discovery call
       </a>
     </div>
   </section>
