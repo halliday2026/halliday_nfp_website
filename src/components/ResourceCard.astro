@@ -1,4 +1,6 @@
 ---
+import { getLangFromUrl, useTranslations, getLocaleTag } from '../i18n/utils';
+
 interface Props {
   title: string;
   description: string;
@@ -9,11 +11,16 @@ interface Props {
 
 const { title, description, category, slug, publishDate } = Astro.props;
 
-const formattedDate = publishDate.toLocaleDateString('en-US', {
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const formattedDate = publishDate.toLocaleDateString(getLocaleTag(lang), {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 });
+
+const resourceHref = lang === 'es' ? `/es/resources/${slug}` : `/resources/${slug}`;
 ---
 
 <article
@@ -44,11 +51,11 @@ const formattedDate = publishDate.toLocaleDateString('en-US', {
         {formattedDate}
       </time>
       <a
-        href={`/resources/${slug}`}
+        href={resourceHref}
         class="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--color-navy)] hover:gap-2.5 transition-all"
-        aria-label={`Read more: ${title}`}
+        aria-label={`${t('resource.readMoreAria')} ${title}`}
       >
-        Read more
+        {t('resource.readMore')}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-4 w-4"

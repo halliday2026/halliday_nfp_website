@@ -1,0 +1,93 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('resources', ({ slug, data }) => slug.startsWith('es/') && !data.draft);
+  return entries.map((entry) => ({
+    params: { slug: entry.slug.replace(/^es\//, '') },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'resources'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { title, description, publishDate, category } = entry.data;
+
+const formattedDate = publishDate.toLocaleDateString('es-NI', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="bg-[var(--color-charcoal)] text-white py-20 lg:py-28">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block bg-[var(--color-navy)] text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-6">
+        {category}
+      </span>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6" style="font-family: var(--font-heading);">
+        {title}
+      </h1>
+      <time class="text-white/60 text-sm" datetime={publishDate.toISOString()}>{formattedDate}</time>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="resource-content text-[var(--color-body)] text-base leading-relaxed">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-[var(--color-stone)] border-t border-[var(--color-border)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <a
+        href="/es/resources"
+        class="inline-flex items-center gap-2 text-[var(--color-navy)] font-semibold hover:gap-3 transition-all text-sm"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+        Volver a todos los recursos
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .resource-content :global(h2) {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.375rem;
+    color: var(--color-ink);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .resource-content :global(p) {
+    margin-bottom: 1.25rem;
+  }
+  .resource-content :global(ul) {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .resource-content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+  .resource-content :global(a) {
+    color: var(--color-navy);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+  .resource-content :global(strong) {
+    color: var(--color-ink);
+  }
+  .resource-content :global(em) {
+    color: var(--color-muted);
+  }
+</style>

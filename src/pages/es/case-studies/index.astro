@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const caseStudies = [
+  {
+    href: '/es/case-studies/conservation-nonprofit',
+    badge: 'Análisis de Datos de Donantes',
+    title: 'Análisis de Datos de Donantes para una Organización de Conservación de Hábitat',
+    client: 'Organización de Conservación de Hábitat del Sur de California',
+    summary: 'Una organización de conservación tenía cinco años de datos de donantes, pero ninguna forma estructurada de analizarlos. Analizamos su historial de donaciones y descubrimos hallazgos clave sobre la captación de donantes, las tendencias de retención y las señales tempranas de alerta de pérdida de donantes — dándole a su liderazgo, por primera vez, una imagen clara y basada en datos de la salud de su base de donantes.',
+  },
+];
+---
+
+<BaseLayout
+  title="Resultados"
+  description="Trabajo real con organizaciones reales — mirá cómo Halliday ha ayudado a las organizaciones a descubrir hallazgos, fortalecer sus relaciones con donantes y demostrar su impacto."
+>
+
+  <!-- ======================== HEADER ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-charcoal)]" data-animate>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-white/60 font-semibold text-sm uppercase tracking-widest mb-4">Resultados</p>
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
+        style="font-family: var(--font-heading);"
+      >
+        Resultados que Hablan por Sí Solos
+      </h1>
+      <p class="text-white/70 text-lg leading-relaxed max-w-2xl">
+        Trabajo real con organizaciones reales — y los hallazgos que cambiaron su forma de operar.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================== CASE STUDY LISTING ======================== -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-8">
+        {caseStudies.map((cs, i) => (
+          <article
+            class="bg-[var(--color-stone)] rounded-2xl border border-[var(--color-border)] p-8 hover:border-[var(--color-navy)]/30 transition-all"
+            data-animate
+            data-animate-delay={String(i * 100)}
+          >
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <span class="inline-block bg-[var(--color-navy)]/10 text-[var(--color-navy)] text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full">
+                {cs.badge}
+              </span>
+            </div>
+            <p class="text-[var(--color-muted)] text-sm font-medium mb-3">{cs.client}</p>
+            <h2
+              class="text-xl sm:text-2xl font-bold text-[var(--color-ink)] mb-4"
+              style="font-family: var(--font-heading);"
+            >
+              {cs.title}
+            </h2>
+            <p class="text-[var(--color-body)] text-base leading-relaxed mb-6">{cs.summary}</p>
+            <a
+              href={cs.href}
+              class="inline-flex items-center gap-2 text-[var(--color-navy)] font-semibold hover:gap-3 transition-all text-sm"
+            >
+              Leé el Caso de Éxito Completo
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

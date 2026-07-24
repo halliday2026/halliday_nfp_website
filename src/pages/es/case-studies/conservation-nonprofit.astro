@@ -1,0 +1,282 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const lang = 'es';
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title="Caso de Éxito: Análisis de Datos de Donantes para una Organización de Conservación"
+  description="Cómo Halliday ayudó a una organización de conservación del sur de California a descubrir riesgos de retención de donantes, tendencias de captación y hallazgos aplicables a partir de cinco años de datos de donaciones."
+>
+
+  <!-- ======================== HEADER ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-charcoal)]" data-animate>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center gap-3 mb-6">
+        <span class="inline-block bg-[var(--color-navy)] text-white text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full">
+          Análisis de Datos de Donantes
+        </span>
+        <span class="text-white/50 text-sm">Sur de California · Análisis de Datos de Donantes · 5 Años de Historial de Donaciones</span>
+      </div>
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
+        style="font-family: var(--font-heading);"
+      >
+        Análisis de Datos de Donantes para una Organización de Conservación de Hábitat
+      </h1>
+      <p class="text-white/70 text-lg leading-relaxed max-w-2xl">
+        Cinco años de datos de donantes. Ninguna forma estructurada de analizarlos. Y un liderazgo sin visibilidad sobre la salud de sus relaciones con los donantes.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================== BODY ======================== -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- THE CHALLENGE -->
+      <div class="mb-14" data-animate>
+        <h2
+          class="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] mb-6"
+          style="font-family: var(--font-heading);"
+        >
+          El Desafío
+        </h2>
+        <div class="space-y-4 text-[var(--color-body)] text-base leading-relaxed">
+          <p>
+            Una organización sin fines de lucro del sur de California, dedicada a la conservación de hábitats, había acumulado cinco años de datos de donantes a través de sus esfuerzos de recaudación de fondos. Como muchas organizaciones de conservación, tenían los datos — historiales de donación, registros de donantes, resultados de campañas — pero ninguna forma estructurada de analizarlos en busca de patrones o tendencias.
+          </p>
+          <p>
+            El liderazgo sabía que sus relaciones con los donantes eran clave para sostener la misión de la organización, pero no tenían visibilidad sobre preguntas fundamentales: ¿Estaban captando nuevos donantes a un ritmo saludable? ¿Cuáles de sus donantes de largo plazo mostraban señales de desconexión? ¿Sus campañas realmente estaban funcionando, o se estaban basando en suposiciones?
+          </p>
+          <p>
+            Con las expectativas de los donantes aumentando en torno a la rendición de cuentas y los resultados medibles, la organización necesitaba una imagen clara y basada en datos de su base de donantes — no solo números crudos, sino inteligencia aplicable.
+          </p>
+        </div>
+      </div>
+
+      <!-- WHAT WE DID -->
+      <div class="mb-14" data-animate>
+        <h2
+          class="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] mb-6"
+          style="font-family: var(--font-heading);"
+        >
+          Qué Hicimos
+        </h2>
+        <div class="space-y-4 text-[var(--color-body)] text-base leading-relaxed">
+          <p>
+            Halliday realizó un análisis de datos de donantes de alcance fijo — el mismo tipo de trabajo que hoy ofrecemos como nuestro Análisis de Insights de Donantes — diseñado para analizar los datos existentes y sacar a la luz hallazgos que informen decisiones más inteligentes.
+          </p>
+          <p>
+            Trabajando con registros de donantes anonimizados (solo identificadores de donantes e historial de donación — sin información personal), realizamos un análisis integral que abarcó cinco años de datos de donaciones. El proyecto fue diseñado para ser de baja fricción: sin sistemas nuevos que implementar, sin requisitos técnicos, y sin interrumpir las operaciones diarias de la organización.
+          </p>
+          <p>
+            El análisis se completó y se entregó como un reporte visual y pulido, diseñado para el liderazgo — lo bastante claro para que una Directora Ejecutiva sin conocimientos técnicos pudiera actuar sobre él, y lo bastante detallado para respaldar las conversaciones con donantes.
+          </p>
+        </div>
+        <figure class="mt-8" data-animate>
+          <img
+            src="/images/case-studies/case-study-slide-executive-summary.jpg"
+            alt="Diapositiva de resumen ejecutivo de un reporte de análisis de datos de donantes de Halliday"
+            class="w-full rounded-xl border border-[var(--color-border)] shadow-md"
+            loading="lazy"
+          />
+          <figcaption class="text-center text-xs text-[var(--color-muted)] mt-3 italic">
+            Muestra de un reporte de análisis de datos de donantes de Halliday.
+          </figcaption>
+        </figure>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================== WHAT WE FOUND ======================== -->
+  <section class="py-16 lg:py-20 bg-[var(--color-stone)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-12" data-animate>
+        <h2
+          class="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] mb-4"
+          style="font-family: var(--font-heading);"
+        >
+          Qué Encontramos
+        </h2>
+        <p class="text-[var(--color-muted)] text-base leading-relaxed">
+          El análisis reveló tres categorías de hallazgos que la organización nunca había visto antes.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+
+        <!-- Finding 1: New Donor Acquisition Trends -->
+        <div
+          class="bg-white rounded-2xl p-6 border border-[var(--color-border)] border-t-4 border-t-[var(--color-navy)]"
+          data-animate
+        >
+          <div class="w-10 h-10 rounded-lg bg-[var(--color-navy)]/10 flex items-center justify-center text-[var(--color-navy)] mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+          </div>
+          <h3 class="text-base font-bold text-[var(--color-ink)] mb-3" style="font-family: var(--font-heading);">
+            Tendencias de Captación de Nuevos Donantes
+          </h3>
+          <p class="text-[var(--color-muted)] text-sm leading-relaxed">
+            Por primera vez, el liderazgo pudo ver cómo había evolucionado su flujo de nuevos donantes año tras año — incluyendo patrones sobre cuándo y cómo los nuevos donantes entraban al ecosistema de la organización.
+          </p>
+          <figure class="mt-6">
+            <img
+              src="/images/case-studies/case-study-slide-donor-composition.jpg"
+              alt="Gráfico de composición de donantes mostrando donantes retenidos, nuevos y reactivados a lo largo del tiempo"
+              class="w-full rounded-xl border border-[var(--color-border)] shadow-md"
+              loading="lazy"
+            />
+            <figcaption class="text-center text-xs text-[var(--color-muted)] mt-3 italic">
+              Desglose de la composición de donantes mostrando donantes retenidos, nuevos y reactivados.
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Finding 2: Donor Retention Patterns -->
+        <div
+          class="bg-white rounded-2xl p-6 border border-[var(--color-border)] border-t-4 border-t-[var(--color-navy)]"
+          data-animate
+          data-animate-delay="100"
+        >
+          <div class="w-10 h-10 rounded-lg bg-[var(--color-navy)]/10 flex items-center justify-center text-[var(--color-navy)] mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+          </div>
+          <h3 class="text-base font-bold text-[var(--color-ink)] mb-3" style="font-family: var(--font-heading);">
+            Patrones de Retención de Donantes
+          </h3>
+          <p class="text-[var(--color-muted)] text-sm leading-relaxed">
+            Surgieron tendencias claras de retención entre los distintos segmentos de donantes, revelando qué grupos se mantenían comprometidos con el tiempo, cuáles tenían mayor deserción, y dónde estaban funcionando los esfuerzos por construir relaciones.
+          </p>
+          <figure class="mt-6">
+            <img
+              src="/images/case-studies/case-study-slide-retention-cohort.jpg"
+              alt="Gráfico de análisis de retención de donantes año tras año y seguimiento de cohortes"
+              class="w-full rounded-xl border border-[var(--color-border)] shadow-md"
+              loading="lazy"
+            />
+            <figcaption class="text-center text-xs text-[var(--color-muted)] mt-3 italic">
+              Análisis de retención año tras año y seguimiento de cohortes.
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Finding 3: Key Donor Warning Signs -->
+        <div
+          class="bg-white rounded-2xl p-6 border border-[var(--color-border)] border-t-4 border-t-[var(--color-navy)]"
+          data-animate
+          data-animate-delay="200"
+        >
+          <div class="w-10 h-10 rounded-lg bg-[var(--color-navy)]/10 flex items-center justify-center text-[var(--color-navy)] mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+          </div>
+          <h3 class="text-base font-bold text-[var(--color-ink)] mb-3" style="font-family: var(--font-heading);">
+            Señales de Alerta Clave de Donantes
+          </h3>
+          <p class="text-[var(--color-muted)] text-sm leading-relaxed">
+            Los indicadores tempranos de alerta de deserción entre los donantes más importantes de la organización — cambios en la frecuencia de donación, montos de donación en descenso, vacíos en el compromiso — habían sido invisibles sin un análisis estructurado.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== THE RESULT ======================== -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="mb-10" data-animate>
+        <h2
+          class="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] mb-6"
+          style="font-family: var(--font-heading);"
+        >
+          El Resultado
+        </h2>
+        <div class="space-y-4 text-[var(--color-body)] text-base leading-relaxed">
+          <p>
+            Por primera vez, el liderazgo de esta organización tuvo una imagen visual e integral de la salud de su base de donantes — un recurso que pudieron usar de inmediato para orientar su estrategia de recaudación, personalizar sus campañas hacia los donantes, y comunicarse con más confianza con los donantes sobre la sostenibilidad de la organización.
+          </p>
+          <p>
+            La Directora Ejecutiva señaló que el análisis reveló información que no habrían detectado por su cuenta, y que cambió la forma en que piensan sobre sus relaciones con los donantes.
+          </p>
+        </div>
+      </div>
+
+      <!-- Pull quote -->
+      <blockquote
+        class="border-l-4 border-[var(--color-navy)] pl-6 py-2 my-10"
+        data-animate
+      >
+        <p
+          class="text-[var(--color-ink)] text-lg italic leading-relaxed mb-3"
+          style="font-family: var(--font-heading);"
+        >
+          "Nos sorprendió la información que salió a la luz. Nos ha ayudado a personalizar nuestras campañas y a pensar diferente sobre nuestras relaciones con los donantes."
+        </p>
+        <cite class="text-[var(--color-muted)] text-sm not-italic font-medium">— Directora Ejecutiva, Organización de Conservación de Hábitat del Sur de California</cite>
+      </blockquote>
+
+      <!-- What this means -->
+      <div data-animate>
+        <h2
+          class="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] mb-6"
+          style="font-family: var(--font-heading);"
+        >
+          Qué Significa Esto para tu Organización
+        </h2>
+        <div class="space-y-4 text-[var(--color-body)] text-base leading-relaxed">
+          <p>
+            Si tu organización tiene años de datos de donantes o de programas guardados en hojas de cálculo, sistemas CRM o software financiero — pero ninguna forma estructurada de darles sentido — es muy probable que tengas hallazgos sin descubrir que podrían transformar tu recaudación de fondos, fortalecer tus relaciones con los donantes y ayudarte a demostrar tu impacto.
+          </p>
+          <p>
+            Este es exactamente el tipo de trabajo detrás de nuestro <a href="/es/data-work" class="text-[var(--color-navy)] font-medium hover:underline">Análisis de Insights de Donantes</a> — tomar lo que ya tenés y convertirlo en algo sobre lo que podés actuar.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================== NEXT STEPS IMAGE ======================== -->
+  <section class="pb-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <figure data-animate>
+        <img
+          src="/images/case-studies/case-study-slide-next-steps.jpg"
+          alt="Diapositiva de próximos pasos y recomendaciones priorizadas de un reporte de análisis de datos de donantes de Halliday"
+          class="w-full rounded-xl border border-[var(--color-border)] shadow-md"
+          loading="lazy"
+        />
+        <figcaption class="text-center text-xs text-[var(--color-muted)] mt-3 italic">
+          Todo análisis de datos de donantes incluye recomendaciones priorizadas y aplicables.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ======================== CTA ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-stone)]">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
+      <h2
+        class="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] mb-4"
+        style="font-family: var(--font-heading);"
+      >
+        ¿Querés ver qué te están diciendo tus datos?
+      </h2>
+      <p class="text-[var(--color-muted)] text-base mb-8">
+        Contactanos para saber más sobre el Análisis de Insights de Donantes y descubrir qué podrían revelar tus datos.
+      </p>
+      <a
+        href="/es/contact"
+        class="inline-flex items-center justify-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-7 py-4 rounded-full text-base font-semibold transition-colors"
+      >
+        {t('cta.bookCall')}
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

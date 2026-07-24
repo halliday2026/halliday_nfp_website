@@ -3,98 +3,109 @@
 // Result is ungated (shown instantly); email is captured AFTER, for the
 // fuller breakdown. Math constants (loaded rate $35/hr) are honest/fixed —
 // never tuned to land on a target number.
+import { getLangFromUrl, useTranslations, getLocaleTag } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const localeTag = getLocaleTag(lang);
 ---
 
-<div id="calculator" class="rounded-3xl border border-[var(--color-border)] bg-[var(--color-stone)] p-6 sm:p-10">
+<div
+  id="calculator"
+  class="rounded-3xl border border-[var(--color-border)] bg-[var(--color-stone)] p-6 sm:p-10"
+  data-i18n-sending={t('calc.sending')}
+  data-i18n-send-it-to-me={t('calc.sendItToMe')}
+  data-number-locale={localeTag}
+>
   <!-- Progress -->
   <p id="calc-progress" class="text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)] mb-6 hidden">
-    Step <span id="calc-progress-num">1</span> of 5
+    {t('calc.step')} <span id="calc-progress-num">1</span> {t('calc.of')} 5
   </p>
 
   <!-- START -->
   <div data-step="start" class="text-center py-6">
     <p class="text-[var(--color-body)] text-base leading-relaxed mb-8">
-      Answer a few quick questions about how your team handles data and reporting today.
+      {t('calc.introBody')}
     </p>
     <button
       type="button"
       data-action="start"
       class="inline-flex items-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-7 py-4 rounded-full text-base font-semibold transition-colors"
     >
-      Start
+      {t('calc.start')}
     </button>
   </div>
 
   <!-- Q1: SYSTEMS -->
   <div data-step="systems" class="hidden">
     <h2 class="text-xl sm:text-2xl font-bold text-[var(--color-ink)] mb-6" style="font-family: var(--font-heading);">
-      Where does your data live?
+      {t('calc.q1Heading')}
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-      <button type="button" class="calc-option" data-field="systems" data-value="1-2">1–2 systems</button>
-      <button type="button" class="calc-option" data-field="systems" data-value="3-4">3–4 systems</button>
-      <button type="button" class="calc-option" data-field="systems" data-value="5+">5+ systems</button>
+      <button type="button" class="calc-option" data-field="systems" data-value="1-2">{t('calc.systems12')}</button>
+      <button type="button" class="calc-option" data-field="systems" data-value="3-4">{t('calc.systems34')}</button>
+      <button type="button" class="calc-option" data-field="systems" data-value="5+">{t('calc.systems5plus')}</button>
     </div>
-    <button type="button" class="calc-back" data-back="start">← Back</button>
+    <button type="button" class="calc-back" data-back="start">{t('calc.back')}</button>
   </div>
 
   <!-- Q2: REPORT TIME -->
   <div data-step="report-time" class="hidden">
     <h2 class="text-xl sm:text-2xl font-bold text-[var(--color-ink)] mb-6" style="font-family: var(--font-heading);">
-      How long does a board or grant report take to pull together?
+      {t('calc.q2Heading')}
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-      <button type="button" class="calc-option" data-field="hoursPerReport" data-value="couple-hours">A couple hours</button>
-      <button type="button" class="calc-option" data-field="hoursPerReport" data-value="about-a-day">About a day</button>
-      <button type="button" class="calc-option" data-field="hoursPerReport" data-value="several-days">Several days</button>
-      <button type="button" class="calc-option" data-field="hoursPerReport" data-value="a-week-plus">A week+</button>
+      <button type="button" class="calc-option" data-field="hoursPerReport" data-value="couple-hours">{t('calc.hoursCouple')}</button>
+      <button type="button" class="calc-option" data-field="hoursPerReport" data-value="about-a-day">{t('calc.hoursDay')}</button>
+      <button type="button" class="calc-option" data-field="hoursPerReport" data-value="several-days">{t('calc.hoursSeveralDays')}</button>
+      <button type="button" class="calc-option" data-field="hoursPerReport" data-value="a-week-plus">{t('calc.hoursWeekPlus')}</button>
     </div>
-    <button type="button" class="calc-back" data-back="systems">← Back</button>
+    <button type="button" class="calc-back" data-back="systems">{t('calc.back')}</button>
   </div>
 
   <!-- Q3: REPORT FREQUENCY -->
   <div data-step="report-freq" class="hidden">
     <h2 class="text-xl sm:text-2xl font-bold text-[var(--color-ink)] mb-6" style="font-family: var(--font-heading);">
-      How often do you produce reports like that?
+      {t('calc.q3Heading')}
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-      <button type="button" class="calc-option" data-field="reportsPerYear" data-value="monthly">Monthly</button>
-      <button type="button" class="calc-option" data-field="reportsPerYear" data-value="quarterly">Quarterly</button>
-      <button type="button" class="calc-option" data-field="reportsPerYear" data-value="few-times-year">A few times a year</button>
+      <button type="button" class="calc-option" data-field="reportsPerYear" data-value="monthly">{t('calc.freqMonthly')}</button>
+      <button type="button" class="calc-option" data-field="reportsPerYear" data-value="quarterly">{t('calc.freqQuarterly')}</button>
+      <button type="button" class="calc-option" data-field="reportsPerYear" data-value="few-times-year">{t('calc.freqFewTimesYear')}</button>
     </div>
-    <button type="button" class="calc-back" data-back="report-time">← Back</button>
+    <button type="button" class="calc-back" data-back="report-time">{t('calc.back')}</button>
   </div>
 
   <!-- Q4: WRANGLING HOURS -->
   <div data-step="wrangling" class="hidden">
     <h2 class="text-xl sm:text-2xl font-bold text-[var(--color-ink)] mb-2" style="font-family: var(--font-heading);">
-      Outside reporting, how many hours a week go to moving or reconciling data between tools?
+      {t('calc.q4Heading')}
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-6">
-      <button type="button" class="calc-option" data-field="weeklyWrangling" data-value="<2">Less than 2 hours</button>
-      <button type="button" class="calc-option" data-field="weeklyWrangling" data-value="2-5">2–5 hours</button>
-      <button type="button" class="calc-option" data-field="weeklyWrangling" data-value="5-10">5–10 hours</button>
-      <button type="button" class="calc-option" data-field="weeklyWrangling" data-value="10+">10+ hours</button>
+      <button type="button" class="calc-option" data-field="weeklyWrangling" data-value="<2">{t('calc.wrangleLess2')}</button>
+      <button type="button" class="calc-option" data-field="weeklyWrangling" data-value="2-5">{t('calc.wrangle25')}</button>
+      <button type="button" class="calc-option" data-field="weeklyWrangling" data-value="5-10">{t('calc.wrangle510')}</button>
+      <button type="button" class="calc-option" data-field="weeklyWrangling" data-value="10+">{t('calc.wrangle10plus')}</button>
     </div>
-    <button type="button" class="calc-back" data-back="report-freq">← Back</button>
+    <button type="button" class="calc-back" data-back="report-freq">{t('calc.back')}</button>
   </div>
 
   <!-- Q5: BUDGET BAND (optional qualifier) -->
   <div data-step="budget" class="hidden">
     <h2 class="text-xl sm:text-2xl font-bold text-[var(--color-ink)] mb-2" style="font-family: var(--font-heading);">
-      What's your annual operating budget?
+      {t('calc.q5Heading')}
     </h2>
-    <p class="text-[var(--color-muted)] text-sm mb-6">Optional — helps us tailor advice, not part of the estimate.</p>
+    <p class="text-[var(--color-muted)] text-sm mb-6">{t('calc.q5Sub')}</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-      <button type="button" class="calc-option" data-field="budgetBand" data-value="under-500k">Under $500K</button>
-      <button type="button" class="calc-option" data-field="budgetBand" data-value="500k-2m">$500K–$2M</button>
-      <button type="button" class="calc-option" data-field="budgetBand" data-value="over-2m">Over $2M</button>
-      <button type="button" class="calc-option" data-field="budgetBand" data-value="prefer-not-to-say">Prefer not to say</button>
+      <button type="button" class="calc-option" data-field="budgetBand" data-value="under-500k">{t('calc.budgetUnder500k')}</button>
+      <button type="button" class="calc-option" data-field="budgetBand" data-value="500k-2m">{t('calc.budget500k2m')}</button>
+      <button type="button" class="calc-option" data-field="budgetBand" data-value="over-2m">{t('calc.budgetOver2m')}</button>
+      <button type="button" class="calc-option" data-field="budgetBand" data-value="prefer-not-to-say">{t('calc.budgetPreferNot')}</button>
     </div>
     <div class="flex items-center justify-between mt-6">
-      <button type="button" class="calc-back" data-back="wrangling">← Back</button>
+      <button type="button" class="calc-back" data-back="wrangling">{t('calc.back')}</button>
       <button type="button" data-action="skip-budget" class="text-sm font-medium text-[var(--color-muted)] hover:text-[var(--color-navy)] transition-colors">
-        Skip →
+        {t('calc.skip')}
       </button>
     </div>
   </div>
@@ -102,75 +113,75 @@
   <!-- RESULT -->
   <div data-step="result" class="hidden">
     <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)] mb-3">
-      A rough estimate based on what you told us
+      {t('calc.resultEyebrow')}
     </p>
     <p id="calc-annual-dollars" class="text-5xl sm:text-6xl font-bold text-[var(--color-charcoal)] mb-2" style="font-family: var(--font-heading);">
       $0
     </p>
-    <p class="text-[var(--color-muted)] text-base mb-8">lost to scattered data and manual reporting each year</p>
+    <p class="text-[var(--color-muted)] text-base mb-8">{t('calc.resultSubtext')}</p>
 
-    <div class="grid grid-cols-3 gap-4 mb-8 text-center">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 text-center">
       <div class="bg-white rounded-xl border border-[var(--color-border)] p-4">
         <p id="calc-report-hours" class="text-2xl font-bold text-[var(--color-ink)]" style="font-family: var(--font-heading);">0</p>
-        <p class="text-xs text-[var(--color-muted)] mt-1">report hrs/yr</p>
+        <p class="text-xs text-[var(--color-muted)] mt-1">{t('calc.reportHrsLabel')}</p>
       </div>
       <div class="bg-white rounded-xl border border-[var(--color-border)] p-4">
         <p id="calc-wrangling-hours" class="text-2xl font-bold text-[var(--color-ink)]" style="font-family: var(--font-heading);">0</p>
-        <p class="text-xs text-[var(--color-muted)] mt-1">wrangling hrs/yr</p>
+        <p class="text-xs text-[var(--color-muted)] mt-1">{t('calc.wranglingHrsLabel')}</p>
       </div>
       <div class="bg-white rounded-xl border border-[var(--color-border)] p-4">
         <p id="calc-total-hours" class="text-2xl font-bold text-[var(--color-ink)]" style="font-family: var(--font-heading);">0</p>
-        <p class="text-xs text-[var(--color-muted)] mt-1">total hrs/yr</p>
+        <p class="text-xs text-[var(--color-muted)] mt-1">{t('calc.totalHrsLabel')}</p>
       </div>
     </div>
 
     <p class="text-[var(--color-body)] text-base leading-relaxed mb-8">
-      That's hours your team could put back into your programs and your donors — not spreadsheets.
+      {t('calc.resultBody')}
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4 mb-10">
       <a
-        href="/contact"
+        href={lang === 'es' ? '/es/contact' : '/contact'}
         class="inline-flex items-center justify-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-6 py-3.5 rounded-full text-sm font-semibold transition-colors"
       >
-        Book a discovery call
+        {t('cta.bookCall')}
       </a>
       <a
-        href="/data-work"
+        href={lang === 'es' ? '/es/data-work' : '/data-work'}
         class="inline-flex items-center justify-center gap-2 border border-[var(--color-navy)]/30 text-[var(--color-navy)] hover:bg-[var(--color-navy)]/5 px-6 py-3.5 rounded-full text-sm font-semibold transition-colors"
       >
-        See Data Work
+        {t('cta.seeDataWork')}
       </a>
     </div>
 
     <!-- Email capture (after result, never gates it) -->
     <div class="border-t border-[var(--color-border)] pt-8">
       <div id="calc-email-form-wrap">
-        <p class="text-[var(--color-ink)] font-semibold mb-1">Want the full breakdown?</p>
-        <p class="text-[var(--color-muted)] text-sm mb-4">Send me the full breakdown + the 3 quickest fixes for my setup.</p>
+        <p class="text-[var(--color-ink)] font-semibold mb-1">{t('calc.emailHeading')}</p>
+        <p class="text-[var(--color-muted)] text-sm mb-4">{t('calc.emailSub')}</p>
         <form id="calc-email-form" class="flex flex-col sm:flex-row gap-3">
-          <label for="calc-email-input" class="sr-only">Your email address</label>
+          <label for="calc-email-input" class="sr-only">{t('calc.emailSrLabel')}</label>
           <input
             type="email"
             id="calc-email-input"
             required
-            placeholder="you@nonprofit.org"
+            placeholder={t('calc.emailPlaceholder')}
             class="flex-1 px-4 py-3 rounded-lg border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-navy)] focus:border-[var(--color-navy)] outline-none transition-colors bg-white text-sm"
           />
           <button
             type="submit"
             id="calc-email-submit"
-            class="bg-[var(--color-ink)] hover:bg-black text-white px-6 py-3 rounded-lg text-sm font-semibold transition-colors disabled:opacity-60 disabled:cursor-not-allowed whitespace-nowrap"
+            class="bg-[var(--color-ink)] hover:bg-black text-white px-6 py-3 rounded-lg text-sm font-semibold transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            Send it to me
+            {t('calc.sendItToMe')}
           </button>
         </form>
         <p id="calc-email-error" class="hidden text-[var(--color-error)] text-sm mt-3">
-          Something went wrong. Please try again or email us at <a href="mailto:info@hallidayinc.com" class="underline">info@hallidayinc.com</a>.
+          {t('calc.emailErrorPrefix')} <a href="mailto:info@hallidayinc.com" class="underline">info@hallidayinc.com</a>.
         </p>
       </div>
       <div id="calc-email-success" class="hidden">
-        <p class="text-[var(--color-success)] font-semibold">Thanks — check your inbox for the full breakdown and your 3 quickest fixes.</p>
+        <p class="text-[var(--color-success)] font-semibold">{t('calc.emailSuccess')}</p>
       </div>
     </div>
   </div>
@@ -257,6 +268,11 @@
   };
 
   const root = document.getElementById('calculator')!;
+  const i18n = {
+    sending: root.dataset.i18nSending!,
+    sendItToMe: root.dataset.i18nSendItToMe!,
+    numberLocale: root.dataset.numberLocale!,
+  };
   const panels = root.querySelectorAll<HTMLElement>('[data-step]');
   const progressEl = document.getElementById('calc-progress')!;
   const progressNumEl = document.getElementById('calc-progress-num')!;
@@ -287,7 +303,7 @@
   }
 
   function formatNumber(n: number): string {
-    return Math.round(n).toLocaleString('en-US');
+    return Math.round(n).toLocaleString(i18n.numberLocale);
   }
 
   function showResult() {
@@ -361,7 +377,7 @@
   emailForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     emailSubmit.disabled = true;
-    emailSubmit.textContent = 'Sending...';
+    emailSubmit.textContent = i18n.sending;
     emailError.classList.add('hidden');
 
     const estimate = computeEstimate(state);
@@ -381,7 +397,7 @@
     } else {
       emailError.classList.remove('hidden');
       emailSubmit.disabled = false;
-      emailSubmit.textContent = 'Send it to me';
+      emailSubmit.textContent = i18n.sendItToMe;
     }
   });
 </script>

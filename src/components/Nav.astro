@@ -1,16 +1,22 @@
 ---
 import { Image } from 'astro:assets';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import hLogoIcon from '../assets/H_Logo.svg';
+import { navItems } from '../data/nav-links';
+import { getLangFromUrl, useTranslations, stripLocalePrefix } from '../i18n/utils';
 
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/data-work', label: 'Data Work' },
-  { href: '/managed-websites', label: 'Managed Websites' },
-  { href: '/cost-calculator', label: 'Cost Calculator' },
-  { href: '/case-studies', label: 'Proof' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
-];
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const navLinks = navItems.map((item) => ({
+  href: getRelativeLocaleUrl(lang, item.path),
+  label: t(item.key),
+}));
+const homeHref = getRelativeLocaleUrl(lang, '/');
+const bookCallHref = getRelativeLocaleUrl(lang, '/contact');
+const currentPathStripped = stripLocalePrefix(Astro.url.pathname);
+const enHref = getRelativeLocaleUrl('en', currentPathStripped);
+const esHref = getRelativeLocaleUrl('es', currentPathStripped);
 
 const currentPath = Astro.url.pathname;
 ---
@@ -21,7 +27,7 @@ const currentPath = Astro.url.pathname;
     aria-label="Main navigation"
   >
     <!-- Logo -->
-    <a href="/" class="flex items-center gap-2.5 flex-shrink-0" aria-label="Halliday home">
+    <a href={homeHref} class="flex items-center gap-2.5 flex-shrink-0" aria-label="Halliday home">
       <Image src={hLogoIcon} alt="" width={28} height={32} class="h-8 w-auto" />
       <span class="font-heading font-bold text-lg tracking-wide text-[var(--color-charcoal)]">HALLIDAY</span>
     </a>
@@ -33,10 +39,10 @@ const currentPath = Astro.url.pathname;
           <li>
             <a
               href={link.href}
-              aria-current={currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) ? 'page' : undefined}
+              aria-current={currentPath === link.href || (link.href !== homeHref && currentPath.startsWith(link.href)) ? 'page' : undefined}
               class:list={[
                 'px-3 py-2 rounded-md text-sm font-medium transition-colors',
-                currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                currentPath === link.href || (link.href !== homeHref && currentPath.startsWith(link.href))
                   ? 'text-[var(--color-navy)] font-semibold'
                   : 'text-[var(--color-muted)] hover:text-[var(--color-navy)]',
               ]}
@@ -48,13 +54,38 @@ const currentPath = Astro.url.pathname;
       }
     </ul>
 
+    <!-- Language switcher (desktop) -->
+    <div class="hidden lg:flex items-center gap-1 text-sm font-medium mr-2" aria-label="Language">
+      <a
+        href={enHref}
+        aria-current={lang === 'en' ? 'page' : undefined}
+        class:list={[
+          'px-2 py-1 rounded transition-colors',
+          lang === 'en' ? 'text-[var(--color-navy)] font-semibold' : 'text-[var(--color-muted)] hover:text-[var(--color-navy)]',
+        ]}
+      >
+        EN
+      </a>
+      <span class="text-[var(--color-border)]" aria-hidden="true">/</span>
+      <a
+        href={esHref}
+        aria-current={lang === 'es' ? 'page' : undefined}
+        class:list={[
+          'px-2 py-1 rounded transition-colors',
+          lang === 'es' ? 'text-[var(--color-navy)] font-semibold' : 'text-[var(--color-muted)] hover:text-[var(--color-navy)]',
+        ]}
+      >
+        ES
+      </a>
+    </div>
+
     <!-- Desktop CTA -->
     <div class="hidden lg:block">
       <a
-        href="/contact"
+        href={bookCallHref}
         class="inline-flex items-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-colors"
       >
-        Book a discovery call
+        {t('cta.bookCall')}
       </a>
     </div>
 
@@ -107,10 +138,10 @@ const currentPath = Astro.url.pathname;
           <li>
             <a
               href={link.href}
-              aria-current={currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) ? 'page' : undefined}
+              aria-current={currentPath === link.href || (link.href !== homeHref && currentPath.startsWith(link.href)) ? 'page' : undefined}
               class:list={[
                 'block px-3 py-2.5 rounded-md text-base font-medium transition-colors',
-                currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+                currentPath === link.href || (link.href !== homeHref && currentPath.startsWith(link.href))
                   ? 'bg-[var(--color-navy)]/10 text-[var(--color-navy)] font-semibold'
                   : 'text-[var(--color-muted)] hover:text-[var(--color-navy)] hover:bg-gray-50',
               ]}
@@ -120,12 +151,28 @@ const currentPath = Astro.url.pathname;
           </li>
         ))
       }
+      <li class="px-3 pt-3 pb-1 flex items-center gap-4 text-base font-medium" aria-label="Language">
+        <a
+          href={enHref}
+          aria-current={lang === 'en' ? 'page' : undefined}
+          class:list={lang === 'en' ? 'text-[var(--color-navy)] font-semibold' : 'text-[var(--color-muted)]'}
+        >
+          English
+        </a>
+        <a
+          href={esHref}
+          aria-current={lang === 'es' ? 'page' : undefined}
+          class:list={lang === 'es' ? 'text-[var(--color-navy)] font-semibold' : 'text-[var(--color-muted)]'}
+        >
+          Español
+        </a>
+      </li>
       <li class="pt-2">
         <a
-          href="/contact"
+          href={bookCallHref}
           class="block text-center bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-5 py-3 rounded-full text-base font-semibold transition-colors"
         >
-          Book a discovery call
+          {t('cta.bookCall')}
         </a>
       </li>
     </ul>

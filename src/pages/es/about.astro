@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'es';
+const t = useTranslations(lang);
+
+const team = [
+  {
+    name: 'Chris',
+    role: 'Estrategia de Datos',
+    bio: 'Más de 20 años de experiencia en almacenamiento de datos, inteligencia de negocios y análisis — aplicados al sector sin fines de lucro para ayudar a las organizaciones a ver lo que sus datos ya les están tratando de decir.',
+  },
+  {
+    name: 'Suzette',
+    role: 'Relación con Clientes',
+    bio: 'Tu contacto principal del día a día. Con ella vas a hablar — manteniendo tu sitio web funcionando, dándote seguimiento antes de que se acerque una fecha límite, y asegurándose de que nada se quede en el tintero.',
+  },
+];
+
+const principles = [
+  {
+    title: 'Escuchamos primero',
+    body: 'Aprendemos sobre tu organización, tus datos y tus metas antes de sugerir cualquier cosa. No hay una solución estándar que recomendar sin ese contexto.',
+  },
+  {
+    title: 'Recomendamos solo lo que realmente hace la diferencia',
+    body: 'No todo problema necesita una solución a la medida. Te vamos a decir cuándo un enfoque más simple funciona — y cuándo no.',
+  },
+  {
+    title: 'Construimos para tu equipo',
+    body: 'La mejor solución es la que tu equipo realmente va a usar. Diseñamos considerando tus límites reales — capacidad del personal, comodidad con la tecnología, presupuesto.',
+  },
+  {
+    title: 'Transferimos conocimiento, no dependencia',
+    body: 'Cuando terminamos, tu equipo entiende el sistema y puede manejarlo de forma independiente. Documentamos todo y capacitamos a fondo.',
+  },
+];
+---
+
+<BaseLayout
+  title="Nosotros"
+  description="Halliday aporta más de 20 años de experiencia en datos a los equipos de liderazgo de organizaciones sin fines de lucro — empezando con un sitio web profesional y creciendo hacia las herramientas de datos cuando estés listo."
+>
+  <!-- Page header -->
+  <section class="bg-[var(--color-charcoal)] text-white py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <p class="text-white/60 font-semibold text-sm uppercase tracking-widest mb-4">
+          Sobre Halliday
+        </p>
+        <h1
+          class="text-4xl sm:text-5xl font-bold text-white mb-6"
+          style="font-family: var(--font-heading);"
+        >
+          Ayudamos a las organizaciones sin fines de lucro a entender sus propios datos
+        </h1>
+        <p class="text-white/70 text-xl leading-relaxed">
+          Porque el problema no es que no tengas datos. Es que nadie los está conectando.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who you'll work with -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2
+        class="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] mb-10"
+        style="font-family: var(--font-heading);"
+        data-animate
+      >
+        Con quién vas a trabajar
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {team.map((person, i) => (
+          <div
+            class="p-7 rounded-2xl bg-[var(--color-stone)] border border-[var(--color-border)]"
+            data-animate
+            data-animate-delay={String(i * 100)}
+          >
+            <h3 class="text-lg font-bold text-[var(--color-ink)] mb-1" style="font-family: var(--font-heading);">
+              {person.name}
+            </h3>
+            <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-navy)] mb-4">{person.role}</p>
+            <p class="text-[var(--color-body)] text-sm leading-relaxed">{person.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Main content -->
+  <section class="py-16 lg:py-24 bg-[var(--color-stone)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+
+        <!-- Main narrative -->
+        <div class="lg:col-span-3 space-y-8" data-animate>
+          <div>
+            <h2
+              class="text-2xl font-bold text-[var(--color-ink)] mb-4"
+              style="font-family: var(--font-heading);"
+            >
+              Por qué empezamos Halliday
+            </h2>
+            <div class="space-y-4 text-[var(--color-body)] leading-relaxed">
+              <p>
+                Todas las organizaciones con las que hemos trabajado tienen la misma historia: los registros de donantes en un sistema, los datos de programas en otro, los entregables de las subvenciones en un tercero — y ninguna forma de ver el panorama completo. El liderazgo toma decisiones por intuición porque nadie ha conectado los puntos entre sus datos.
+              </p>
+              <p>
+                Empezamos Halliday porque seguíamos viendo organizaciones con años de datos valiosos y ninguna forma estructurada de aprender de ellos. No porque les faltara voluntad — sino porque les faltaba un aliado que entendiera tanto los datos como la misión.
+              </p>
+              <p>
+                Ese es el vacío que llenamos. Aportamos más de 20 años de experiencia en almacenamiento de datos, inteligencia de negocios y análisis al sector sin fines de lucro — no para vender tecnología, sino para ayudar a las organizaciones a ver lo que sus datos ya les están tratando de decir.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2
+              class="text-2xl font-bold text-[var(--color-ink)] mb-4"
+              style="font-family: var(--font-heading);"
+            >
+              Cómo pensamos el trabajo
+            </h2>
+            <div class="space-y-4 text-[var(--color-body)] leading-relaxed">
+              <p>
+                La mayoría de nuestros clientes empiezan con nosotros consiguiendo un sitio web profesional que construimos y mantenemos por ellos — una preocupación menos, y una relación constante con una persona real que conoce tu organización. Cuando estés listo para ir más allá, esa misma relación es la puerta hacia el trabajo de datos: convertir lo que ya tenés en decisiones sobre las que podés actuar.
+              </p>
+              <p>
+                Somos agnósticos en cuanto a tecnología. Cuando una herramienta genérica resuelve tu problema, te lo vamos a decir. Cuando no, construimos la que sí lo resuelve — ajustada a cómo funciona realmente tu organización, no forzada dentro del software de alguien más.
+              </p>
+              <p>
+                Entregamos con la ayuda de un equipo pequeño potenciado con IA — no porque sea lo más destacado, sino porque nos permite mantener estos proyectos personales y cercanos, en lugar de que se vuelvan algo impersonal.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h2
+              class="text-2xl font-bold text-[var(--color-ink)] mb-4"
+              style="font-family: var(--font-heading);"
+            >
+              Construido para cómo operan realmente las organizaciones sin fines de lucro
+            </h2>
+            <div class="space-y-4 text-[var(--color-body)] leading-relaxed">
+              <p>
+                Sabemos que las organizaciones sin fines de lucro operan con equipos pequeños, presupuestos ajustados y una alta rendición de cuentas ante donantes y comunidades. Nuestro trabajo está diseñado para esa realidad — no para un escenario idealizado con un departamento de TI y un presupuesto de software de seis cifras.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Principles sidebar -->
+        <div class="lg:col-span-2" data-animate data-animate-delay="200">
+          <div class="bg-white rounded-2xl p-8 border border-[var(--color-border)] sticky top-24">
+            <h3
+              class="text-xl font-bold text-[var(--color-ink)] mb-6"
+              style="font-family: var(--font-heading);"
+            >
+              Cómo trabajamos
+            </h3>
+            <ul class="space-y-6">
+              {principles.map((principle) => (
+                <li class="flex gap-4">
+                  <div class="w-2 h-2 rounded-full bg-[var(--color-navy)] flex-shrink-0 mt-2" />
+                  <div>
+                    <p class="font-semibold text-[var(--color-ink)] text-sm mb-1">{principle.title}</p>
+                    <p class="text-[var(--color-muted)] text-sm leading-relaxed">{principle.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-white border-t border-[var(--color-border)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
+      <h2
+        class="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] mb-4"
+        style="font-family: var(--font-heading);"
+      >
+        ¿Querés empezar?
+      </h2>
+      <p class="text-[var(--color-muted)] mb-8">
+        Reservá una llamada de descubrimiento — sin ofertas de venta, solo una conversación sobre dónde estás y qué sigue.
+      </p>
+      <a
+        href="/es/contact"
+        class="inline-flex items-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-7 py-3.5 rounded-full font-semibold transition-colors"
+      >
+        {t('cta.bookCall')}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

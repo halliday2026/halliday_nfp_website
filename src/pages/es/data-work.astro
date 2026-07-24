@@ -1,21 +1,23 @@
 ---
-// Productized offer name ("Donor Insight Engagement") is provisional per
-// Halliday_Service_Architecture_2026-06.md — lock the final name before
-// final copy ships.
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { pillars } from '../data/pillars';
-import { beforeAfter } from '../data/before-after';
+// Productized offer name ("El Análisis de Insights de Donantes") is a
+// translation of the provisional English name — lock the final Spanish name
+// alongside the English one before final copy ships.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { pillars } from '../../data/pillars';
+import { beforeAfter } from '../../data/before-after';
+import { useTranslations } from '../../i18n/utils';
 
-const lang = 'en';
+const lang = 'es';
+const t = useTranslations(lang);
 const before = beforeAfter[lang].before;
 const after = beforeAfter[lang].after;
 const dataPillars = pillars[lang].filter((p) => p.key !== 'web-presence');
 
 const included = [
-  'Donor retention analysis',
-  'Lapsing and at-risk donor identification',
-  'Lifecycle segmentation',
-  'Top-donor trends',
+  'Análisis de retención de donantes',
+  'Identificación de donantes en riesgo o inactivos',
+  'Segmentación por ciclo de vida',
+  'Tendencias de los donantes principales',
 ];
 
 const pillarIcons: Record<string, string> = {
@@ -26,23 +28,23 @@ const pillarIcons: Record<string, string> = {
 ---
 
 <BaseLayout
-  title="Data Work"
-  description="Custom data tools that help nonprofits raise more, report faster, and prove their impact. Engagements start at $7,500."
+  title="Trabajo de Datos"
+  description="Herramientas de datos a la medida que ayudan a las organizaciones sin fines de lucro a recaudar más, reportar más rápido y demostrar su impacto. Los proyectos comienzan en $7,500."
 >
   <!-- ======================== HEADER ======================== -->
   <section class="py-20 lg:py-28 bg-[var(--color-charcoal)]" data-animate>
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="text-white/60 font-semibold text-sm uppercase tracking-widest mb-6">
-        Data Work
+        Trabajo de Datos
       </p>
       <h1
         class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
         style="font-family: var(--font-heading);"
       >
-        The custom data tools that help you raise more, report faster, and prove your impact.
+        Las herramientas de datos a la medida que te ayudan a recaudar más, reportar más rápido y demostrar tu impacto.
       </h1>
       <p class="text-white/70 text-lg leading-relaxed max-w-2xl">
-        Beyond the website, this is where Halliday does its deepest work — turning the data you already have into decisions you can act on.
+        Más allá del sitio web, acá es donde Halliday hace su trabajo más profundo — convirtiendo los datos que ya tenés en decisiones sobre las que podés actuar.
       </p>
     </div>
   </section>
@@ -55,13 +57,13 @@ const pillarIcons: Record<string, string> = {
           class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
           style="font-family: var(--font-heading);"
         >
-          From scattered to clear
+          De disperso a claro
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="bg-[var(--color-stone)] rounded-2xl p-8 border border-[var(--color-border)]" data-animate>
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)] mb-5">Before</p>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-muted)] mb-5">Antes</p>
           <ul class="space-y-3">
             {before.map((line) => (
               <li class="flex items-start gap-3 text-[var(--color-body)] text-base leading-relaxed">
@@ -73,7 +75,7 @@ const pillarIcons: Record<string, string> = {
         </div>
 
         <div class="bg-[var(--color-navy-tint)] rounded-2xl p-8 border border-[var(--color-navy)]/20" data-animate data-animate-delay="100">
-          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-navy)] mb-5">After</p>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-navy)] mb-5">Después</p>
           <ul class="space-y-3">
             {after.map((line) => (
               <li class="flex items-start gap-3 text-[var(--color-body)] text-base leading-relaxed">
@@ -108,8 +110,8 @@ const pillarIcons: Record<string, string> = {
               </h3>
               <p class="text-[var(--color-body)] text-base leading-relaxed mb-5">{pillar.body}</p>
               <div class="flex flex-col sm:flex-row gap-4 text-sm">
-                <p class="flex-1 text-[var(--color-muted)]"><span class="font-semibold text-[var(--color-ink)]">Today: </span>{pillar.pain}</p>
-                <p class="flex-1 text-[var(--color-navy)]"><span class="font-semibold">With Halliday: </span>{pillar.payoff}</p>
+                <p class="flex-1 text-[var(--color-muted)]"><span class="font-semibold text-[var(--color-ink)]">Hoy: </span>{pillar.pain}</p>
+                <p class="flex-1 text-[var(--color-navy)]"><span class="font-semibold">Con Halliday: </span>{pillar.payoff}</p>
               </div>
             </div>
           </div>
@@ -122,15 +124,15 @@ const pillarIcons: Record<string, string> = {
   <section class="py-20 lg:py-28 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-[var(--color-charcoal)] rounded-3xl p-8 lg:p-12" data-animate>
-        <p class="text-white/50 font-semibold text-sm uppercase tracking-widest mb-4">The Engagement</p>
+        <p class="text-white/50 font-semibold text-sm uppercase tracking-widest mb-4">El Proyecto</p>
         <h2
           class="text-2xl sm:text-3xl font-bold text-white mb-5"
           style="font-family: var(--font-heading);"
         >
-          The Donor Insight Engagement
+          El Análisis de Insights de Donantes
         </h2>
         <p class="text-white/70 text-base leading-relaxed mb-8 max-w-2xl">
-          A fixed-scope donor analysis, delivered done-for-you. We don't hand you a data dump — you get the insights and the recommended actions that come with them.
+          Un análisis de donantes de alcance fijo, entregado completamente hecho por nosotros. No te entregamos un montón de datos sin procesar — obtenés los hallazgos y las acciones recomendadas que los acompañan.
         </p>
 
         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
@@ -145,12 +147,12 @@ const pillarIcons: Record<string, string> = {
         </ul>
 
         <div class="flex flex-col sm:flex-row sm:items-center gap-4 pt-6 border-t border-white/10">
-          <p class="text-white font-semibold">Engagements start at $7,500.</p>
+          <p class="text-white font-semibold">Los proyectos comienzan en $7,500.</p>
           <a
-            href="/contact"
+            href="/es/contact"
             class="inline-flex items-center justify-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-6 py-3 rounded-full text-sm font-semibold transition-colors sm:ml-auto"
           >
-            Book a discovery call
+            {t('cta.bookCall')}
           </a>
         </div>
       </div>
@@ -165,20 +167,20 @@ const pillarIcons: Record<string, string> = {
           class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
           style="font-family: var(--font-heading);"
         >
-          What working together looks like
+          Cómo es trabajar juntos
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div data-animate>
           <div class="text-[var(--color-navy)] text-4xl font-bold mb-4 opacity-60" style="font-family: var(--font-heading);">01</div>
-          <h3 class="text-lg font-bold text-[var(--color-ink)] mb-3" style="font-family: var(--font-heading);">A free discovery call</h3>
-          <p class="text-[var(--color-muted)] text-sm leading-relaxed">We talk through your organization, your data, and what's actually possible. No pitch, no obligation.</p>
+          <h3 class="text-lg font-bold text-[var(--color-ink)] mb-3" style="font-family: var(--font-heading);">Una llamada de descubrimiento gratuita</h3>
+          <p class="text-[var(--color-muted)] text-sm leading-relaxed">Conversamos sobre tu organización, tus datos y lo que realmente es posible. Sin ofertas de venta, sin compromiso.</p>
         </div>
         <div data-animate data-animate-delay="100">
           <div class="text-[var(--color-navy)] text-4xl font-bold mb-4 opacity-60" style="font-family: var(--font-heading);">02</div>
-          <h3 class="text-lg font-bold text-[var(--color-ink)] mb-3" style="font-family: var(--font-heading);">The engagement</h3>
-          <p class="text-[var(--color-muted)] text-sm leading-relaxed">Fixed scope, fixed price, delivered with the insights and recommended actions you need to move on it right away.</p>
+          <h3 class="text-lg font-bold text-[var(--color-ink)] mb-3" style="font-family: var(--font-heading);">El proyecto</h3>
+          <p class="text-[var(--color-muted)] text-sm leading-relaxed">Alcance fijo, precio fijo, entregado con los hallazgos y las acciones recomendadas que necesitás para actuar de inmediato.</p>
         </div>
       </div>
     </div>
@@ -191,14 +193,14 @@ const pillarIcons: Record<string, string> = {
         class="text-2xl sm:text-3xl font-bold text-[var(--color-ink)] mb-6"
         style="font-family: var(--font-heading);"
       >
-        Why this isn't off-the-shelf
+        Por qué esto no es una solución genérica
       </h2>
       <div class="space-y-4 text-[var(--color-body)] text-base leading-relaxed">
         <p>
-          We don't start with a dashboard template. We start with your programs — what you actually measure, why, and what story the numbers need to tell. The real moat isn't the chart you see; it's the transformation logic and the "what should we measure?" thinking that built it.
+          No empezamos con una plantilla de panel de control. Empezamos con tus programas — qué medís en realidad, por qué, y qué historia necesitan contar los números. Lo que realmente marca la diferencia no es el gráfico que ves; es la lógica de transformación y el pensamiento de "¿qué deberíamos medir?" que lo construyó.
         </p>
         <p>
-          When the right answer is a custom-built tool, that's what we build — matched to how your organization actually runs, not retrofitted to someone else's software.
+          Cuando la respuesta correcta es una herramienta construida a la medida, eso es lo que construimos — ajustada a cómo funciona realmente tu organización, no forzada dentro del software de alguien más.
         </p>
       </div>
     </div>
@@ -211,19 +213,19 @@ const pillarIcons: Record<string, string> = {
         class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
         style="font-family: var(--font-heading);"
       >
-        Ready to see what your data is telling you?
+        ¿Querés ver qué te están diciendo tus datos?
       </h2>
       <p class="text-[var(--color-muted)] text-lg mb-4">
-        Start with a free discovery call.
+        Empezá con una llamada de descubrimiento gratuita.
       </p>
       <a
-        href="/contact"
+        href="/es/contact"
         class="inline-flex items-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
       >
-        Book a discovery call
+        {t('cta.bookCall')}
       </a>
       <p class="text-[var(--color-muted)] text-sm mt-6">
-        Not sure yet? <a href="/cost-calculator" class="text-[var(--color-navy)] font-medium hover:underline">See what scattered data might already be costing you</a>.
+        ¿Todavía no sabés? <a href="/es/cost-calculator" class="text-[var(--color-navy)] font-medium hover:underline">Mirá cuánto te podrían estar costando ya los datos dispersos</a>.
       </p>
     </div>
   </section>
