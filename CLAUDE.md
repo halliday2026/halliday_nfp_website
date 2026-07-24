@@ -5,10 +5,12 @@ Halliday is a **nonprofit data consultancy** with a **managed-website program as
 front door**. Targeting nonprofit leadership (Executive Directors) in the "messy
 middle" (~$500K–$2M budgets).
 
-> **Rebuild in progress (June 2026).** The site is being rebuilt from a locked
-> strategy. The five files in `/docs/strategy/` are the source of truth for
-> positioning, structure, and design. **Read them before making content, structure,
-> or design changes.** This file describes the TARGET state, not legacy.
+> **Rebuild complete (landed June–July 2026).** The site was rebuilt from a locked
+> strategy and now matches the target state below (two-tier Data Work + Managed
+> Websites, all sitemap pages live). The five files in `/docs/strategy/` remain the
+> source of truth for positioning, structure, and design — **read them before making
+> content, structure, or design changes**, since they explain the *why* behind
+> current copy and layout, not just history.
 
 ## Source of truth — read before building
 
@@ -52,17 +54,18 @@ positioning, copy angles, or colors outside these files. If ambiguous, ask.
   not Google Fonts hotlink)
 - **Deployment**: GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`)
 - **Domain**: hallidayinc.com (`public/CNAME`)
+- **Analytics**: Plausible snippet in `BaseLayout.astro`
 
-## Sitemap (target)
+## Sitemap
 
 ```
-Home              hero leads websites; body asserts the data case
-Data Work         THE MOAT PAGE — serious data consultancy, $7,500 floor
-Managed Websites  the wedge — done-for-you + peace of mind (net-new page)
-Cost Calculator   gateway asset — self-built Astro island (NOT Tally)
-Proof             case studies — EHL at launch
-About             credibility + why us
-Contact           book the free discovery conversation
+Home              /                  hero leads websites; body asserts the data case
+Data Work         /data-work         THE MOAT PAGE — serious data consultancy, $7,500 floor
+Managed Websites  /managed-websites  the wedge — done-for-you + peace of mind
+Cost Calculator   /cost-calculator   gateway asset — self-built Astro island (NOT Tally)
+Proof             /case-studies      case studies — EHL at launch (nav label "Proof")
+About             /about             credibility + why us
+Contact           /contact           book the free discovery conversation
 ```
 
 Primary nav CTA throughout: **"Book a discovery call."**
@@ -116,30 +119,31 @@ Don't introduce a third backend (e.g. Formspree, despite the Gateway Calculator 
 doc's original Phase-1 suggestion) — that decision was superseded in favor of staying
 on the one Supabase project.
 
-`interestedIn` options must reflect the NEW offers (Managed Website, Data Work /
-Donor Insight Engagement, General Inquiry). **Remove** stale options "Impact Data
-Review" and "AI Readiness Assessment."
+`interestedIn` options reflect the current offers (Managed Website, Data Work,
+Not Sure Yet, Referral Partner, General Inquiry) — the old "Impact Data Review" and
+"AI Readiness Assessment" options have already been removed. Keep it that way; don't
+reintroduce stale options when touching this form.
 
-## Reuse vs. replace (during rebuild)
+## Reuse vs. replace (historical — from the June 2026 rebuild)
 
-**Keep (good bones):**
+Kept from the pre-rebuild site:
 - Tailwind v4 / `@tailwindcss/vite` setup, TS strict, path aliases.
 - `BaseLayout.astro` scroll animations (`data-animate` + IntersectionObserver,
   respects `prefers-reduced-motion`).
-- Content-collections pattern (resources, case studies) — reuse for Proof.
-- `/case-studies/conservation-nonprofit` = the EHL case study. **Adapt** (reframe
-  onto the new productized offer), don't rewrite from scratch.
+- Content-collections pattern (resources, case studies) — reused for Proof.
+- `/case-studies/conservation-nonprofit` = the EHL case study, adapted onto the new
+  productized offer.
 
-**Replace / remove:**
-- Old palette (teal/amber) → tokens above.
-- Old fonts (Fraunces / DM Sans) → Hanken Grotesk / Inter.
-- Old services chain (IDR / Strategic Advisory / Custom Solutions, $2,500 IDR) →
-  two-tier Data Work + Managed Websites, $7,500 floor.
-- Tally "AI Readiness Assessment" page → self-built Cost Calculator.
-- **"Signal by Halliday" product marketing → REMOVE** (unvalidated downstream
-  experiment; a single neutral one-liner at most, default to omitting).
-- Any "$2M–$20M budgets" framing → messy-middle ($500K–$2M, signals over budget).
-- Old four capability pillars → new outcome pillars.
+Replaced and gone — **don't reintroduce these**:
+- Old palette (teal/amber) — tokens above are the only palette now.
+- Old fonts (Fraunces / DM Sans) — Hanken Grotesk / Inter only.
+- Old services chain (IDR / Strategic Advisory / Custom Solutions, $2,500 IDR) —
+  superseded by two-tier Data Work + Managed Websites, $7,500 floor.
+- Tally "AI Readiness Assessment" page — replaced by the self-built Cost Calculator.
+- **"Signal by Halliday" product marketing** — unvalidated downstream experiment;
+  a single neutral one-liner at most, default to omitting.
+- Any "$2M–$20M budgets" framing — messy-middle ($500K–$2M, signals over budget) only.
+- Old four capability pillars — replaced by the new outcome pillars.
 
 ## Path Aliases
 
