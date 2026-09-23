@@ -1,16 +1,26 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { useTranslations } from '../../i18n/utils';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../../i18n/utils';
 
 const lang = 'es';
 const t = useTranslations(lang);
 
-const whatYouGet = [
-  'Un sitio web profesional y moderno, construido para tu organización',
-  'Hosting, seguridad y mantenimiento — resueltos',
-  'Actualizaciones de contenido cuando las necesités',
-  'Una persona real que conoce tu sitio, no una fila de tickets de soporte',
-  'Siempre actualizado, siempre funcionando — verificado, no asumido',
+const summaryCards = [
+  {
+    label: 'Presencia Web Profesional',
+    description: 'Lo que construimos — desde un sitio sencillo tipo folleto hasta un sitio de varias páginas con herramientas interactivas y aplicaciones con base de datos.',
+    href: '/es/managed-websites/professional-web-presence',
+  },
+  {
+    label: 'Hosting Administrado',
+    description: 'Lo que lo mantiene funcionando — hosting, seguridad y actualizaciones, a cargo de una persona real. Los precios son transparentes, ahí mismo en la página.',
+    href: '/es/managed-websites/managed-hosting',
+  },
+  {
+    label: 'Paquete Inicial',
+    description: 'Cómo es empezar — desde tu primera llamada hasta el día del lanzamiento.',
+    href: '/es/managed-websites/starter-package',
+  },
 ];
 ---
 
@@ -31,37 +41,37 @@ const whatYouGet = [
         Una presencia web profesional — resuelta por nosotros.
       </h1>
       <p class="text-white/70 text-lg leading-relaxed max-w-2xl">
-        Una preocupación menos. Lo construimos, lo mantenemos funcionando, y nos aseguramos de que nunca falle — para que vos te enfoqués en tu misión.
+        Lo construimos, lo mantenemos funcionando, y nos aseguramos de que nunca falle — para que vos te enfoqués en tu misión. Acá hay dos cosas ciertas: lo que construimos y lo que cobramos por mantenerlo funcionando son conversaciones distintas. Así es como se dividen.
       </p>
     </div>
   </section>
 
-  <!-- ======================== WHAT YOU GET ======================== -->
+  <!-- ======================== SUMMARY CARDS ======================== -->
   <section class="py-20 lg:py-28 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl mb-12" data-animate>
-        <h2
-          class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
-          style="font-family: var(--font-heading);"
-        >
-          Lo que obtenés
-        </h2>
-        <p class="text-[var(--color-muted)] text-lg leading-relaxed">
-          Un sitio web profesional que armamos y mantenemos funcionando por vos. Una persona real se asegura de que esté siempre actualizado y funcionando, para que no tengas que volver a pensarlo.
-        </p>
-      </div>
-
-      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4" role="list">
-        {whatYouGet.map((item, i) => (
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ul class="grid grid-cols-1 md:grid-cols-3 gap-6" role="list">
+        {summaryCards.map((card, i) => (
           <li
-            class="flex items-start gap-3 p-5 rounded-xl bg-[var(--color-stone)] border border-[var(--color-border)]"
+            class="flex flex-col p-7 rounded-2xl bg-[var(--color-stone)] border border-[var(--color-border)]"
             data-animate
             data-animate-delay={String(i * 100)}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[var(--color-navy)] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span class="text-[var(--color-body)] text-base">{item}</span>
+            <h2
+              class="text-xl font-bold text-[var(--color-ink)] mb-3"
+              style="font-family: var(--font-heading);"
+            >
+              {card.label}
+            </h2>
+            <p class="text-[var(--color-body)] text-base leading-relaxed mb-6 flex-1">
+              {card.description}
+            </p>
+            <a
+              href={card.href}
+              class="inline-flex items-center gap-2 text-[var(--color-navy)] font-semibold hover:gap-3 transition-all text-sm"
+            >
+              {t('cta.learnMore')}
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+            </a>
           </li>
         ))}
       </ul>
@@ -104,28 +114,8 @@ const whatYouGet = [
     </div>
   </section>
 
-  <!-- ======================== PRICING ======================== -->
-  <section class="py-20 lg:py-28 bg-[var(--color-stone)]">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
-      <h2
-        class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-8"
-        style="font-family: var(--font-heading);"
-      >
-        Precios
-      </h2>
-      <div class="bg-white rounded-2xl border border-[var(--color-border)] p-10 lg:p-12 inline-block">
-        <p class="text-5xl font-bold text-[var(--color-ink)] mb-2" style="font-family: var(--font-heading);">
-          $75<span class="text-xl font-medium text-[var(--color-muted)]">/mes</span>
-        </p>
-        <p class="text-[var(--color-muted)] text-base">
-          Incluye hosting, mantenimiento y actualizaciones continuas — a cargo de una persona real.
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- ======================== CTA ======================== -->
-  <section class="py-20 lg:py-28 bg-white">
+  <section class="py-20 lg:py-28 bg-[var(--color-stone)]">
     <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
       <h2
         class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"

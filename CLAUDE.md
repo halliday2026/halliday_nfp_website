@@ -61,14 +61,55 @@ positioning, copy angles, or colors outside these files. If ambiguous, ask.
 ```
 Home              /                  hero leads websites; body asserts the data case
 Data Work         /data-work         THE MOAT PAGE — serious data consultancy, $7,500 floor
-Managed Websites  /managed-websites  the wedge — done-for-you + peace of mind
+Managed Websites  /managed-websites  the wedge — done-for-you + peace of mind (nav dropdown, see below)
+  ├─ Professional Web Presence   /managed-websites/professional-web-presence — what we build, no pricing
+  ├─ Managed Hosting             /managed-websites/managed-hosting — $75/mo lives here, only here
+  └─ Starter Package             /managed-websites/starter-package — onboarding flow, no pricing
 Cost Calculator   /cost-calculator   gateway asset — self-built Astro island (NOT Tally)
 Proof             /case-studies      case studies — EHL at launch (nav label "Proof")
 About             /about             credibility + why us
 Contact           /contact           book the free discovery conversation
 ```
 
+Every path above exists at the same suffix under both `/` (English, default) and `/es/`
+(Spanish) — see **Internationalization (EN/ES)** below. The Managed Websites dropdown
+has full Spanish parity: `/es/managed-websites/*` mirrors all 4 English pages.
+
+**Deviation note:** `Halliday_Website_Brief_2026-06.md` locks Managed Websites as a
+single flat page ("keep it lean," "one cheap door is sufficient") and explicitly
+warns against a dedicated pricing structure. The nav dropdown + 3 subpages above is
+a deliberate, user-approved departure from that guidance (Sept 2026) — made to
+separate "what we build" from "what hosting costs," which the single-page version
+conflated. Don't "fix" this back to a single page without checking with the user
+first; it's not drift.
+
 Primary nav CTA throughout: **"Book a discovery call."**
+
+## Internationalization (EN/ES)
+
+Astro's native i18n routing (`astro.config.mjs`): `en` is the default locale with
+no URL prefix, `es` lives under `/es/` (BCP-47 tag `es-NI` — Nicaraguan Spanish,
+voseo register: "vos," "podés," "querés," not "tú"). Pieces:
+
+- `src/i18n/ui.ts` — shared UI-chrome dictionary (nav labels, CTAs, footer, form
+  labels, calculator strings) keyed by `UiKey`, one object per locale. Long-form
+  page prose is **not** here.
+- `src/i18n/utils.ts` — `getLangFromUrl`, `useTranslations(lang)` → `t(key)`,
+  `stripLocalePrefix`, `getLocaleTag`.
+- `src/data/nav-links.ts` — single source for both `Nav.astro` and
+  `Footer.astro`'s link lists (`{path, key, children?}`). Nav renders `children`
+  as a dropdown/accordion; Footer flattens to top-level links only.
+- **Per-page translation, not per-string**: each English page's body copy is
+  hand-authored directly in its `.astro` file (no `t()` calls for prose). Its
+  Spanish counterpart is a **separate, hand-translated file** at the same path
+  under `src/pages/es/` — e.g. `src/pages/data-work.astro` ↔
+  `src/pages/es/data-work.astro`. When you add or edit an English page, its
+  `/es/` mirror needs the same treatment or the two languages drift.
+- `src/content/resources/{en,es}/` — content-collection resources split by
+  locale subfolder.
+- `src/pages/sitemap.xml.ts` — hand-rolled (no `@astrojs/sitemap`), emits both
+  locales with hreflang alternates from a single `staticPaths` list. Add new
+  top-level routes there too.
 
 ## Design System
 

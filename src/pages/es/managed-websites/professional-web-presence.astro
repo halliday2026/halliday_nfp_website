@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const lang = 'es';
+const t = useTranslations(lang);
+
+const examples = [
+  {
+    label: 'Un sitio tipo folleto',
+    description: 'Un hogar claro y creíble para tu misión, tus programas y tu historia — la presencia esencial que necesita toda organización sin fines de lucro.',
+  },
+  {
+    label: 'Un sitio de varias páginas con herramientas interactivas',
+    description: 'Formularios de donación, calendarios de eventos, inscripciones de voluntarios, bibliotecas de recursos — construidos para cómo trabaja realmente tu equipo.',
+  },
+  {
+    label: 'Una aplicación con base de datos',
+    description: 'Portales y herramientas personalizadas que se conectan a datos reales detrás de escena — para organizaciones que necesitan más que un sitio web.',
+  },
+];
+---
+
+<BaseLayout
+  title="Presencia Web Profesional — Sitios Web Administrados"
+  description="Desde un sitio sencillo tipo folleto hasta un sitio de varias páginas con herramientas interactivas y aplicaciones con base de datos — un sitio web profesional construido para cómo trabaja realmente tu organización."
+>
+  <!-- ======================== HEADER ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-charcoal)]" data-animate>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-white/60 font-semibold text-sm uppercase tracking-widest mb-6">
+        Sitios Web Administrados — Presencia Web Profesional
+      </p>
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
+        style="font-family: var(--font-heading);"
+      >
+        Sitios web construidos para cómo trabaja realmente tu organización.
+      </h1>
+      <p class="text-white/70 text-lg leading-relaxed max-w-2xl">
+        Diseñamos y construimos cada sitio desde cero para tu organización — nunca una plantilla. Sea lo que tu organización necesite, desde un sitio sencillo tipo folleto hasta un sitio de varias páginas con herramientas interactivas y aplicaciones con base de datos, lo construimos.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================== WHAT THIS CAN LOOK LIKE ======================== -->
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-12" data-animate>
+        <h2
+          class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
+          style="font-family: var(--font-heading);"
+        >
+          Cómo puede verse esto
+        </h2>
+        <p class="text-[var(--color-muted)] text-lg leading-relaxed">
+          Las necesidades de cada organización son distintas — este es el rango con el que trabajamos.
+        </p>
+      </div>
+
+      <ul class="grid grid-cols-1 gap-4" role="list">
+        {examples.map((example, i) => (
+          <li
+            class="p-6 rounded-xl bg-[var(--color-stone)] border border-[var(--color-border)]"
+            data-animate
+            data-animate-delay={String(i * 100)}
+          >
+            <h3 class="text-lg font-bold text-[var(--color-ink)] mb-2" style="font-family: var(--font-heading);">
+              {example.label}
+            </h3>
+            <p class="text-[var(--color-body)] text-base leading-relaxed">
+              {example.description}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======================== DONE-FOR-YOU ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-stone)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
+      <h2
+        class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-6"
+        style="font-family: var(--font-heading);"
+      >
+        Construido por una persona real, no una plantilla
+      </h2>
+      <p class="text-[var(--color-body)] text-lg leading-relaxed">
+        Sin constructores de arrastrar y soltar, sin temas genéricos. Trabajamos con tus materiales, tu marca y tus programas para diseñar un sitio que realmente es tuyo — y cada proyecto empieza con una llamada de descubrimiento para definir exactamente lo que necesitás.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================== GROW-INTO LINE (to Managed Hosting) ======================== -->
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8" data-animate>
+      <div class="flex flex-col sm:flex-row sm:items-start gap-5 p-7 rounded-2xl bg-[var(--color-navy-tint)] border border-[var(--color-navy)]/15">
+        <p class="text-[var(--color-body)] text-base leading-relaxed flex-1">
+          Una vez que tu sitio esté en línea, el Hosting Administrado es lo que lo mantiene funcionando — una persona real encargándose de actualizaciones, seguridad y mantenimiento.
+        </p>
+        <a
+          href="/es/managed-websites/managed-hosting"
+          class="inline-flex items-center justify-center gap-2 text-[var(--color-navy)] font-semibold hover:gap-3 transition-all text-sm flex-shrink-0"
+        >
+          {t('cta.seeManagedHosting')}
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== CTA ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-stone)]">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
+      <h2
+        class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
+        style="font-family: var(--font-heading);"
+      >
+        Contanos qué necesitás, y lo definimos juntos.
+      </h2>
+      <a
+        href="/es/contact"
+        class="inline-flex items-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
+      >
+        {t('cta.bookCall')}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

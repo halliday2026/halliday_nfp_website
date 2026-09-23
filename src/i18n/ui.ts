@@ -10,6 +10,10 @@ export const ui = {
     'nav.home': 'Home',
     'nav.dataWork': 'Data Work',
     'nav.managedWebsites': 'Managed Websites',
+    'nav.managedWebsitesOverview': 'Overview',
+    'nav.professionalWebPresence': 'Professional Web Presence',
+    'nav.managedHosting': 'Managed Hosting',
+    'nav.starterPackage': 'Starter Package',
     'nav.costCalculator': 'Cost Calculator',
     'nav.proof': 'Proof',
     'nav.about': 'About',
@@ -19,6 +23,9 @@ export const ui = {
 
     'cta.bookCall': 'Book a discovery call',
     'cta.seeDataWork': 'See Data Work',
+    'cta.seeManagedHosting': 'See Managed Hosting',
+    'cta.seeProfessionalWebPresence': 'See Professional Web Presence',
+    'cta.learnMore': 'Learn more',
 
     'footer.quickLinks': 'Quick Links',
     'footer.getInTouch': 'Get in Touch',
@@ -113,6 +120,10 @@ export const ui = {
     'nav.home': 'Inicio',
     'nav.dataWork': 'Trabajo de Datos',
     'nav.managedWebsites': 'Sitios Web',
+    'nav.managedWebsitesOverview': 'Resumen',
+    'nav.professionalWebPresence': 'Presencia Web Profesional',
+    'nav.managedHosting': 'Hosting Administrado',
+    'nav.starterPackage': 'Paquete Inicial',
     'nav.costCalculator': 'Calculadora de Costos',
     'nav.proof': 'Resultados',
     'nav.about': 'Nosotros',
@@ -122,6 +133,9 @@ export const ui = {
 
     'cta.bookCall': 'Reservá una llamada de descubrimiento',
     'cta.seeDataWork': 'Ver Trabajo de Datos',
+    'cta.seeManagedHosting': 'Ver Hosting Administrado',
+    'cta.seeProfessionalWebPresence': 'Ver Presencia Web Profesional',
+    'cta.learnMore': 'Conocé más',
 
     'footer.quickLinks': 'Enlaces Rápidos',
     'footer.getInTouch': 'Contactanos',

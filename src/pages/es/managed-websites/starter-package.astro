@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const lang = 'es';
+const t = useTranslations(lang);
+
+const steps = [
+  {
+    number: '01',
+    label: 'Llamada de descubrimiento',
+    description: 'Una conversación breve sobre tu organización, tus programas y qué necesitás que haga tu sitio.',
+  },
+  {
+    number: '02',
+    label: 'Fase de construcción',
+    description: 'Diseñamos y construimos tu sitio a partir de tus materiales y tu marca — sin plantillas.',
+  },
+  {
+    number: '03',
+    label: 'Ronda de revisión',
+    description: 'Revisás el sitio y nos decís qué ajustar. Lo refinamos hasta que quede bien.',
+  },
+  {
+    number: '04',
+    label: 'Lanzamiento',
+    description: 'Tu sitio sale en vivo en tu dominio.',
+  },
+  {
+    number: '05',
+    label: 'Hosting continuo',
+    description: 'El Hosting Administrado toma el control desde acá — una persona real manteniéndolo actualizado y funcionando.',
+  },
+];
+---
+
+<BaseLayout
+  title="Paquete Inicial — Sitios Web Administrados"
+  description="Cómo es empezar con el programa de Sitios Web Administrados de Halliday — desde tu primera llamada hasta el día del lanzamiento."
+>
+  <!-- ======================== HEADER ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-charcoal)]" data-animate>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-white/60 font-semibold text-sm uppercase tracking-widest mb-6">
+        Sitios Web Administrados — Paquete Inicial
+      </p>
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
+        style="font-family: var(--font-heading);"
+      >
+        Esto es exactamente lo que pasa cuando empezás.
+      </h1>
+      <p class="text-white/70 text-lg leading-relaxed max-w-2xl">
+        Sin sorpresas, sin un proceso de incorporación largo. La mayoría de los proyectos van de la primera llamada al lanzamiento en un par de semanas.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================== HOW IT WORKS ======================== -->
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="space-y-8" role="list">
+        {steps.map((step, i) => (
+          <li class="flex gap-6" data-animate data-animate-delay={String(i * 100)}>
+            <span
+              class="flex-shrink-0 text-2xl font-bold text-[var(--color-navy)]"
+              style="font-family: var(--font-heading);"
+            >
+              {step.number}
+            </span>
+            <div>
+              <h2 class="text-xl font-bold text-[var(--color-ink)] mb-1" style="font-family: var(--font-heading);">
+                {step.label}
+              </h2>
+              <p class="text-[var(--color-body)] text-base leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ======================== CROSS-LINKS ======================== -->
+  <section class="py-16 bg-[var(--color-stone)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 gap-6" data-animate>
+      <div class="p-6 rounded-2xl bg-white border border-[var(--color-border)]">
+        <p class="text-[var(--color-body)] text-base leading-relaxed mb-4">
+          ¿Tenés curiosidad de qué podemos construir para vos?
+        </p>
+        <a
+          href="/es/managed-websites/professional-web-presence"
+          class="inline-flex items-center gap-2 text-[var(--color-navy)] font-semibold hover:gap-3 transition-all text-sm"
+        >
+          {t('cta.seeProfessionalWebPresence')}
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+      <div class="p-6 rounded-2xl bg-white border border-[var(--color-border)]">
+        <p class="text-[var(--color-body)] text-base leading-relaxed mb-4">
+          ¿Querés saber cuánto cuesta mantener tu sitio funcionando después?
+        </p>
+        <a
+          href="/es/managed-websites/managed-hosting"
+          class="inline-flex items-center gap-2 text-[var(--color-navy)] font-semibold hover:gap-3 transition-all text-sm"
+        >
+          {t('cta.seeManagedHosting')}
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== CTA ======================== -->
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
+      <h2
+        class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
+        style="font-family: var(--font-heading);"
+      >
+        ¿Listo para empezar?
+      </h2>
+      <a
+        href="/es/contact"
+        class="inline-flex items-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
+      >
+        {t('cta.bookCall')}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

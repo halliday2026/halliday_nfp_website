@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const steps = [
+  {
+    number: '01',
+    label: 'Discovery call',
+    description: "A short conversation about your organization, your programs, and what you need your site to do.",
+  },
+  {
+    number: '02',
+    label: 'Build phase',
+    description: "We design and build your site from your materials and brand — no templates.",
+  },
+  {
+    number: '03',
+    label: 'Revision round',
+    description: "You review the site and tell us what to adjust. We refine it until it's right.",
+  },
+  {
+    number: '04',
+    label: 'Launch',
+    description: "Your site goes live on your domain.",
+  },
+  {
+    number: '05',
+    label: 'Ongoing hosting',
+    description: "Managed Hosting takes over from here — a real person keeping it current and working.",
+  },
+];
+---
+
+<BaseLayout
+  title="Starter Package — Managed Websites"
+  description="What it looks like to get started with Halliday's Managed Websites program — from your first call to launch day."
+>
+  <!-- ======================== HEADER ======================== -->
+  <section class="py-20 lg:py-28 bg-[var(--color-charcoal)]" data-animate>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-white/60 font-semibold text-sm uppercase tracking-widest mb-6">
+        Managed Websites — Starter Package
+      </p>
+      <h1
+        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6"
+        style="font-family: var(--font-heading);"
+      >
+        Here's exactly what happens when you get started.
+      </h1>
+      <p class="text-white/70 text-lg leading-relaxed max-w-2xl">
+        No surprises, no long onboarding process. Most projects go from first call to launch in a couple of weeks.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================== HOW IT WORKS ======================== -->
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="space-y-8" role="list">
+        {steps.map((step, i) => (
+          <li class="flex gap-6" data-animate data-animate-delay={String(i * 100)}>
+            <span
+              class="flex-shrink-0 text-2xl font-bold text-[var(--color-navy)]"
+              style="font-family: var(--font-heading);"
+            >
+              {step.number}
+            </span>
+            <div>
+              <h2 class="text-xl font-bold text-[var(--color-ink)] mb-1" style="font-family: var(--font-heading);">
+                {step.label}
+              </h2>
+              <p class="text-[var(--color-body)] text-base leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ======================== CROSS-LINKS ======================== -->
+  <section class="py-16 bg-[var(--color-stone)]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 gap-6" data-animate>
+      <div class="p-6 rounded-2xl bg-white border border-[var(--color-border)]">
+        <p class="text-[var(--color-body)] text-base leading-relaxed mb-4">
+          Wondering what we can actually build for you?
+        </p>
+        <a
+          href="/managed-websites/professional-web-presence"
+          class="inline-flex items-center gap-2 text-[var(--color-navy)] font-semibold hover:gap-3 transition-all text-sm"
+        >
+          See Professional Web Presence
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+      <div class="p-6 rounded-2xl bg-white border border-[var(--color-border)]">
+        <p class="text-[var(--color-body)] text-base leading-relaxed mb-4">
+          Curious what it costs to keep your site running afterward?
+        </p>
+        <a
+          href="/managed-websites/managed-hosting"
+          class="inline-flex items-center gap-2 text-[var(--color-navy)] font-semibold hover:gap-3 transition-all text-sm"
+        >
+          See Managed Hosting
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== CTA ======================== -->
+  <section class="py-20 lg:py-28 bg-white">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-animate>
+      <h2
+        class="text-3xl sm:text-4xl font-bold text-[var(--color-ink)] mb-5"
+        style="font-family: var(--font-heading);"
+      >
+        Ready to get started?
+      </h2>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 bg-[var(--color-navy)] hover:bg-[var(--color-navy-dark)] text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors"
+      >
+        Book a discovery call
+      </a>
+    </div>
+  </section>
+</BaseLayout>
